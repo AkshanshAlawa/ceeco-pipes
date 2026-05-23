@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+@layer base {
+    :root {
+        /* === CEECO HDPE BRAND TOKENS === */
+        /* Navy #0B2D4D */
+        --brand-navy: 212 75% 17%;
+        --brand-navy-deep: 212 80% 12%;
+        /* Blue #1A5FA8 */
+        --brand-blue: 210 73% 38%;
+        --brand-blue-soft: 210 73% 55%;
+        /* Green #4CAF50 */
+        --brand-green: 122 39% 49%;
+        --brand-green-deep: 122 45% 38%;
+        /* Light Blue #E3F2FD */
+        --brand-light-blue: 207 89% 94%;
+        /* Grey #F5F7FA */
+        --brand-grey: 214 33% 97%;
+        /* Black #1A1A1A */
+        --brand-black: 0 0% 10%;
+
+        /* === SEMANTIC TOKENS === */
+        --background: 0 0% 100%;
+        --foreground: 212 30% 12%;
+        --card: 0 0% 100%;
+        --card-foreground: 212 30% 12%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 212 30% 12%;
+        --primary: 212 75% 17%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 214 33% 97%;
+        --secondary-foreground: 212 75% 17%;
+        --muted: 214 33% 95%;
+        --muted-foreground: 212 15% 40%;
+        --accent: 122 39% 49%;
+        --accent-foreground: 0 0% 100%;
+        --destructive: 0 75% 50%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 214 25% 88%;
+        --input: 214 25% 88%;
+        --ring: 122 39% 49%;
+        --radius: 0.75rem;
+
+        /* Gradients */
+        --gradient-hero: linear-gradient(135deg, hsl(212 80% 12%) 0%, hsl(212 75% 17%) 50%, hsl(210 73% 28%) 100%);
+        --gradient-navy: linear-gradient(180deg, hsl(212 75% 17%) 0%, hsl(212 80% 12%) 100%);
+        --gradient-green-cta: linear-gradient(135deg, hsl(122 45% 38%) 0%, hsl(122 39% 49%) 100%);
+        --gradient-light: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(214 33% 97%) 100%);
+
+        /* Shadows */
+        --shadow-card: 0 2px 8px -2px hsl(212 75% 17% / 0.08);
+        --shadow-card-hover: 0 16px 40px -12px hsl(212 75% 17% / 0.18);
+        --shadow-cta: 0 10px 30px -10px hsl(122 39% 49% / 0.45);
+        --shadow-navy: 0 18px 50px -16px hsl(212 80% 12% / 0.55);
+
+        /* Transitions */
+        --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+        --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+}
+
+@layer base {
+    * {
+        border-color: hsl(var(--border));
+    }
+    html {
+        scroll-behavior: smooth;
+    }
+    body {
+        margin: 0;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        background-color: hsl(var(--background));
+        color: hsl(var(--foreground));
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    }
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Space Grotesk', 'Inter', sans-serif;
+        letter-spacing: -0.02em;
+    }
+}
+
+@layer utilities {
+    .text-brand-navy { color: hsl(var(--brand-navy)); }
+    .text-brand-blue { color: hsl(var(--brand-blue)); }
+    .text-brand-green { color: hsl(var(--brand-green)); }
+    .text-brand-light-blue { color: hsl(var(--brand-light-blue)); }
+    .text-brand-black { color: hsl(var(--brand-black)); }
+    .bg-brand-navy { background-color: hsl(var(--brand-navy)); }
+    .bg-brand-navy-deep { background-color: hsl(var(--brand-navy-deep)); }
+    .bg-brand-blue { background-color: hsl(var(--brand-blue)); }
+    .bg-brand-green { background-color: hsl(var(--brand-green)); }
+    .bg-brand-green-deep { background-color: hsl(var(--brand-green-deep)); }
+    .bg-brand-light-blue { background-color: hsl(var(--brand-light-blue)); }
+    .bg-brand-grey { background-color: hsl(var(--brand-grey)); }
+    .border-brand-green { border-color: hsl(var(--brand-green)); }
+    .border-brand-navy { border-color: hsl(var(--brand-navy)); }
+    .ring-brand-green { --tw-ring-color: hsl(var(--brand-green)); }
+
+    .bg-gradient-hero { background-image: var(--gradient-hero); }
+    .bg-gradient-navy { background-image: var(--gradient-navy); }
+    .bg-gradient-green-cta { background-image: var(--gradient-green-cta); }
+    .bg-gradient-light { background-image: var(--gradient-light); }
+
+    .shadow-card { box-shadow: var(--shadow-card); }
+    .shadow-card-hover:hover { box-shadow: var(--shadow-card-hover); }
+    .shadow-cta { box-shadow: var(--shadow-cta); }
+    .shadow-navy { box-shadow: var(--shadow-navy); }
+
+    .container-x { @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12; }
+
+    .pipe-pattern {
+        background-image:
+            radial-gradient(circle at 20% 30%, hsl(210 73% 55% / 0.08) 0px, transparent 40%),
+            radial-gradient(circle at 80% 70%, hsl(122 39% 49% / 0.06) 0px, transparent 40%);
+    }
+
+    .blueprint-grid {
+        background-image:
+            linear-gradient(hsl(255 100% 100% / 0.04) 1px, transparent 1px),
+            linear-gradient(90deg, hsl(255 100% 100% / 0.04) 1px, transparent 1px);
+        background-size: 60px 60px;
+    }
+
+    .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.8s var(--ease-smooth), transform 0.8s var(--ease-smooth);
+    }
+    .reveal.in-view {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    @keyframes marquee {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+    }
+    .animate-marquee { animation: marquee 35s linear infinite; }
+    .animate-marquee:hover { animation-play-state: paused; }
+
+    @keyframes float-slow {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-8px); }
+    }
+    .animate-float-slow { animation: float-slow 4s ease-in-out infinite; }
+
+    @keyframes pulse-ring {
+        0% { box-shadow: 0 0 0 0 hsl(122 39% 49% / 0.55); }
+        70% { box-shadow: 0 0 0 16px hsl(122 39% 49% / 0); }
+        100% { box-shadow: 0 0 0 0 hsl(122 39% 49% / 0); }
+    }
+    .animate-pulse-ring { animation: pulse-ring 2.2s infinite; }
+}
