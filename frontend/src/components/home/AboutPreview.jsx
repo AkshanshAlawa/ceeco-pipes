@@ -33,25 +33,25 @@ export default function AboutPreview() {
 
           <div className="mt-8 grid grid-cols-3 gap-4">
             {[
-              { icon: Calendar, label: "Est. 1984" },
-              { icon: Users, label: "40+ Years" },
-              { icon: Award, label: "ISO 9001:2015" },
-            ].map((b) => (
-              <div
-                key={b.label}
-                className="flex flex-col items-center text-center p-4 rounded-xl bg-brand-grey border border-border"
-              >
+            { icon: Calendar, label: "Est. 1984" },
+            { icon: Users, label: "40+ Years" },
+            { icon: Award, label: "ISO 9001:2015" }].
+            map((b) =>
+            <div
+              key={b.label}
+              className="flex flex-col items-center text-center p-4 rounded-xl bg-brand-grey border border-border">
+
                 <b.icon className="w-5 h-5 text-brand-green mb-2" />
                 <p className="text-sm font-bold text-brand-navy">{b.label}</p>
               </div>
-            ))}
+            )}
           </div>
 
           <Link
             to="/about"
             data-testid="about-preview-cta"
-            className="inline-flex items-center gap-2 mt-9 text-brand-navy font-bold border-b-2 border-brand-green pb-1 hover:text-brand-green transition-colors"
-          >
+            className="inline-flex items-center gap-2 mt-9 text-brand-navy font-bold border-b-2 border-brand-green pb-1 hover:text-brand-green transition-colors">
+
             Know More
             <ArrowRight className="w-4 h-4" />
           </Link>
@@ -64,12 +64,12 @@ export default function AboutPreview() {
               <img
                 src={ASSETS.factory}
                 alt="CEECO Manufacturing Facility - Karnataka"
-                className="w-full h-full object-cover"
-              />
+                className="w-full h-full object-cover" />
+
               <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/80 via-brand-navy/10 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 text-white">
-                <p className="text-[10px] tracking-[0.32em] uppercase text-brand-green font-bold">
-                  Karnataka, India
+                <p className="text-[10px] tracking-[0.32em] uppercase text-brand-green font-bold">Peenya, Karnataka, India
+
                 </p>
                 <p className="mt-1 font-display text-2xl font-black uppercase tracking-tight">
                   Manufacturing Excellence
@@ -79,6 +79,6 @@ export default function AboutPreview() {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 }
