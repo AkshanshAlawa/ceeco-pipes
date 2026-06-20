@@ -105,26 +105,52 @@ export default function Footer() {
             </h4>
             <ul className="space-y-4 text-sm">
               <li>
-                <div className="flex items-start gap-3">
-                  <MapPin className="w-4 h-4 mt-0.5 text-brand-green shrink-0" />
+                <a
+                  href={SITE.address.office.mapUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid="footer-office-map-link"
+                  className="flex items-start gap-3 group"
+                >
+                  <MapPin className="w-4 h-4 mt-0.5 text-brand-green shrink-0 group-hover:scale-110 transition-transform" />
                   <div>
-                    <p className="text-white font-semibold">Corporate Office</p>
-                    <p className="text-white/70 leading-relaxed mt-1 whitespace-pre-line">
-                      {SITE.address.office}
+                    <p className="text-white font-semibold group-hover:text-brand-green transition-colors">
+                      Corporate Office
                     </p>
+                    <p className="text-white/70 leading-relaxed mt-1">
+                      {SITE.address.office.lines.map((l) => (
+                        <span key={l} className="block">{l}</span>
+                      ))}
+                    </p>
+                    <span className="mt-1.5 inline-block text-[10px] tracking-[0.2em] uppercase text-brand-green font-bold">
+                      View on Google Maps &rarr;
+                    </span>
                   </div>
-                </div>
+                </a>
               </li>
               <li>
-                <div className="flex items-start gap-3">
-                  <MapPin className="w-4 h-4 mt-0.5 text-brand-green shrink-0" />
+                <a
+                  href={SITE.address.factory.mapUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid="footer-factory-map-link"
+                  className="flex items-start gap-3 group"
+                >
+                  <MapPin className="w-4 h-4 mt-0.5 text-brand-green shrink-0 group-hover:scale-110 transition-transform" />
                   <div>
-                    <p className="text-white font-semibold">Factory Address</p>
-                    <p className="text-white/70 leading-relaxed mt-1 whitespace-pre-line">
-                      {SITE.address.factory}
+                    <p className="text-white font-semibold group-hover:text-brand-green transition-colors">
+                      Manufacturing Unit
                     </p>
+                    <p className="text-white/70 leading-relaxed mt-1">
+                      {SITE.address.factory.lines.map((l) => (
+                        <span key={l} className="block">{l}</span>
+                      ))}
+                    </p>
+                    <span className="mt-1.5 inline-block text-[10px] tracking-[0.2em] uppercase text-brand-green font-bold">
+                      View on Google Maps &rarr;
+                    </span>
                   </div>
-                </div>
+                </a>
               </li>
             </ul>
           </div>

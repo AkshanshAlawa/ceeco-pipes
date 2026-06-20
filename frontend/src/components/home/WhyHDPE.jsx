@@ -46,6 +46,102 @@ function FeatureCard({ icon: Icon, title, desc, align = "left" }) {
   );
 }
 
+/* Realistic head-on HDPE pipe cross-section — concentric rings representing
+ * the outer wall, a signature blue identification stripe, the inner wall,
+ * and the hollow cavity. */
+function PipeCrossSection() {
+  return (
+    <div className="relative w-full max-w-[460px] aspect-square mx-auto">
+      {/* Ambient outer glow */}
+      <div className="absolute -inset-8 rounded-full bg-gradient-to-br from-brand-blue/30 via-brand-green/15 to-brand-navy/30 blur-3xl opacity-80" />
+
+      {/* OUTER WALL (HDPE black material) */}
+      <div
+        className="absolute inset-0 rounded-full bg-gradient-to-br from-brand-navy-deep via-black to-brand-navy-deep shadow-navy"
+        style={{
+          boxShadow:
+            "inset 0 0 60px rgba(0,0,0,0.65), 0 30px 60px -20px rgba(0,0,0,0.55), 0 0 0 4px rgba(255,255,255,0.04)",
+        }}
+      >
+        {/* Tiny highlight ring on the very top edge for 3D feel */}
+        <div className="absolute inset-0 rounded-full pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 90% 35% at 50% 6%, rgba(255,255,255,0.18), transparent 60%)",
+          }}
+        />
+
+        {/* SIGNATURE BLUE STRIPE - thin identification band */}
+        <div className="absolute inset-[7%] rounded-full bg-gradient-to-br from-brand-blue via-brand-blue-soft to-brand-blue shadow-inner">
+          <div className="absolute inset-0 rounded-full"
+            style={{
+              background:
+                "radial-gradient(ellipse 80% 40% at 50% 10%, rgba(255,255,255,0.22), transparent 55%)",
+            }}
+          />
+
+          {/* INNER WALL */}
+          <div
+            className="absolute inset-[5%] rounded-full bg-gradient-to-br from-brand-navy-deep via-black to-brand-navy-deep"
+            style={{ boxShadow: "inset 0 0 50px rgba(0,0,0,0.7)" }}
+          >
+            {/* HOLLOW CAVITY (the interior of the pipe) */}
+            <div
+              className="absolute inset-[8%] rounded-full bg-gradient-radial from-black via-brand-navy-deep to-black flex items-center justify-center"
+              style={{
+                background:
+                  "radial-gradient(circle at 50% 45%, #050a14 0%, #0a1729 55%, #000 100%)",
+                boxShadow:
+                  "inset 0 0 100px rgba(0,0,0,0.95), inset 0 8px 40px rgba(0,0,0,0.6)",
+              }}
+            >
+              {/* Cavity content - brand text deep inside the pipe */}
+              <div className="relative text-center text-white px-5">
+                <p className="text-[10px] sm:text-[11px] tracking-[0.4em] uppercase text-brand-blue-soft font-bold">
+                  CEECO HDPE
+                </p>
+                <h3 className="mt-2 font-display font-black uppercase text-5xl sm:text-6xl text-white tracking-tight leading-none">
+                  PE 80
+                </h3>
+                <p className="mt-2 text-[10px] sm:text-xs tracking-[0.32em] uppercase text-white/65 font-bold">
+                  Premium Grade
+                </p>
+                <div className="mt-3 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-green/20 border border-brand-green/40 backdrop-blur-sm">
+                  <span className="text-xs font-bold text-brand-green tracking-wide">
+                    + PE 100
+                  </span>
+                </div>
+
+                {/* PN Ratings strip in the cavity */}
+                <div className="mt-5 sm:mt-6">
+                  <p className="text-[9px] tracking-[0.32em] uppercase text-white/55 font-bold mb-2">
+                    Pressure Ratings
+                  </p>
+                  <div className="flex flex-wrap justify-center gap-1.5 max-w-[280px] mx-auto">
+                    {PN_RATINGS.map((p) => (
+                      <span
+                        key={p}
+                        className="text-[9px] sm:text-[10px] px-2 py-0.5 rounded-full bg-white/10 border border-white/20 font-bold text-white"
+                      >
+                        {p}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Subtle measurement tick marks (annotation feel) */}
+      <div className="absolute -top-2 left-1/2 -translate-x-1/2 text-[9px] tracking-[0.3em] uppercase text-brand-blue font-bold">
+        &middot; PIPE CROSS-SECTION &middot;
+      </div>
+    </div>
+  );
+}
+
 export default function WhyHDPE() {
   return (
     <section
@@ -71,66 +167,9 @@ export default function WhyHDPE() {
             ))}
           </div>
 
-          {/* Central HERO oval with PE 80/PE 100 + pipes */}
-          <div className="lg:col-span-6 flex justify-center">
-            <div className="relative w-full max-w-xl">
-              <div className="absolute -inset-6 bg-gradient-to-br from-brand-blue/30 via-brand-green/15 to-brand-navy/30 rounded-[60%] blur-3xl scale-105" />
-              <div className="relative aspect-[5/6] rounded-[42%] bg-gradient-to-b from-brand-blue via-brand-navy to-brand-navy-deep shadow-navy overflow-hidden flex flex-col items-center justify-center p-8 sm:p-12">
-                {/* Inner border */}
-                <div className="absolute inset-3 sm:inset-5 rounded-[40%] border-2 border-white/15" />
-
-                {/* Brand text */}
-                <div className="relative text-center text-white z-10">
-                  <p className="text-[11px] tracking-[0.4em] uppercase text-brand-blue-soft font-bold">
-                    CEECO HDPE
-                  </p>
-                  <h3 className="mt-3 font-display font-black uppercase text-5xl sm:text-6xl text-white tracking-tight leading-none">
-                    PE 80
-                  </h3>
-                  <p className="mt-2 text-[11px] sm:text-xs tracking-[0.32em] uppercase text-white/70 font-bold">
-                    Premium Grade
-                  </p>
-                  <div className="mt-2 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-green/20 border border-brand-green/40">
-                    <span className="text-xs font-bold text-brand-green">+ PE 100</span>
-                  </div>
-                </div>
-
-                {/* Stylised stacked pipes illustration */}
-                <div className="relative mt-6 sm:mt-8 w-full max-w-[260px] z-10">
-                  {[0, 1, 2].map((row) => (
-                    <div key={row} className="flex justify-center gap-1.5 -mt-3 first:mt-0">
-                      {Array.from({ length: 4 - row }).map((_, i) => (
-                        <div
-                          key={i}
-                          className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br from-brand-navy-deep to-black border-2 border-brand-blue-soft/40 shadow-lg overflow-hidden"
-                        >
-                          <div className="absolute inset-1.5 rounded-full border border-brand-blue-soft/30" />
-                          <div className="absolute inset-3 rounded-full bg-brand-navy-deep/60" />
-                          <div className="absolute top-1 left-1.5 right-1.5 h-px bg-brand-blue-soft/40" />
-                        </div>
-                      ))}
-                    </div>
-                  ))}
-                </div>
-
-                {/* PN Ratings strip - all 7 */}
-                <div className="relative mt-6 sm:mt-8 w-full z-10">
-                  <p className="text-center text-[9px] tracking-[0.32em] uppercase text-white/60 font-bold mb-2.5">
-                    Pressure Ratings
-                  </p>
-                  <div className="flex flex-wrap justify-center gap-1.5">
-                    {PN_RATINGS.map((p) => (
-                      <span
-                        key={p}
-                        className="text-[10px] sm:text-xs px-2 py-1 rounded-full bg-white/10 border border-white/25 font-bold text-white backdrop-blur-sm"
-                      >
-                        {p}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
+          {/* CENTRAL PIPE CROSS-SECTION */}
+          <div className="lg:col-span-6 flex justify-center py-6">
+            <PipeCrossSection />
           </div>
 
           {/* Right features column */}

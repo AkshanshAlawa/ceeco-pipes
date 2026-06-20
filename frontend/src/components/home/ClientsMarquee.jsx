@@ -1,12 +1,34 @@
 import SectionHeading from "@/components/common/SectionHeading";
-import { Landmark, ShieldCheck } from "lucide-react";
+import { ShieldCheck } from "lucide-react";
+import { CLIENT_LOGOS } from "@/lib/site";
 
 const clients = [
-  { name: "BBMP", note: "(formerly)", full: "Bruhat Bengaluru Mahanagara Palike" },
-  { name: "BDA", note: "", full: "Bangalore Development Authority" },
-  { name: "Govt of Karnataka", note: "", full: "Government of Karnataka" },
-  { name: "GBA", note: "", full: "Greater Bangalore Authority" },
-  { name: "BWSSB", note: "", full: "Bangalore Water Supply & Sewerage Board" },
+  {
+    name: "BBMP",
+    note: "(formerly)",
+    full: "Bruhat Bengaluru Mahanagara Palike",
+    logo: CLIENT_LOGOS.BBMP,
+  },
+  {
+    name: "BDA",
+    full: "Bangalore Development Authority",
+    logo: CLIENT_LOGOS.BDA,
+  },
+  {
+    name: "Govt of Karnataka",
+    full: "Government of Karnataka",
+    logo: CLIENT_LOGOS.GOVTOFKARNATAKA,
+  },
+  {
+    name: "GBA",
+    full: "Greater Bengaluru Authority",
+    logo: CLIENT_LOGOS.GBA,
+  },
+  {
+    name: "BWSSB",
+    full: "Bangalore Water Supply & Sewerage Board",
+    logo: CLIENT_LOGOS.BWSSB,
+  },
 ];
 
 export default function ClientsMarquee() {
@@ -26,11 +48,17 @@ export default function ClientsMarquee() {
           {clients.map((c) => (
             <div
               key={c.name}
-              className="group relative flex flex-col items-center justify-center text-center p-6 rounded-2xl bg-brand-grey border border-border hover:bg-brand-light-blue hover:border-brand-blue/30 hover:-translate-y-1 transition-all duration-300 min-h-[170px]"
+              data-testid={`client-${c.name.toLowerCase().replace(/\s+/g, "-")}`}
+              className="group relative flex flex-col items-center justify-start text-center p-5 rounded-2xl bg-white border border-border hover:border-brand-blue/40 hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 min-h-[210px]"
             >
-              {/* Placeholder logo space */}
-              <div className="w-14 h-14 rounded-2xl bg-white border-2 border-dashed border-brand-blue/30 flex items-center justify-center mb-3">
-                <Landmark className="w-6 h-6 text-brand-blue" />
+              {/* Real logo */}
+              <div className="w-24 h-24 rounded-2xl bg-white border border-border flex items-center justify-center p-2 mb-3 shadow-card">
+                <img
+                  src={c.logo}
+                  alt={`${c.full} logo`}
+                  className="max-w-full max-h-full object-contain"
+                  loading="lazy"
+                />
               </div>
               <p className="font-display font-black uppercase tracking-tight text-base sm:text-lg text-brand-navy leading-tight">
                 {c.name}
@@ -40,7 +68,7 @@ export default function ClientsMarquee() {
                   {c.note}
                 </span>
               )}
-              <p className="mt-2 text-[10px] sm:text-xs text-muted-foreground leading-tight px-1">
+              <p className="mt-1.5 text-[10px] sm:text-xs text-muted-foreground leading-tight px-1">
                 {c.full}
               </p>
             </div>

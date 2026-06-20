@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PageHero from "@/components/common/PageHero";
 import SectionHeading from "@/components/common/SectionHeading";
-import { Phone, Mail, Globe, Clock, MapPin, ArrowRight } from "lucide-react";
+import { Phone, Mail, Globe, Clock, MapPin, ArrowRight, ExternalLink } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -26,13 +26,30 @@ export default function Contact() {
     }, 900);
   };
 
+  const locations = [
+    {
+      key: "office",
+      label: "Corporate Office",
+      addressLines: SITE.address.office.lines,
+      mapUrl: SITE.address.office.mapUrl,
+      embedQuery: SITE.address.office.embedQuery,
+    },
+    {
+      key: "factory",
+      label: "Manufacturing Unit",
+      addressLines: SITE.address.factory.lines,
+      mapUrl: SITE.address.factory.mapUrl,
+      embedQuery: SITE.address.factory.embedQuery,
+    },
+  ];
+
   return (
     <>
       <PageHero
         crumb="Contact"
         eyebrow="Get In Touch"
         title="We'd love to hear from you."
-        subtitle="Send us a message, request a quote, or visit us at our office or factory."
+        subtitle="Send us a message, request a quote, or visit us at our office or manufacturing unit."
       />
 
       <section className="py-20 sm:py-24 bg-white">
@@ -50,17 +67,60 @@ export default function Contact() {
             </p>
 
             <div className="mt-8 space-y-4">
+              {/* Corporate Office */}
+              <a
+                href={SITE.address.office.mapUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid="contact-office-link"
+                className="flex items-start gap-4 p-4 rounded-2xl bg-brand-grey border border-border hover:bg-brand-light-blue hover:border-brand-blue/30 transition-colors group"
+              >
+                <div className="w-11 h-11 rounded-xl bg-white border border-border flex items-center justify-center shrink-0">
+                  <MapPin className="w-5 h-5 text-brand-green" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-[11px] tracking-[0.25em] uppercase text-brand-green font-bold">
+                    Corporate Office
+                  </p>
+                  <p className="mt-1 font-semibold text-brand-navy text-sm leading-relaxed">
+                    {SITE.address.office.lines.map((l) => (
+                      <span key={l} className="block">{l}</span>
+                    ))}
+                  </p>
+                  <span className="mt-2 inline-flex items-center gap-1 text-xs font-bold text-brand-blue group-hover:text-brand-green transition-colors">
+                    View on Google Maps <ExternalLink className="w-3 h-3" />
+                  </span>
+                </div>
+              </a>
+
+              {/* Manufacturing Unit */}
+              <a
+                href={SITE.address.factory.mapUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid="contact-factory-link"
+                className="flex items-start gap-4 p-4 rounded-2xl bg-brand-grey border border-border hover:bg-brand-light-blue hover:border-brand-blue/30 transition-colors group"
+              >
+                <div className="w-11 h-11 rounded-xl bg-white border border-border flex items-center justify-center shrink-0">
+                  <MapPin className="w-5 h-5 text-brand-green" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-[11px] tracking-[0.25em] uppercase text-brand-green font-bold">
+                    Manufacturing Unit
+                  </p>
+                  <p className="mt-1 font-semibold text-brand-navy text-sm leading-relaxed">
+                    {SITE.address.factory.lines.map((l) => (
+                      <span key={l} className="block">{l}</span>
+                    ))}
+                  </p>
+                  <span className="mt-2 inline-flex items-center gap-1 text-xs font-bold text-brand-blue group-hover:text-brand-green transition-colors">
+                    View on Google Maps <ExternalLink className="w-3 h-3" />
+                  </span>
+                </div>
+              </a>
+
+              {/* Phone, Email, Website, Hours */}
               {[
-                {
-                  icon: MapPin,
-                  label: "Corporate Office",
-                  value: SITE.address.office,
-                },
-                {
-                  icon: MapPin,
-                  label: "Factory Address",
-                  value: SITE.address.factory,
-                },
                 { icon: Phone, label: "Phone", value: SITE.phone, href: `tel:${SITE.phoneRaw}` },
                 { icon: Mail, label: "Email", value: SITE.email, href: `mailto:${SITE.email}` },
                 { icon: Globe, label: "Website", value: SITE.website },
@@ -195,35 +255,51 @@ export default function Contact() {
           <SectionHeading
             center
             eyebrow="Visit Us"
-            title="Find our office and factory."
+            title="Find our office and manufacturing unit."
+            subtitle="Two locations across Bengaluru - our corporate office in Nagarathpete and our manufacturing facility in Peenya."
           />
           <div className="mt-12 grid md:grid-cols-2 gap-6">
-            {[
-              { label: "Corporate Office Location", q: "Bangalore Karnataka" },
-              { label: "Factory Location", q: "Karnataka India" },
-            ].map((m) => (
+            {locations.map((m) => (
               <div
-                key={m.label}
-                className="rounded-3xl overflow-hidden border border-border shadow-card bg-white"
+                key={m.key}
+                data-testid={`map-card-${m.key}`}
+                className="rounded-3xl overflow-hidden border border-border shadow-card bg-white flex flex-col"
               >
-                <div className="p-5 flex items-center gap-3 border-b border-border">
-                  <div className="w-9 h-9 rounded-lg bg-brand-light-blue flex items-center justify-center">
-                    <MapPin className="w-4 h-4 text-brand-blue" />
+                <div className="p-5 flex items-start gap-3 border-b border-border">
+                  <div className="w-10 h-10 rounded-lg bg-brand-light-blue flex items-center justify-center shrink-0">
+                    <MapPin className="w-5 h-5 text-brand-blue" />
                   </div>
-                  <div>
+                  <div className="flex-1">
                     <p className="text-[10px] tracking-[0.3em] uppercase text-brand-green font-bold">
-                      CEECO
+                      CEECO HDPE PIPES
                     </p>
-                    <p className="font-display font-bold text-brand-navy">{m.label}</p>
+                    <p className="font-display font-black uppercase tracking-tight text-brand-navy text-lg">
+                      {m.label}
+                    </p>
+                    <p className="mt-1 text-xs text-muted-foreground leading-relaxed">
+                      {m.addressLines.map((l) => (
+                        <span key={l} className="block">{l}</span>
+                      ))}
+                    </p>
                   </div>
                 </div>
                 <iframe
-                  title={m.label}
-                  src={`https://www.google.com/maps?q=${encodeURIComponent(m.q)}&output=embed`}
-                  className="w-full h-72"
+                  title={`${m.label} - CEECO HDPE Pipes`}
+                  src={`https://www.google.com/maps?q=${encodeURIComponent(m.embedQuery)}&output=embed`}
+                  className="w-full h-72 border-0"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
                 />
+                <a
+                  href={m.mapUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid={`map-open-${m.key}`}
+                  className="flex items-center justify-center gap-2 py-3.5 bg-brand-navy text-white font-bold text-sm hover:bg-brand-green transition-colors"
+                >
+                  Open in Google Maps <ExternalLink className="w-4 h-4" />
+                </a>
               </div>
             ))}
           </div>

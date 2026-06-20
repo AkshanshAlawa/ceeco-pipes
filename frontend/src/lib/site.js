@@ -21,8 +21,33 @@ export const SITE = {
   },
 
   address: {
-    office: "[Your Office Address]\nKarnataka, India",
-    factory: "[Your Factory Address]\nKarnataka, India",
+    office: {
+      lines: [
+        "17, Venkata Ramanaik Lane,",
+        "S P Road Cross, Kumbarpet,",
+        "Dodpete, Nagarathpete,",
+        "Bengaluru, Karnataka - 560002",
+      ],
+      compact:
+        "17, Venkata Ramanaik Lane, S P Road Cross, Kumbarpet, Dodpete, Nagarathpete, Bengaluru, Karnataka - 560002",
+      mapUrl: "https://maps.app.goo.gl/LBp7S1pHW7YYr3CK6",
+      // Embed uses the full address as a query.
+      embedQuery:
+        "17 Venkata Ramanaik Lane S P Road Cross Kumbarpet Dodpete Nagarathpete Bengaluru Karnataka 560002",
+    },
+    factory: {
+      lines: [
+        "B-67, 2nd Cross Road,",
+        "Peenya 1st Stage, Peenya II Phase,",
+        "Peenya, Bengaluru,",
+        "Karnataka - 560058",
+      ],
+      compact:
+        "B-67, 2nd Cross Road, Peenya 1st Stage, Peenya II Phase, Peenya, Bengaluru, Karnataka - 560058",
+      mapUrl: "https://maps.app.goo.gl/sZJy1xpkjxcKsEp6A",
+      embedQuery:
+        "B-67 2nd Cross Road Peenya 1st Stage Peenya II Phase Bengaluru Karnataka 560058",
+    },
   },
 };
 
@@ -41,6 +66,16 @@ export const ASSETS = {
   whyHdpe: "https://customer-assets.emergentagent.com/job_ceeco-hdpe/artifacts/p8uvqixh_WHYHDPE.png",
   iso: "https://customer-assets.emergentagent.com/job_ceeco-hdpe/artifacts/73fjdjs9_ISO.jpeg",
   msme: "https://customer-assets.emergentagent.com/job_ceeco-hdpe/artifacts/tggd9dpo_MSME.jpeg",
+};
+
+// Client logos (matched by filename, ignoring extension)
+export const CLIENT_LOGOS = {
+  BBMP: "https://customer-assets.emergentagent.com/job_ceeco-hdpe/artifacts/wim3loa1_BBMP.jpg",
+  BDA: "https://customer-assets.emergentagent.com/job_ceeco-hdpe/artifacts/2kfn50ri_BDA.jpeg",
+  BWSSB: "https://customer-assets.emergentagent.com/job_ceeco-hdpe/artifacts/boh3ugl3_BWSSB.png",
+  GBA: "https://customer-assets.emergentagent.com/job_ceeco-hdpe/artifacts/huqxvuxk_GBA.jpg",
+  GOVTOFKARNATAKA:
+    "https://customer-assets.emergentagent.com/job_ceeco-hdpe/artifacts/5zehsybs_GOVTOFKARNATAKA.png",
 };
 
 export const COPYRIGHT_YEAR = 2026;

@@ -1,0 +1,29 @@
+{
+  "summary": "Frontend-only QA on iteration_2 (addendum 5/6) of the CEECO HDPE PIPES static SPA at https://ceeco-hdpe.preview.emergentagent.com. Validated all 6 addendum items (#1 office address, #2 factory address with Manufacturing Unit label, #3 footer + contact map links + iframes + Open in Google Maps CTAs, #4 5 real client logos, #5 PE chips removed from hero PN strip + hero img switched to FACTORY.jpeg, #6 Why HDPE pipe cross-section redesign with concentric rings + cavity text + '· PIPE CROSS-SECTION ·' annotation) and the 8 regression smoke items (6-link navbar with no Infrastructure/Gallery, mobile drawer opens, WhatsApp button, Contact + Careers forms submit with sonner toast, footer copyright '© 2026 S D Ruparel Group', tel:+918043729397, hours '10:00 AM - 7:00 PM'). 54/54 effective checks passed. NO em-dash characters found anywhere in visible body text on Home or Contact. Old placeholders '[Your Office Address]' and '[Your Factory Address]' fully removed. 'Factory Address' label gone — replaced with 'Manufacturing Unit' everywhere.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Mobile drawer (Sheet) - carry-over from iteration_1", "issues": ["Radix UI a11y console warning: 'DialogContent requires a DialogTitle for screen reader users.' Still unresolved from previous iteration. Non-blocking, low priority."]}
+    ]
+  },
+  "test_report_links": [],
+  "action_items": [
+    "(Optional, low-priority) Add a VisuallyHidden DialogTitle inside the mobile menu Sheet in /app/frontend/src/components/layout/Header.jsx to silence the Radix a11y console warning (carry-over from iteration_1, still present)."
+  ],
+  "critical_code_review_comments": [
+    "site.js cleanly centralises the new address objects with mapUrl + embedQuery for both office and factory — single source of truth, both Footer and Contact consume it correctly.",
+    "Contact.jsx uses encodeURIComponent on the embedQuery for both iframe srcs which is the safe pattern.",
+    "ClientsMarquee.jsx uses lazy-loaded <img> with proper alt text — good for perf + a11y.",
+    "WhyHDPE PipeCrossSection is implemented purely with nested rounded-full divs + CSS gradients (no external image), keeping bundle small. The annotation correctly uses U+00B7 middle dots ('·'), not em dashes."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (no backend in scope)", "frontend": "100% (54/54 effective spec items verified passing)"},
+  "test_credentials": "N/A - no auth in this app",
+  "seed_data_creation": "None - static SPA, mock forms only",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "ADDENDUM ITEMS VERIFIED ON LIVE URL: (#1) Both Footer office block (data-testid=footer-office-map-link) and Contact page office card (data-testid=contact-office-link) + Visit Us map card (data-testid=map-card-office) show the full '17, Venkata Ramanaik Lane, S P Road Cross, Kumbarpet, Dodpete, Nagarathpete, Bengaluru, Karnataka - 560002' address. (#2) Same for factory at 'B-67, 2nd Cross Road, Peenya 1st Stage, Peenya II Phase, Peenya, Bengaluru, Karnataka - 560058' under the 'Manufacturing Unit' label everywhere — no 'Factory Address' label remains. (#3) Footer office link -> https://maps.app.goo.gl/LBp7S1pHW7YYr3CK6, footer factory link -> https://maps.app.goo.gl/sZJy1xpkjxcKsEp6A; Contact Visit Us section has two iframe cards each with header (eyebrow 'CEECO HDPE PIPES' + label + full address), https://www.google.com/maps?q=...&output=embed src (URL-encoded; contains 'Venkata' for office and 'Peenya' for factory) and a dark 'Open in Google Maps' CTA bar at the bottom (data-testid=map-open-office / map-open-factory) linking to the matching short URL. (#4) clients-section renders 5 real logo <img>s from customer-assets.emergentagent.com/job_ceeco-hdpe/artifacts/ — BBMP.jpg, BDA.jpeg, GOVTOFKARNATAKA.png, GBA.jpg, BWSSB.png; the 'Supplier to State Irrigation Projects across Karnataka' navy pill is intact. (#5a) Hero left-side chip strip contains exactly the 7 PN chips (PN6, PN8, PN10, PN12.5, PN16, PN20, PN25) — no PE 80 / PE 100 chips inside the chip row; the floating green PE80 badge on the right card showing 'Premium Grade · PE 80 / PE 100' is retained (intentional). (#5b) Hero <img> src now uses the FACTORY.jpeg asset (huutw4o0_FACTORY.jpeg) and no longer the photo-1684667273934-e5d39307eeae duct stock URL. (#6) Why HDPE central element is a head-on cross-section with concentric rings (outer dark navy/black wall, brand-blue signature stripe, inner dark wall, central black cavity) overlaid with 'CEECO HDPE / PE 80 / Premium Grade / + PE 100 / Pressure Ratings PN6-PN25' text; a small '· PIPE CROSS-SECTION ·' label with middle dots sits just above; 4 feature cards on the left, 4 on the right, application chips below. REGRESSION: navbar exposes 6 anchors total (5 nav-link-* + 1 nav-contact-cta CTA 'Contact Us'); no Infrastructure or Gallery routes; WhatsApp button present; Contact form submit shows sonner success toast 'Thank you! We'll get back to you shortly.'; Careers form (with shadcn role Select) shows success toast; footer copyright reads '© 2026 S D Ruparel Group. All rights reserved.'; phone is +91 8043729397 with href='tel:+918043729397'; hours '10:00 AM - 7:00 PM'. NO em-dash characters present anywhere in the body innerText on Home or Contact pages. Selectors: when asserting the labels 'Corporate Office' / 'Manufacturing Unit' via Playwright, use element.textContent rather than .inner_text() because they are styled with CSS text-transform: uppercase which inner_text() returns as 'CORPORATE OFFICE' / 'MANUFACTURING UNIT' (CSS-rendered). Test scripts ran on live preview URL.",
+  "rca of the issue": "N/A - all features verified working as specified. No bugs found in this iteration."
+}

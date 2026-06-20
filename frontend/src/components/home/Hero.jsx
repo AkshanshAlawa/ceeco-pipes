@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Phone, ShieldCheck, Award, Factory } from "lucide-react";
-import { SITE } from "@/lib/site";
+import { SITE, ASSETS } from "@/lib/site";
 
-const HERO_IMG =
-  "https://images.unsplash.com/photo-1684667273934-e5d39307eeae?auto=format&fit=crop&w=1800&q=85";
+const HERO_IMG = ASSETS.factory;
 
 export default function Hero() {
   return (
@@ -52,14 +51,8 @@ export default function Hero() {
               decades of trust.
             </p>
 
-            {/* PN Ratings + Grade chips */}
+            {/* PN Ratings chips */}
             <div className="mt-7 flex flex-wrap gap-2">
-              <span className="px-3 py-1.5 rounded-md bg-brand-green text-white text-xs font-bold tracking-wider">
-                PE 80
-              </span>
-              <span className="px-3 py-1.5 rounded-md bg-brand-green text-white text-xs font-bold tracking-wider">
-                PE 100
-              </span>
               {["PN6", "PN8", "PN10", "PN12.5", "PN16", "PN20", "PN25"].map((p) => (
                 <span
                   key={p}
