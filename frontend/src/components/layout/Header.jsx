@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import Logo from "./Logo";
 import { SITE } from "@/lib/site";
 
@@ -92,6 +93,9 @@ export default function Header() {
               className="w-full sm:max-w-md bg-brand-navy border-0 p-0 text-white"
             >
               <div className="flex flex-col h-full">
+                <VisuallyHidden>
+                  <SheetTitle>Navigation Menu</SheetTitle>
+                </VisuallyHidden>
                 <div className="flex items-center justify-between px-6 py-5 border-b border-white/10">
                   <Logo variant="light" />
                   <button
