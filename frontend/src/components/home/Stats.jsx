@@ -3,9 +3,8 @@ import { useEffect, useRef, useState } from "react";
 const stats = [
   { num: 1984, suffix: "", label: "Established", isYear: true },
   { num: 40, suffix: "+", label: "Years Experience" },
-  { num: 1000, suffix: "s", label: "Satisfied Customers", text: "Thousands" },
+  { num: 500, suffix: "+", label: "Satisfied Customers" },
   { num: 1, suffix: "", label: "Trusted Across Karnataka", text: "Karnataka" },
-  { num: 200, suffix: "+", label: "Dealer Network" },
 ];
 
 function useCountUp(target, duration = 1500, start) {
@@ -30,11 +29,11 @@ function StatItem({ s, start }) {
   const v = useCountUp(s.num, 1600, start);
   return (
     <div className="text-center">
-      <div className="font-display text-4xl sm:text-5xl font-bold text-brand-navy">
+      <div className="font-display text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-brand-navy">
         {s.text ? s.text : v}
         {!s.text && s.suffix}
       </div>
-      <div className="mt-2 text-xs sm:text-sm tracking-wider uppercase text-muted-foreground font-medium">
+      <div className="mt-2 text-xs sm:text-sm tracking-wider uppercase text-muted-foreground font-bold">
         {s.label}
       </div>
     </div>
@@ -62,8 +61,12 @@ export default function Stats() {
   }, []);
 
   return (
-    <section ref={ref} className="py-14 sm:py-16 bg-brand-light-blue relative">
-      <div className="container-x grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-6">
+    <section
+      ref={ref}
+      data-testid="stats-section"
+      className="py-14 sm:py-16 bg-brand-light-blue relative"
+    >
+      <div className="container-x grid grid-cols-2 sm:grid-cols-4 gap-8 lg:gap-6">
         {stats.map((s) => (
           <StatItem key={s.label} s={s} start={start} />
         ))}

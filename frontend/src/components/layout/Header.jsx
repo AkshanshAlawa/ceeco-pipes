@@ -4,14 +4,13 @@ import { Menu, X, Phone } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import Logo from "./Logo";
+import { SITE } from "@/lib/site";
 
 const navLinks = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About Us" },
   { to: "/products", label: "Products" },
-  { to: "/infrastructure", label: "Infrastructure" },
   { to: "/quality", label: "Quality" },
-  { to: "/gallery", label: "Gallery" },
   { to: "/careers", label: "Careers" },
   { to: "/contact", label: "Contact Us" },
 ];
@@ -29,23 +28,25 @@ export default function Header() {
 
   return (
     <header
+      data-testid="site-header"
       className={`fixed top-0 inset-x-0 z-40 transition-all duration-300 ${
         scrolled
           ? "bg-white/95 backdrop-blur-md shadow-card border-b border-border"
-          : "bg-white/80 backdrop-blur-sm"
+          : "bg-white/85 backdrop-blur-sm"
       }`}
     >
       <div className="container-x flex items-center justify-between h-16 sm:h-20">
         <Logo variant="dark" />
 
         <div className="hidden lg:flex items-center gap-1">
-          {navLinks.slice(0, 7).map((l) => (
+          {navLinks.slice(0, navLinks.length - 1).map((l) => (
             <NavLink
               key={l.to}
               to={l.to}
               end={l.to === "/"}
+              data-testid={`nav-link-${l.label.toLowerCase().replace(/\s+/g, "-")}`}
               className={({ isActive }) =>
-                `relative px-3 py-2 text-sm font-medium transition-colors ${
+                `relative px-3 py-2 text-sm font-semibold tracking-wide transition-colors ${
                   isActive
                     ? "text-brand-green"
                     : "text-brand-navy hover:text-brand-blue"
@@ -67,6 +68,7 @@ export default function Header() {
         <div className="flex items-center gap-2">
           <Link
             to="/contact"
+            data-testid="nav-contact-cta"
             className="hidden md:inline-flex items-center gap-2 bg-brand-green hover:bg-brand-green-deep text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors shadow-cta"
           >
             <Phone className="w-4 h-4" />
@@ -78,6 +80,7 @@ export default function Header() {
               <Button
                 variant="ghost"
                 size="icon"
+                data-testid="mobile-menu-button"
                 className="text-brand-navy hover:bg-brand-light-blue"
                 aria-label="Open menu"
               >
@@ -93,6 +96,7 @@ export default function Header() {
                   <Logo variant="light" />
                   <button
                     onClick={() => setOpen(false)}
+                    data-testid="mobile-menu-close"
                     className="p-2 rounded-full hover:bg-white/10"
                     aria-label="Close menu"
                   >
@@ -111,8 +115,9 @@ export default function Header() {
                           to={l.to}
                           end={l.to === "/"}
                           onClick={() => setOpen(false)}
+                          data-testid={`mobile-nav-link-${l.label.toLowerCase().replace(/\s+/g, "-")}`}
                           className={({ isActive }) =>
-                            `group flex items-center justify-between px-4 py-4 rounded-xl text-2xl font-display font-semibold transition-all ${
+                            `group flex items-center justify-between px-4 py-4 rounded-xl text-2xl font-display font-bold tracking-tight transition-all ${
                               isActive
                                 ? "bg-white/10 text-brand-green"
                                 : "text-white hover:bg-white/5 hover:translate-x-1"
@@ -126,7 +131,7 @@ export default function Header() {
                             {l.label}
                           </span>
                           <span className="text-white/40 group-hover:text-brand-green transition-colors">
-                            →
+                            &rarr;
                           </span>
                         </NavLink>
                       </li>
@@ -139,15 +144,15 @@ export default function Header() {
                     GET IN TOUCH
                   </p>
                   <a
-                    href="tel:+91XXXXXXXXXX"
+                    href={`tel:${SITE.phoneRaw}`}
                     className="flex items-center gap-3 text-white hover:text-brand-green"
                   >
                     <Phone className="w-4 h-4" />
-                    +91 XXXXXXXXXX
+                    {SITE.phone}
                   </a>
-                  <p className="text-sm text-white/60">info@ceecopipes.com</p>
+                  <p className="text-sm text-white/60">{SITE.email}</p>
                   <p className="text-xs text-white/50 pt-2">
-                    Mon–Sat · 9:00 AM – 7:00 PM
+                    {SITE.hours.days} · {SITE.hours.time}
                   </p>
                 </div>
               </div>

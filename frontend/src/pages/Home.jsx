@@ -1,5 +1,6 @@
 import Hero from "@/components/home/Hero";
 import AboutPreview from "@/components/home/AboutPreview";
+import Legacy from "@/components/home/Legacy";
 import Stats from "@/components/home/Stats";
 import WhyChoose from "@/components/home/WhyChoose";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
@@ -8,7 +9,6 @@ import WhyHDPE from "@/components/home/WhyHDPE";
 import ClientsMarquee from "@/components/home/ClientsMarquee";
 import Testimonials from "@/components/home/Testimonials";
 import AfterSales from "@/components/home/AfterSales";
-import Legacy from "@/components/home/Legacy";
 import ContactPreview from "@/components/home/ContactPreview";
 
 export default function Home() {
@@ -16,6 +16,7 @@ export default function Home() {
     <>
       <Hero />
       <AboutPreview />
+      <Legacy />
       <Stats />
       <WhyChoose />
       <FeaturedProducts />
@@ -24,7 +25,6 @@ export default function Home() {
       <ClientsMarquee />
       <Testimonials />
       <AfterSales />
-      <Legacy />
       <ContactPreview />
     </>
   );

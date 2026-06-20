@@ -4,39 +4,40 @@ import SectionHeading from "@/components/common/SectionHeading";
 const testimonials = [
   {
     quote:
-      "We have been using CEECO HDPE pipes on our farms for over 15 years. The durability and consistent water flow has been exceptional — never a single failure.",
-    name: "Rajesh Patil",
-    role: "Farmer, Karnataka",
-    initials: "RP",
+      "We have been sourcing CEECO HDPE pipes for our farm irrigation network for over 15 years. The wall consistency, weld quality and zero-leak performance is what keeps us coming back order after order.",
+    name: "Ramesh Gowda",
+    role: "Progressive Farmer, Mandya",
+    initials: "RG",
     color: "bg-brand-green",
   },
   {
     quote:
-      "As a contractor I supply pipes to dozens of projects every year. CEECO is the brand my clients trust — quality and delivery are always on point.",
-    name: "Mahesh Kumar",
-    role: "Civil Contractor",
-    initials: "MK",
+      "As a civil contractor handling government water supply tenders, on-time delivery and certified quality are non-negotiable. CEECO has delivered both - consistently - across every project we have executed.",
+    name: "Venkatesh Iyer",
+    role: "Civil Contractor, Bengaluru",
+    initials: "VI",
     color: "bg-brand-blue",
   },
   {
     quote:
-      "For our industrial water lines we needed pipes that perform under pressure for years. CEECO delivered — and their team backed every order.",
-    name: "Suresh Industries",
-    role: "Industrial Buyer",
-    initials: "SI",
+      "Our industrial unit has been running on CEECO pipes since 2009 - high pressure, continuous duty, zero failures. Their technical team is always reachable. That is what a B2B relationship should look like.",
+    name: "Sundararajan & Sons",
+    role: "Industrial Buyer, Hosur",
+    initials: "SS",
     color: "bg-brand-navy",
   },
 ];
 
 export default function Testimonials() {
   return (
-    <section className="py-20 sm:py-28 bg-brand-light-blue">
+    <section data-testid="testimonials" className="py-20 sm:py-28 bg-brand-light-blue">
       <div className="container-x">
         <div className="reveal">
           <SectionHeading
             center
             eyebrow="Testimonials"
             title="What our clients say."
+            subtitle="Honest words from farmers, contractors and industrial buyers - the people who keep coming back to CEECO HDPE Pipes."
           />
         </div>
 
@@ -49,16 +50,16 @@ export default function Testimonials() {
             >
               <Quote className="w-8 h-8 text-brand-green" />
               <p className="mt-4 text-base text-foreground leading-relaxed flex-1">
-                “{t.quote}”
+                &ldquo;{t.quote}&rdquo;
               </p>
               <div className="mt-6 pt-5 border-t border-border flex items-center gap-4">
                 <div
-                  className={`w-12 h-12 rounded-full ${t.color} text-white flex items-center justify-center font-display font-semibold`}
+                  className={`w-12 h-12 rounded-full ${t.color} text-white flex items-center justify-center font-display font-bold`}
                 >
                   {t.initials}
                 </div>
                 <div>
-                  <p className="font-semibold text-brand-navy">{t.name}</p>
+                  <p className="font-bold text-brand-navy">{t.name}</p>
                   <p className="text-xs text-muted-foreground">{t.role}</p>
                 </div>
                 <div className="ml-auto flex gap-0.5">

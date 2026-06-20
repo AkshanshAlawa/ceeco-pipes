@@ -15,19 +15,19 @@ const pillars = [
   {
     icon: Smile,
     title: "Customer Satisfaction",
-    desc: "Decades of repeat customers — proof of how seriously we take service.",
+    desc: "Decades of repeat customers - proof of how seriously we take service.",
   },
 ];
 
 export default function AfterSales() {
   return (
-    <section className="py-20 bg-white">
+    <section data-testid="after-sales" className="py-20 bg-white">
       <div className="container-x">
         <div className="reveal">
           <SectionHeading
             center
             eyebrow="After Sales Support"
-            title="Beyond the sale — we stand by every pipe."
+            title="Beyond the sale - we stand by every pipe."
             subtitle="Our commitment doesn't end when the pipe leaves the factory. It begins there."
           />
         </div>
@@ -42,7 +42,7 @@ export default function AfterSales() {
               <div className="w-14 h-14 mx-auto rounded-2xl bg-white border border-border flex items-center justify-center shadow-card">
                 <p.icon className="w-6 h-6 text-brand-green" />
               </div>
-              <h3 className="mt-5 font-display font-semibold text-xl text-brand-navy">
+              <h3 className="mt-5 font-display font-black uppercase tracking-tight text-xl text-brand-navy">
                 {p.title}
               </h3>
               <p className="mt-2 text-sm text-muted-foreground leading-relaxed">

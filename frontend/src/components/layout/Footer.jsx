@@ -1,26 +1,20 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, Clock, MapPin, Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 import Logo from "./Logo";
+import { SITE, COPYRIGHT_YEAR } from "@/lib/site";
 
-const sections = [
-  {
-    title: "Quick Links",
-    items: [
-      { label: "Home", to: "/" },
-      { label: "About Us", to: "/about" },
-      { label: "Products", to: "/products" },
-      { label: "Infrastructure", to: "/infrastructure" },
-      { label: "Quality", to: "/quality" },
-      { label: "Gallery", to: "/gallery" },
-      { label: "Careers", to: "/careers" },
-      { label: "Contact", to: "/contact" },
-    ],
-  },
+const quickLinks = [
+  { label: "Home", to: "/" },
+  { label: "About Us", to: "/about" },
+  { label: "Products", to: "/products" },
+  { label: "Quality", to: "/quality" },
+  { label: "Careers", to: "/careers" },
+  { label: "Contact", to: "/contact" },
 ];
 
 export default function Footer() {
   return (
-    <footer className="bg-brand-navy-deep text-white relative overflow-hidden">
+    <footer data-testid="site-footer" className="bg-brand-navy-deep text-white relative overflow-hidden">
       <div className="absolute inset-0 blueprint-grid opacity-30" />
       <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-brand-blue/10 blur-3xl" />
       <div className="absolute -bottom-40 -left-20 w-80 h-80 rounded-full bg-brand-green/10 blur-3xl" />
@@ -31,11 +25,11 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <Logo variant="light" />
             <p className="mt-5 text-[11px] tracking-[0.32em] text-brand-green font-semibold">
-              WATER · FIELDS · FUTURE
+              {SITE.tagline}
             </p>
             <p className="mt-4 text-sm text-white/70 leading-relaxed max-w-xs">
-              CEECO HDPE Pipes by S D Ruparel Group — reliable HDPE piping
-              solutions trusted since 1984.
+              {SITE.brand} by {SITE.parent} - reliable HDPE piping
+              solutions trusted since {SITE.established}.
             </p>
             <div className="flex gap-3 mt-6">
               {[Facebook, Instagram, Linkedin, Twitter].map((Icon, i) => (
@@ -52,25 +46,24 @@ export default function Footer() {
           </div>
 
           {/* Quick links */}
-          {sections.map((s) => (
-            <div key={s.title}>
-              <h4 className="text-xs tracking-[0.25em] text-brand-green font-semibold mb-5 uppercase">
-                {s.title}
-              </h4>
-              <ul className="grid grid-cols-2 gap-y-3 gap-x-4 text-sm">
-                {s.items.map((it) => (
-                  <li key={it.to}>
-                    <Link
-                      to={it.to}
-                      className="text-white/75 hover:text-brand-green transition-colors"
-                    >
-                      {it.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <div>
+            <h4 className="text-xs tracking-[0.25em] text-brand-green font-semibold mb-5 uppercase">
+              Quick Links
+            </h4>
+            <ul className="grid grid-cols-2 gap-y-3 gap-x-4 text-sm">
+              {quickLinks.map((it) => (
+                <li key={it.to}>
+                  <Link
+                    to={it.to}
+                    data-testid={`footer-link-${it.label.toLowerCase().replace(/\s+/g, "-")}`}
+                    className="text-white/75 hover:text-brand-green transition-colors"
+                  >
+                    {it.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
           {/* Contact Info */}
           <div>
@@ -80,22 +73,26 @@ export default function Footer() {
             <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-3">
                 <Phone className="w-4 h-4 mt-0.5 text-brand-green shrink-0" />
-                <a href="tel:+91XXXXXXXXXX" className="text-white/80 hover:text-white">
-                  +91 XXXXXXXXXX
+                <a
+                  href={`tel:${SITE.phoneRaw}`}
+                  data-testid="footer-phone"
+                  className="text-white/80 hover:text-white"
+                >
+                  {SITE.phone}
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="w-4 h-4 mt-0.5 text-brand-green shrink-0" />
-                <a href="mailto:info@ceecopipes.com" className="text-white/80 hover:text-white">
-                  info@ceecopipes.com
+                <a href={`mailto:${SITE.email}`} className="text-white/80 hover:text-white">
+                  {SITE.email}
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <Clock className="w-4 h-4 mt-0.5 text-brand-green shrink-0" />
-                <span className="text-white/80">
-                  Monday – Saturday
+                <span className="text-white/80" data-testid="footer-hours">
+                  {SITE.hours.days}
                   <br />
-                  9:00 AM – 7:00 PM
+                  {SITE.hours.time}
                 </span>
               </li>
             </ul>
@@ -112,10 +109,8 @@ export default function Footer() {
                   <MapPin className="w-4 h-4 mt-0.5 text-brand-green shrink-0" />
                   <div>
                     <p className="text-white font-semibold">Corporate Office</p>
-                    <p className="text-white/70 leading-relaxed mt-1">
-                      [Your Office Address]
-                      <br />
-                      Karnataka, India
+                    <p className="text-white/70 leading-relaxed mt-1 whitespace-pre-line">
+                      {SITE.address.office}
                     </p>
                   </div>
                 </div>
@@ -125,10 +120,8 @@ export default function Footer() {
                   <MapPin className="w-4 h-4 mt-0.5 text-brand-green shrink-0" />
                   <div>
                     <p className="text-white font-semibold">Factory Address</p>
-                    <p className="text-white/70 leading-relaxed mt-1">
-                      [Your Factory Address]
-                      <br />
-                      Karnataka, India
+                    <p className="text-white/70 leading-relaxed mt-1 whitespace-pre-line">
+                      {SITE.address.factory}
                     </p>
                   </div>
                 </div>
@@ -138,8 +131,8 @@ export default function Footer() {
         </div>
 
         <div className="mt-16 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between gap-3 text-xs text-white/55">
-          <p>© 2024 S D Ruparel Group. All rights reserved.</p>
-          <p className="tracking-widest uppercase">Built on Trust Since 1984</p>
+          <p data-testid="footer-copyright">© {COPYRIGHT_YEAR} {SITE.parent}. All rights reserved.</p>
+          <p className="tracking-widest uppercase">{SITE.builtOn}</p>
         </div>
       </div>
     </footer>

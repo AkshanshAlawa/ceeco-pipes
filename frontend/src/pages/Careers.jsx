@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
+import { SITE } from "@/lib/site";
 
 const openRoles = [
   { title: "Sales Executive", type: "Full-time", loc: "Karnataka" },
@@ -49,7 +50,7 @@ export default function Careers() {
         crumb="Careers"
         eyebrow="Join Our Team"
         title="Build your career with CEECO."
-        subtitle="Be part of a legacy that has been building India's water and agricultural infrastructure for 40 years."
+        subtitle="Be part of a legacy that has been building India's water and agricultural infrastructure for 40+ years."
       />
 
       {/* Open Roles */}
@@ -67,11 +68,11 @@ export default function Careers() {
                   <div className="w-11 h-11 rounded-xl bg-white border border-border flex items-center justify-center">
                     <Briefcase className="w-5 h-5 text-brand-green" />
                   </div>
-                  <span className="text-[10px] tracking-widest uppercase font-semibold text-brand-green">
+                  <span className="text-[10px] tracking-widest uppercase font-bold text-brand-green">
                     {r.type}
                   </span>
                 </div>
-                <h3 className="mt-5 font-display font-semibold text-xl text-brand-navy">
+                <h3 className="mt-5 font-display font-black uppercase tracking-tight text-xl text-brand-navy">
                   {r.title}
                 </h3>
                 <p className="mt-1 text-sm text-muted-foreground flex items-center gap-1.5">
@@ -80,7 +81,8 @@ export default function Careers() {
                 </p>
                 <a
                   href="#apply"
-                  className="mt-auto pt-5 inline-flex items-center gap-2 text-sm font-semibold text-brand-navy hover:text-brand-green transition-colors"
+                  data-testid={`apply-now-${r.title.toLowerCase().replace(/\s+/g, "-")}`}
+                  className="mt-auto pt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-navy hover:text-brand-green transition-colors"
                 >
                   Apply Now <ArrowRight className="w-4 h-4" />
                 </a>
@@ -102,6 +104,7 @@ export default function Careers() {
 
           <form
             onSubmit={handleSubmit}
+            data-testid="careers-form"
             className="mt-12 bg-white p-7 sm:p-10 rounded-3xl border border-border shadow-card space-y-5"
           >
             <div className="grid sm:grid-cols-2 gap-5">
@@ -109,6 +112,7 @@ export default function Careers() {
                 <Label htmlFor="name">Full Name *</Label>
                 <Input
                   id="name"
+                  data-testid="careers-name"
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                   placeholder="Your full name"
@@ -118,10 +122,11 @@ export default function Careers() {
                 <Label htmlFor="phone">Contact Number *</Label>
                 <Input
                   id="phone"
+                  data-testid="careers-phone"
                   type="tel"
                   value={form.phone}
                   onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                  placeholder="+91 XXXXXXXXXX"
+                  placeholder={SITE.phone}
                 />
               </div>
             </div>
@@ -131,6 +136,7 @@ export default function Careers() {
                 <Label htmlFor="email">Email Address *</Label>
                 <Input
                   id="email"
+                  data-testid="careers-email"
                   type="email"
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
@@ -140,7 +146,7 @@ export default function Careers() {
               <div className="space-y-2">
                 <Label>Preferred Role *</Label>
                 <Select value={form.role} onValueChange={(v) => setForm({ ...form, role: v })}>
-                  <SelectTrigger>
+                  <SelectTrigger data-testid="careers-role-trigger">
                     <SelectValue placeholder="Select a role" />
                   </SelectTrigger>
                   <SelectContent>
@@ -178,6 +184,7 @@ export default function Careers() {
               <Label htmlFor="message">Message</Label>
               <Textarea
                 id="message"
+                data-testid="careers-message"
                 rows={4}
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
@@ -187,8 +194,9 @@ export default function Careers() {
 
             <button
               type="submit"
+              data-testid="careers-submit"
               disabled={submitting}
-              className="w-full bg-brand-green hover:bg-brand-green-deep text-white rounded-xl py-3.5 px-8 font-semibold shadow-cta disabled:opacity-60 transition-colors"
+              className="w-full bg-brand-green hover:bg-brand-green-deep text-white rounded-xl py-3.5 px-8 font-bold shadow-cta disabled:opacity-60 transition-colors"
             >
               {submitting ? "Submitting..." : "Submit Application"}
             </button>

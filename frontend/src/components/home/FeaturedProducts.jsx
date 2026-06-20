@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import SectionHeading from "@/components/common/SectionHeading";
+import { ASSETS } from "@/lib/site";
 
 const products = [
   {
@@ -24,14 +25,17 @@ const products = [
   {
     title: "Blue Duct Pipes",
     desc: "Protective ducts for underground electrical and cable lines.",
-    img: "https://images.pexels.com/photos/29301874/pexels-photo-29301874.jpeg?auto=compress&w=900",
+    img: ASSETS.blueDuct,
     tag: "Electrical",
   },
 ];
 
 export default function FeaturedProducts() {
   return (
-    <section className="py-20 sm:py-28 bg-brand-navy text-white relative overflow-hidden">
+    <section
+      data-testid="featured-products"
+      className="py-20 sm:py-28 bg-brand-navy text-white relative overflow-hidden"
+    >
       <div className="absolute inset-0 blueprint-grid opacity-40" />
       <div className="absolute -top-32 -right-20 w-96 h-96 rounded-full bg-brand-blue/15 blur-3xl" />
       <div className="absolute -bottom-32 -left-20 w-96 h-96 rounded-full bg-brand-green/10 blur-3xl" />
@@ -42,13 +46,14 @@ export default function FeaturedProducts() {
             <SectionHeading
               eyebrow="Our Product Range"
               title="HDPE pipes for every flow."
-              subtitle="From farm irrigation to municipal water grids and underground cable ducts — one trusted manufacturer."
+              subtitle="From farm irrigation to municipal water grids and underground cable ducts - one trusted manufacturer."
               light
             />
           </div>
           <Link
             to="/products"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-white border-b-2 border-brand-green pb-1 hover:text-brand-green transition-colors self-start"
+            data-testid="featured-products-view-all"
+            className="inline-flex items-center gap-2 text-sm font-bold text-white border-b-2 border-brand-green pb-1 hover:text-brand-green transition-colors self-start"
           >
             View all products <ArrowRight className="w-4 h-4" />
           </Link>
@@ -68,17 +73,17 @@ export default function FeaturedProducts() {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/30 to-transparent" />
-                <span className="absolute top-3 left-3 px-2.5 py-1 text-[10px] tracking-[0.2em] uppercase font-semibold bg-brand-green text-white rounded-full">
+                <span className="absolute top-3 left-3 px-2.5 py-1 text-[10px] tracking-[0.25em] uppercase font-bold bg-brand-green text-white rounded-full">
                   {p.tag}
                 </span>
               </div>
               <div className="flex flex-col flex-1 p-5">
-                <h3 className="font-display font-semibold text-lg leading-snug">
+                <h3 className="font-display font-black uppercase tracking-tight text-lg leading-snug">
                   {p.title}
                 </h3>
-                <p className="mt-2 text-sm text-white/65 leading-relaxed">{p.desc}</p>
+                <p className="mt-2 text-sm text-white/70 leading-relaxed">{p.desc}</p>
                 <div className="mt-auto pt-5 flex items-center justify-between text-sm font-medium">
-                  <span className="text-brand-green">Learn more</span>
+                  <span className="text-brand-green font-bold">Learn more</span>
                   <ArrowUpRight className="w-4 h-4 text-brand-green group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </div>
               </div>

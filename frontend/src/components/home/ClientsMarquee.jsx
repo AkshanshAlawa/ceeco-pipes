@@ -1,45 +1,60 @@
 import SectionHeading from "@/components/common/SectionHeading";
+import { Landmark, ShieldCheck } from "lucide-react";
 
 const clients = [
-  "Govt of Karnataka",
-  "Karnataka Water Board",
-  "Rural Dev Dept",
-  "AgriCo-op KA",
-  "BBMP Works",
-  "State Irrigation",
-  "Public Works",
-  "BDA Infra",
-  "KSIIDC",
-  "BWSSB",
+  { name: "BBMP", note: "(formerly)", full: "Bruhat Bengaluru Mahanagara Palike" },
+  { name: "BDA", note: "", full: "Bangalore Development Authority" },
+  { name: "Govt of Karnataka", note: "", full: "Government of Karnataka" },
+  { name: "GBA", note: "", full: "Greater Bangalore Authority" },
+  { name: "BWSSB", note: "", full: "Bangalore Water Supply & Sewerage Board" },
 ];
 
 export default function ClientsMarquee() {
-  const doubled = [...clients, ...clients];
   return (
-    <section className="py-20 bg-white overflow-hidden">
+    <section data-testid="clients-section" className="py-20 sm:py-28 bg-white overflow-hidden">
       <div className="container-x reveal">
         <SectionHeading
           center
           eyebrow="Trusted By"
           title="Institutions that rely on CEECO."
-          subtitle="From state agencies to private contractors, our pipes carry critical infrastructure across Karnataka."
+          subtitle="CEECO HDPE Pipes have been supplied to state agencies, municipal bodies and state irrigation projects across Karnataka - powering critical water and infrastructure for over four decades."
         />
       </div>
 
-      <div className="relative mt-12">
-        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
-        <div className="flex animate-marquee gap-4 w-max">
-          {doubled.map((c, i) => (
+      <div className="container-x mt-14">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5">
+          {clients.map((c) => (
             <div
-              key={`${c}-${i}`}
-              className="w-56 h-24 shrink-0 rounded-xl bg-brand-grey border border-border flex items-center justify-center hover:bg-brand-light-blue hover:border-brand-blue/30 transition-colors"
+              key={c.name}
+              className="group relative flex flex-col items-center justify-center text-center p-6 rounded-2xl bg-brand-grey border border-border hover:bg-brand-light-blue hover:border-brand-blue/30 hover:-translate-y-1 transition-all duration-300 min-h-[170px]"
             >
-              <span className="font-display font-semibold text-brand-navy text-center px-4 text-sm tracking-tight">
-                {c}
-              </span>
+              {/* Placeholder logo space */}
+              <div className="w-14 h-14 rounded-2xl bg-white border-2 border-dashed border-brand-blue/30 flex items-center justify-center mb-3">
+                <Landmark className="w-6 h-6 text-brand-blue" />
+              </div>
+              <p className="font-display font-black uppercase tracking-tight text-base sm:text-lg text-brand-navy leading-tight">
+                {c.name}
+              </p>
+              {c.note && (
+                <span className="text-[10px] uppercase tracking-widest text-brand-green font-bold mt-0.5">
+                  {c.note}
+                </span>
+              )}
+              <p className="mt-2 text-[10px] sm:text-xs text-muted-foreground leading-tight px-1">
+                {c.full}
+              </p>
             </div>
           ))}
+        </div>
+
+        {/* State Irrigation pill */}
+        <div className="mt-10 flex justify-center reveal">
+          <div className="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-brand-navy text-white border border-brand-navy">
+            <ShieldCheck className="w-4 h-4 text-brand-green" />
+            <span className="text-sm font-bold tracking-wide">
+              Supplier to State Irrigation Projects across Karnataka
+            </span>
+          </div>
         </div>
       </div>
     </section>
