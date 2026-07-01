@@ -9,7 +9,7 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['Inter', 'system-ui', 'sans-serif'],
-                display: ['Space Grotesk', 'Inter', 'sans-serif'],
+                display: ['Sora', 'Inter', 'sans-serif'],
             },
             borderRadius: {
                 lg: 'var(--radius)',

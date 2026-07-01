@@ -6,25 +6,32 @@ export default function ContactPreview() {
   return (
     <section
       data-testid="contact-preview"
-      className="py-20 bg-brand-green-deep text-white relative overflow-hidden"
+      className="py-24 bg-brand-green text-white relative overflow-hidden"
     >
-      <div className="absolute inset-0 blueprint-grid opacity-20" />
-      <div className="absolute -top-20 -right-20 w-96 h-96 rounded-full bg-brand-green/30 blur-3xl" />
+      {/* Subtle background grid */}
+      <div className="absolute inset-0 grid-pattern opacity-15" />
+      {/* Diagonal accent bar */}
+      <div className="absolute top-0 left-0 right-0 h-[3px] bg-black" />
+      <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-black" />
 
       <div className="container-x relative">
         <div className="text-center max-w-3xl mx-auto reveal">
-          <p className="text-[11px] tracking-[0.32em] uppercase font-bold text-white/85">
-            Get In Touch
-          </p>
-          <h2 className="mt-3 font-display font-black uppercase tracking-tight text-4xl sm:text-5xl lg:text-6xl leading-[1.02]">
+          <div className="inline-flex items-center gap-3 mb-4">
+            <span className="w-10 h-[2px] bg-white" />
+            <p className="text-[11px] tracking-[0.35em] uppercase font-bold text-white">
+              Get In Touch
+            </p>
+            <span className="w-10 h-[2px] bg-white" />
+          </div>
+          <h2 className="font-display font-black tracking-tight text-5xl sm:text-6xl lg:text-[64px] leading-[0.98]">
             Let&apos;s talk about your project.
           </h2>
-          <p className="mt-5 text-white/85 text-lg">
+          <p className="mt-6 text-white/90 text-lg">
             From dealer enquiries to bulk orders - our team is ready to help.
           </p>
         </div>
 
-        <div className="mt-10 grid sm:grid-cols-3 gap-4 max-w-4xl mx-auto reveal">
+        <div className="mt-14 grid sm:grid-cols-3 gap-4 max-w-4xl mx-auto reveal">
           {[
             { icon: Phone, label: "Call Us", value: SITE.phone, href: `tel:${SITE.phoneRaw}` },
             { icon: Mail, label: "Email Us", value: SITE.email, href: `mailto:${SITE.email}` },
@@ -35,39 +42,39 @@ export default function ContactPreview() {
               <Wrapper
                 key={c.label}
                 {...(c.href ? { href: c.href } : {})}
-                className="flex flex-col items-center text-center p-5 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/15 hover:bg-white/15 transition-colors"
+                className="flex flex-col items-center text-center p-6 bg-black/20 backdrop-blur-sm border border-white/20 hover:bg-black/30 hover:border-white/40 transition-all"
               >
-                <c.icon className="w-5 h-5" />
-                <p className="mt-3 text-xs tracking-widest uppercase text-white/75 font-bold">
+                <c.icon className="w-5 h-5" strokeWidth={1.5} />
+                <p className="mt-3 text-[10px] tracking-[0.28em] uppercase text-white/75 font-bold">
                   {c.label}
                 </p>
-                <p className="mt-1 font-bold">{c.value}</p>
+                <p className="mt-1.5 font-bold">{c.value}</p>
               </Wrapper>
             );
           })}
         </div>
 
-        <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center reveal">
+        <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center items-center reveal">
           <Link
             to="/contact"
             data-testid="contact-preview-find-store"
-            className="inline-flex items-center gap-2 bg-white text-brand-green-deep px-7 py-3.5 rounded-full font-bold hover:scale-[1.02] transition-transform shadow-lg"
+            className="btn-sharp bg-white text-brand-green border-2 border-white hover:bg-transparent hover:text-white transition-all"
           >
-            <MapPin className="w-4 h-4" />
+            <MapPin className="w-4 h-4" strokeWidth={2} />
             Find Store
           </Link>
           <Link
             to="/contact"
             data-testid="contact-preview-become-dealer"
-            className="inline-flex items-center gap-2 border-2 border-white text-white hover:bg-white hover:text-brand-green-deep px-7 py-3.5 rounded-full font-bold transition-colors"
+            className="btn-sharp btn-outline-white"
           >
             Become a Dealer
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4" strokeWidth={2} />
           </Link>
         </div>
 
-        <p className="mt-8 text-center text-sm text-white/85 flex items-center justify-center gap-2 reveal">
-          <MessageCircle className="w-4 h-4" />
+        <p className="mt-10 text-center text-sm text-white/85 flex items-center justify-center gap-2 reveal">
+          <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
           Or chat with us on{" "}
           <a
             href={SITE.whatsapp}

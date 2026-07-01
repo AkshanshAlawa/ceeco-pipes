@@ -34,14 +34,12 @@ export default function FeaturedProducts() {
   return (
     <section
       data-testid="featured-products"
-      className="py-20 sm:py-28 bg-brand-navy text-white relative overflow-hidden"
+      className="py-24 sm:py-32 bg-black text-white relative overflow-hidden"
     >
-      <div className="absolute inset-0 blueprint-grid opacity-40" />
-      <div className="absolute -top-32 -right-20 w-96 h-96 rounded-full bg-brand-blue/15 blur-3xl" />
-      <div className="absolute -bottom-32 -left-20 w-96 h-96 rounded-full bg-brand-green/10 blur-3xl" />
+      <div className="absolute inset-0 grid-pattern opacity-30" />
 
       <div className="container-x relative">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
           <div className="reveal">
             <SectionHeading
               eyebrow="Our Product Range"
@@ -53,38 +51,43 @@ export default function FeaturedProducts() {
           <Link
             to="/products"
             data-testid="featured-products-view-all"
-            className="inline-flex items-center gap-2 text-sm font-bold text-white border-b-2 border-brand-green pb-1 hover:text-brand-green transition-colors self-start"
+            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.1em] text-white border-b-2 border-brand-green pb-1.5 hover:text-brand-green transition-colors self-start"
           >
-            View all products <ArrowRight className="w-4 h-4" />
+            View all products <ArrowRight className="w-4 h-4" strokeWidth={2} />
           </Link>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {products.map((p) => (
+        <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {products.map((p, i) => (
             <Link
               to="/products"
               key={p.title}
-              className="reveal group flex flex-col rounded-2xl border border-white/15 overflow-hidden hover:border-brand-green hover:-translate-y-1 transition-all duration-300 bg-white/5 backdrop-blur-sm"
+              className="reveal group flex flex-col border border-white/15 overflow-hidden hover:border-brand-green transition-all duration-500 relative"
+              style={{ transitionDelay: `${i * 80}ms` }}
             >
-              <div className="relative aspect-[4/3] overflow-hidden">
+              <div className="relative aspect-[4/3] overflow-hidden bg-neutral-900">
                 <img
                   src={p.img}
                   alt={p.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/30 to-transparent" />
-                <span className="absolute top-3 left-3 px-2.5 py-1 text-[10px] tracking-[0.25em] uppercase font-bold bg-brand-green text-white rounded-full">
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
+                <span className="absolute top-4 left-4 px-3 py-1.5 text-[10px] tracking-[0.28em] uppercase font-bold bg-brand-green text-white">
                   {p.tag}
                 </span>
               </div>
-              <div className="flex flex-col flex-1 p-5">
-                <h3 className="font-display font-black uppercase tracking-tight text-lg leading-snug">
+              <div className="flex flex-col flex-1 p-6 bg-black">
+                <h3 className="font-display font-black tracking-tight text-lg leading-tight text-white group-hover:text-brand-green transition-colors">
                   {p.title}
                 </h3>
-                <p className="mt-2 text-sm text-white/70 leading-relaxed">{p.desc}</p>
-                <div className="mt-auto pt-5 flex items-center justify-between text-sm font-medium">
-                  <span className="text-brand-green font-bold">Learn more</span>
-                  <ArrowUpRight className="w-4 h-4 text-brand-green group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                <p className="mt-3 text-sm text-white/60 leading-[1.7]">{p.desc}</p>
+                <div className="mt-auto pt-6 flex items-center justify-between">
+                  <span className="text-brand-green font-bold text-xs uppercase tracking-[0.1em]">
+                    Learn more
+                  </span>
+                  <span className="w-8 h-8 border border-white/20 flex items-center justify-center group-hover:border-brand-green group-hover:bg-brand-green transition-all">
+                    <ArrowUpRight className="w-4 h-4 text-white group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" strokeWidth={2} />
+                  </span>
                 </div>
               </div>
             </Link>

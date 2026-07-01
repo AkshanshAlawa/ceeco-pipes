@@ -29,7 +29,7 @@ const commitments = [
   "Continuous Improvement",
 ];
 
-// Vision goals: BIS / ISI first per user request
+// BIS / ISI first per user request
 const futureGoals = [
   { icon: Award, title: "BIS / ISI Certification" },
   { icon: TrendingUp, title: "Expansion Across New Markets" },
@@ -41,21 +41,23 @@ const futureGoals = [
 function LeaderPlaceholder({ icon: Icon, role, name }) {
   return (
     <div className="relative">
-      <div className="absolute -inset-2 bg-gradient-to-br from-brand-green/30 to-brand-blue/30 rounded-2xl blur-xl opacity-70" />
-      <div className="relative rounded-2xl overflow-hidden border border-border shadow-card">
-        <div className="aspect-[4/5] bg-gradient-to-br from-brand-navy via-brand-blue to-brand-navy-deep flex flex-col items-center justify-center text-white p-6">
-          <div className="w-16 h-16 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
-            <Icon className="w-8 h-8 text-brand-green" />
+      {/* Red corner accents */}
+      <span className="absolute -top-2 -left-2 w-8 h-8 border-t-[3px] border-l-[3px] border-brand-green z-10" />
+      <span className="absolute -bottom-2 -right-2 w-8 h-8 border-b-[3px] border-r-[3px] border-brand-green z-10" />
+      <div className="relative border border-[#E0E0E0] bg-white shadow-card">
+        <div className="aspect-[4/5] bg-black flex flex-col items-center justify-center text-white p-6">
+          <div className="w-16 h-16 border-2 border-brand-green flex items-center justify-center">
+            <Icon className="w-7 h-7 text-brand-green" strokeWidth={1.5} />
           </div>
-          <p className="mt-4 text-[10px] tracking-[0.3em] uppercase text-white/60 font-bold">
+          <p className="mt-5 text-[10px] tracking-[0.32em] uppercase text-white/50 font-bold">
             Photo Coming Soon
           </p>
         </div>
-        <div className="bg-white p-5 text-center">
-          <p className="text-[10px] tracking-[0.3em] uppercase text-brand-green font-bold">
+        <div className="p-5 text-center">
+          <p className="text-[10px] tracking-[0.32em] uppercase text-brand-green font-bold">
             {role}
           </p>
-          <p className="mt-1.5 font-display font-black uppercase tracking-tight text-brand-navy text-lg">
+          <p className="mt-1.5 font-display font-black tracking-tight text-black text-lg leading-tight">
             {name}
           </p>
         </div>
@@ -75,45 +77,45 @@ export default function About() {
       />
 
       {/* Story + Leadership stacked photos */}
-      <section className="py-20 sm:py-24 bg-white">
-        <div className="container-x grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          <div className="lg:col-span-7">
+      <section className="py-24 sm:py-32 bg-white">
+        <div className="container-x grid lg:grid-cols-12 gap-16 items-center">
+          <div className="lg:col-span-7 reveal-x">
             <SectionHeading
               eyebrow="The Journey"
               title="A family business, a state reputation."
             />
-            <div className="mt-8 space-y-5 text-base sm:text-lg text-muted-foreground leading-relaxed">
+            <div className="mt-8 space-y-5 text-lg text-neutral-600 leading-[1.7]">
               <p>
-                Established in <span className="font-bold text-brand-navy">1984</span> by{" "}
-                <span className="font-bold text-brand-navy">
+                Established in <span className="font-bold text-black">1984</span> by{" "}
+                <span className="font-bold text-black">
                   Late Shri Damodar S Ruparel
                 </span>
                 , S D Ruparel Group has built a strong reputation in the piping
                 industry through trusted relationships, consistent quality and decades
                 of experience. Under the brand{" "}
-                <span className="font-bold text-brand-navy">CEECO HDPE Pipes</span>, the
+                <span className="font-bold text-black">CEECO HDPE Pipes</span>, the
                 company manufactures reliable HDPE piping solutions widely used across
                 agriculture, irrigation, water supply, industrial applications and
                 electrical ducting systems.
               </p>
               <p>
                 Today the company is proudly led by Director{" "}
-                <span className="font-bold text-brand-navy">Sameer D Ruparel</span>{" "}
+                <span className="font-bold text-black">Sameer D Ruparel</span>{" "}
                 - carrying forward 40+ years of legacy with modern manufacturing systems
                 while preserving the values that built this company.
               </p>
               <p>
-                Available in <span className="font-bold text-brand-navy">PE 80</span> and{" "}
-                <span className="font-bold text-brand-navy">PE 100</span> grades, with
-                <span className="font-bold text-brand-navy"> 9+ sizes</span> from 20mm
-                to 110mm and <span className="font-bold text-brand-navy">7 PN
+                Available in <span className="font-bold text-black">PE 80</span> and{" "}
+                <span className="font-bold text-black">PE 100</span> grades, with
+                <span className="font-bold text-black"> 9+ sizes</span> from 20mm
+                to 110mm and <span className="font-bold text-black">7 PN
                 ratings</span> (PN6, PN8, PN10, PN12.5, PN16, PN20, PN25) - our products
                 cover every application your project needs.
               </p>
             </div>
           </div>
 
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-5 reveal-scale">
             <div className="grid grid-cols-2 lg:grid-cols-1 gap-5 max-w-md lg:max-w-xs mx-auto">
               <LeaderPlaceholder
                 icon={Crown}
@@ -131,42 +133,43 @@ export default function About() {
       </section>
 
       {/* Vision + Mission */}
-      <section className="py-20 bg-brand-grey">
-        <div className="container-x grid md:grid-cols-2 gap-6">
-          <div className="p-8 sm:p-10 rounded-3xl bg-brand-navy text-white relative overflow-hidden">
-            <div className="absolute -top-10 -right-10 w-48 h-48 rounded-full bg-brand-green/20 blur-3xl" />
+      <section className="py-24 bg-[#F2F2F2]">
+        <div className="container-x grid md:grid-cols-2 gap-5">
+          <div className="p-10 bg-black text-white relative overflow-hidden">
+            <span className="absolute top-0 left-0 w-16 h-[3px] bg-brand-green" />
             <div className="relative">
-              <Compass className="w-7 h-7 text-brand-green" />
-              <p className="mt-5 text-[11px] tracking-[0.32em] uppercase text-brand-green font-bold">
+              <Compass className="w-8 h-8 text-brand-green" strokeWidth={1.5} />
+              <p className="mt-6 text-[11px] tracking-[0.32em] uppercase text-brand-green font-bold">
                 Vision
               </p>
-              <h3 className="mt-2 font-display font-black uppercase tracking-tight text-3xl sm:text-4xl leading-tight">
+              <h3 className="mt-3 font-display font-black tracking-tight text-3xl sm:text-4xl leading-tight">
                 To be the most trusted HDPE pipe manufacturer in India.
               </h3>
-              <p className="mt-5 text-white/80 leading-relaxed">
+              <p className="mt-6 text-white/70 leading-[1.7]">
                 We aim to remain the reference point for reliability and quality in
                 piping solutions for agriculture and infrastructure.
               </p>
             </div>
           </div>
 
-          <div className="p-8 sm:p-10 rounded-3xl bg-white border border-border">
-            <Target className="w-7 h-7 text-brand-green" />
-            <p className="mt-5 text-[11px] tracking-[0.32em] uppercase text-brand-green font-bold">
+          <div className="p-10 bg-white border border-[#E0E0E0] relative">
+            <span className="absolute top-0 left-0 w-16 h-[3px] bg-brand-green" />
+            <Target className="w-8 h-8 text-brand-green" strokeWidth={1.5} />
+            <p className="mt-6 text-[11px] tracking-[0.32em] uppercase text-brand-green font-bold">
               Mission
             </p>
-            <h3 className="mt-2 font-display font-black uppercase tracking-tight text-3xl sm:text-4xl leading-tight text-brand-navy">
+            <h3 className="mt-3 font-display font-black tracking-tight text-3xl sm:text-4xl leading-tight text-black">
               Deliver dependable pipes, every single time.
             </h3>
-            <ul className="mt-5 space-y-2.5 text-muted-foreground">
+            <ul className="mt-6 space-y-3 text-neutral-600">
               {[
                 "Manufacture HDPE pipes of consistent quality.",
                 "Support customers with reliable, long-term service.",
                 "Grow responsibly across new markets in India.",
                 "Invest in modern systems while preserving values.",
               ].map((m) => (
-                <li key={m} className="flex gap-3">
-                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-brand-green shrink-0" />
+                <li key={m} className="flex gap-3 leading-[1.7]">
+                  <span className="mt-2.5 w-1.5 h-1.5 bg-brand-green shrink-0" />
                   <span>{m}</span>
                 </li>
               ))}
@@ -176,22 +179,22 @@ export default function About() {
       </section>
 
       {/* Core Values */}
-      <section className="py-20 sm:py-24 bg-white">
+      <section className="py-24 sm:py-32 bg-white">
         <div className="container-x">
           <SectionHeading center eyebrow="Core Values" title="What we stand for." />
-          <div className="mt-14 grid grid-cols-2 md:grid-cols-5 gap-5">
+          <div className="mt-16 grid grid-cols-2 md:grid-cols-5 gap-4">
             {values.map((v) => (
               <div
                 key={v.title}
-                className="flex flex-col items-center text-center p-6 rounded-2xl bg-brand-grey border border-border hover:bg-brand-light-blue transition-colors"
+                className="industrial-card flex flex-col items-center text-center p-8 bg-[#F2F2F2] group"
               >
-                <div className="w-12 h-12 rounded-xl bg-white border border-border flex items-center justify-center shadow-card">
-                  <v.icon className="w-5 h-5 text-brand-green" />
+                <div className="w-14 h-14 border-2 border-black flex items-center justify-center group-hover:border-brand-green group-hover:bg-brand-green transition-all">
+                  <v.icon className="w-5 h-5 text-black group-hover:text-white transition-colors" strokeWidth={1.5} />
                 </div>
-                <p className="mt-4 font-display font-bold uppercase tracking-tight text-brand-navy">
+                <p className="mt-5 font-display font-black uppercase tracking-wide text-black">
                   {v.title}
                 </p>
-                <p className="mt-1 text-xs text-muted-foreground">{v.desc}</p>
+                <p className="mt-2 text-xs text-neutral-500">{v.desc}</p>
               </div>
             ))}
           </div>
@@ -199,9 +202,9 @@ export default function About() {
       </section>
 
       {/* Our Commitment */}
-      <section className="py-20 bg-brand-light-blue">
+      <section className="py-24 bg-[#F2F2F2]">
         <div className="container-x grid lg:grid-cols-12 gap-10 items-start">
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-5 reveal-x">
             <SectionHeading
               eyebrow="Our Commitment"
               title="Promises we keep."
@@ -212,12 +215,13 @@ export default function About() {
             {commitments.map((c, i) => (
               <div
                 key={c}
-                className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-border"
+                className="reveal industrial-card flex items-start gap-4 p-6 bg-white group"
+                style={{ transitionDelay: `${i * 60}ms` }}
               >
-                <div className="w-9 h-9 rounded-lg bg-brand-green text-white flex items-center justify-center font-mono font-bold text-sm shrink-0">
+                <div className="w-11 h-11 bg-black text-white flex items-center justify-center font-mono font-bold text-sm shrink-0 group-hover:bg-brand-green transition-colors">
                   {String(i + 1).padStart(2, "0")}
                 </div>
-                <p className="font-display font-bold text-brand-navy pt-1.5">{c}</p>
+                <p className="font-display font-black uppercase tracking-tight text-black pt-2">{c}</p>
               </div>
             ))}
           </div>
@@ -225,21 +229,22 @@ export default function About() {
       </section>
 
       {/* Future Vision */}
-      <section className="py-20 sm:py-24 bg-white">
+      <section className="py-24 sm:py-32 bg-white">
         <div className="container-x">
           <SectionHeading center eyebrow="Future Vision" title="Where we're going next." />
-          <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
             {futureGoals.map((g, i) => (
               <div
                 key={g.title}
-                className="flex flex-col p-6 rounded-2xl bg-brand-navy text-white relative overflow-hidden hover:scale-[1.02] transition-transform"
+                className="reveal flex flex-col p-8 bg-black text-white relative overflow-hidden hover:bg-brand-green transition-colors duration-500 group"
+                style={{ transitionDelay: `${i * 80}ms` }}
               >
-                <div className="absolute -bottom-10 -right-10 w-32 h-32 rounded-full bg-brand-green/15 blur-2xl" />
-                <span className="relative font-mono text-[10px] tracking-[0.3em] text-brand-green font-bold">
+                <span className="absolute top-0 left-0 w-full h-[2px] bg-brand-green group-hover:bg-white transition-colors" />
+                <span className="relative font-mono text-[10px] tracking-[0.32em] text-brand-green group-hover:text-white transition-colors font-bold">
                   GOAL {String(i + 1).padStart(2, "0")}
                 </span>
-                <g.icon className="relative mt-4 w-6 h-6 text-brand-green" />
-                <p className="relative mt-4 font-display font-bold uppercase tracking-tight leading-snug">
+                <g.icon className="relative mt-5 w-7 h-7 text-brand-green group-hover:text-white transition-colors" strokeWidth={1.5} />
+                <p className="relative mt-5 font-display font-black uppercase tracking-tight leading-tight text-lg">
                   {g.title}
                 </p>
               </div>

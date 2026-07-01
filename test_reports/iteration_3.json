@@ -1,0 +1,33 @@
+{
+  "summary": "Frontend-only QA on iteration_3 (red/black/white industrial redesign) of CEECO HDPE PIPES SPA at https://ceeco-hdpe.preview.emergentagent.com. All 20 spec categories verified passing on the live preview URL. Color system, typography scale, navbar transparent-to-solid transition, hero, stats, footer, mobile drawer, WhatsApp green retention, and both mock forms (Contact + Careers with role Select) confirmed working. No console errors, no em-dash characters, no legacy navy/blue palette leaking through.",
+  "backend_issues": { "critical": [], "minor": [] },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {
+        "screen": "Global palette (very minor)",
+        "issues": [
+          "Brand red renders as rgb(198, 16, 40) instead of the spec value rgb(200, 16, 46) / #C8102E. This is because index.css sets --brand-green: 352 85% 42% which converts to rgb(198,16,40). Visually indistinguishable but off by ~2 units per channel. Optional: change HSL to `352 76% 48%` or use hex directly to hit #C8102E exactly."
+        ]
+      }
+    ]
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Legacy CSS token name `--brand-green` (and Tailwind classes bg-brand-green / text-brand-green / border-brand-green) is retained but now holds the RED value (#C8102E). Functionally correct but semantically confusing — future maintainers may mistake it for green. Consider aliasing to --brand-red / bg-brand-red for clarity in a follow-up cleanup (non-blocking).",
+    "Header.jsx correctly toggles transparency via scrollY > 50 on Home, forceSolid on inner pages. Clean implementation with proper cleanup of scroll listener.",
+    "Stats.jsx uses IntersectionObserver at threshold 0.3 with a 2500ms count-up (easeOutExpo) — Thousands/Karnataka rendered as static text via a text branch, keeping cells contained. No overflow observed at 1920 or 390 viewports.",
+    "WhatsAppButton keeps the inner circle at bg #25D366 (verified rgb(37,211,102)) while everything else moved to red — spec compliant.",
+    "Hero.jsx uses ASSETS.factory (FACTORY.jpeg) at opacity-65 with a black gradient overlay; the -bottom-10 PE 80 / PE 100 floating badge sits below the card and does not overlap ISO 9001:2015 · Udyam MSME row."
+  ],
+  "updated_files": [],
+  "success_rate": { "backend": "N/A (frontend-only)", "frontend": "100% (all 20 spec categories verified)" },
+  "test_credentials": "N/A - no auth in this app",
+  "seed_data_creation": "None - static SPA with mock forms only",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "VERIFIED ON LIVE URL for iteration_3 (red/black/white redesign): (1) COLOR — header CTA `nav-contact-cta` and hero `hero-explore-products` both render rgb(198,16,40) (brand red), footer top strip is red (h=4px, bg rgb(198,16,40)), WhatsApp inner circle rgb(37,211,102) green retained. (2) TYPOGRAPHY — Hero H1 fontSize=96px, fontFamily 'Sora, Inter, sans-serif'; About hero H1 88px. (3) NAVBAR — On Home scrollY=0: header bg rgba(0,0,0,0), nav link color rgb(255,255,255); on scrollY=400: header bg rgb(255,255,255), nav link color rgb(0,0,0); on /about, /products, /quality, /contact, /careers the header is rgb(255,255,255) from initial load. Thin 3px red top strip appears when solid. (4) HERO — CEECO/HDPE PIPES with PIPES span rgb(198,16,40) (red); 7 PN chips PN6-PN25 present; AVAILABLE IN · PE 80 · PE 100 · PREMIUM GRADES strip present; 40+/9+/7 stats card; PE 80/PE 100 floating badge below the card. (5) STATS — after 3.5s wait, values are 1984 ESTABLISHED, 40+ YEARS EXPERIENCE, Thousands SATISFIED CUSTOMERS, Karnataka TRUSTED ACROSS; no '500+' and no '200+ Dealer Network' anywhere. (6) FORMS — Contact form (data-testid=contact-form, fields: contact-name, contact-phone, contact-email, contact-message) submits with sonner toast 'Thank you! We'll get back to you shortly.'; Careers form (data-testid=careers-form, fields: careers-name, careers-phone, careers-email, careers-role-trigger shadcn Select with 6 options: Sales Executive, Machine Operator, Factory Staff, Marketing Executive, Accountant, Production Staff, careers-message, careers-submit) submits with sonner toast 'Thank you! Your application has been received.'. NOTE for future testing: careers-role-trigger requires scroll_into_view + click(force=True) + 800ms wait before options appear; without role selected, form does NOT submit (validation blocks). (7) MOBILE DRAWER — at 390x844, [data-testid=mobile-menu-button] opens full-screen black overlay with 6 numbered nav links (01 HOME through 06 CONTACT US), phone +91 8043729397 visible, email info@ceecopipes.com. (8) QUALITY page innerText contains 'WORKING TOWARDS BIS', 'WORKING TOWARDS ISI' (CSS uppercase applied — check via .textContent or lowercase-substring); no 'Working Towards ISO' present; no 'PE 80' box in Working Towards section; ISO.jpeg + MSME.jpeg cert images load. (9) PRODUCTS page — no 'Download Spec' button anywhere; BLUEDUCT.jpg image loaded; all 7 PN chips + PE 80 + PE 100 present. (10) NO em-dash (U+2014) anywhere in body innerText. (11) Only 5 nav-link-* anchors + 1 nav-contact-cta = 6 total navbar entries; no Infrastructure/Gallery links. (12) Console: no React errors on any route. Radix a11y warning from iteration_1/2 about DialogTitle is now resolved via VisuallyHidden wrapper in Header.jsx (SheetTitle 'Navigation Menu').",
+  "rca of the issue": "N/A - all iteration_3 features verified working as specified. Only a very minor palette deviation (rgb(198,16,40) vs spec #C8102E = rgb(200,16,46)) due to HSL rounding in --brand-green CSS custom property; visually imperceptible."
+}

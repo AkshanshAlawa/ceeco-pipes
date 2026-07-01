@@ -54,37 +54,38 @@ export default function Careers() {
       />
 
       {/* Open Roles */}
-      <section className="py-20 sm:py-24 bg-white">
+      <section className="py-24 sm:py-32 bg-white">
         <div className="container-x">
           <SectionHeading eyebrow="Open Roles" title="We're hiring." />
 
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {openRoles.map((r) => (
+          <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {openRoles.map((r, i) => (
               <div
                 key={r.title}
-                className="flex flex-col p-6 rounded-2xl bg-brand-grey border border-border hover:bg-white hover:border-brand-green hover:shadow-card-hover transition-all"
+                className="reveal industrial-card flex flex-col p-8 bg-[#F2F2F2] group"
+                style={{ transitionDelay: `${i * 60}ms` }}
               >
                 <div className="flex items-start justify-between">
-                  <div className="w-11 h-11 rounded-xl bg-white border border-border flex items-center justify-center">
-                    <Briefcase className="w-5 h-5 text-brand-green" />
+                  <div className="w-12 h-12 border-2 border-black flex items-center justify-center group-hover:border-brand-green group-hover:bg-brand-green transition-all">
+                    <Briefcase className="w-5 h-5 text-black group-hover:text-white transition-colors" strokeWidth={1.5} />
                   </div>
-                  <span className="text-[10px] tracking-widest uppercase font-bold text-brand-green">
+                  <span className="text-[10px] tracking-[0.28em] uppercase font-bold text-brand-green">
                     {r.type}
                   </span>
                 </div>
-                <h3 className="mt-5 font-display font-black uppercase tracking-tight text-xl text-brand-navy">
+                <h3 className="mt-6 font-display font-black uppercase tracking-tight text-xl text-black">
                   {r.title}
                 </h3>
-                <p className="mt-1 text-sm text-muted-foreground flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5" />
+                <p className="mt-2 text-sm text-neutral-500 flex items-center gap-1.5">
+                  <MapPin className="w-3.5 h-3.5" strokeWidth={1.5} />
                   {r.loc}
                 </p>
                 <a
                   href="#apply"
                   data-testid={`apply-now-${r.title.toLowerCase().replace(/\s+/g, "-")}`}
-                  className="mt-auto pt-5 inline-flex items-center gap-2 text-sm font-bold text-brand-navy hover:text-brand-green transition-colors"
+                  className="mt-auto pt-6 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.1em] text-black hover:text-brand-green transition-colors border-b-2 border-brand-green pb-1.5 self-start"
                 >
-                  Apply Now <ArrowRight className="w-4 h-4" />
+                  Apply Now <ArrowRight className="w-4 h-4" strokeWidth={2} />
                 </a>
               </div>
             ))}
@@ -93,7 +94,7 @@ export default function Careers() {
       </section>
 
       {/* Application Form */}
-      <section id="apply" className="py-20 bg-brand-grey">
+      <section id="apply" className="py-24 bg-[#F2F2F2]">
         <div className="container-x max-w-3xl">
           <SectionHeading
             center
@@ -105,21 +106,24 @@ export default function Careers() {
           <form
             onSubmit={handleSubmit}
             data-testid="careers-form"
-            className="mt-12 bg-white p-7 sm:p-10 rounded-3xl border border-border shadow-card space-y-5"
+            className="mt-16 bg-white p-8 sm:p-12 border border-[#E0E0E0] shadow-card space-y-6 relative"
           >
+            <span className="absolute top-0 left-0 w-16 h-[3px] bg-brand-green" />
+
             <div className="grid sm:grid-cols-2 gap-5">
               <div className="space-y-2">
-                <Label htmlFor="name">Full Name *</Label>
+                <Label htmlFor="name" className="text-[11px] tracking-[0.2em] uppercase font-semibold text-neutral-500">Full Name *</Label>
                 <Input
                   id="name"
                   data-testid="careers-name"
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                   placeholder="Your full name"
+                  className="rounded-none border-0 border-b-2 border-[#E0E0E0] focus-visible:border-brand-green focus-visible:ring-0 px-0 py-3"
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="phone">Contact Number *</Label>
+                <Label htmlFor="phone" className="text-[11px] tracking-[0.2em] uppercase font-semibold text-neutral-500">Contact Number *</Label>
                 <Input
                   id="phone"
                   data-testid="careers-phone"
@@ -127,13 +131,14 @@ export default function Careers() {
                   value={form.phone}
                   onChange={(e) => setForm({ ...form, phone: e.target.value })}
                   placeholder={SITE.phone}
+                  className="rounded-none border-0 border-b-2 border-[#E0E0E0] focus-visible:border-brand-green focus-visible:ring-0 px-0 py-3"
                 />
               </div>
             </div>
 
             <div className="grid sm:grid-cols-2 gap-5">
               <div className="space-y-2">
-                <Label htmlFor="email">Email Address *</Label>
+                <Label htmlFor="email" className="text-[11px] tracking-[0.2em] uppercase font-semibold text-neutral-500">Email Address *</Label>
                 <Input
                   id="email"
                   data-testid="careers-email"
@@ -141,12 +146,13 @@ export default function Careers() {
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   placeholder="you@example.com"
+                  className="rounded-none border-0 border-b-2 border-[#E0E0E0] focus-visible:border-brand-green focus-visible:ring-0 px-0 py-3"
                 />
               </div>
               <div className="space-y-2">
-                <Label>Preferred Role *</Label>
+                <Label className="text-[11px] tracking-[0.2em] uppercase font-semibold text-neutral-500">Preferred Role *</Label>
                 <Select value={form.role} onValueChange={(v) => setForm({ ...form, role: v })}>
-                  <SelectTrigger data-testid="careers-role-trigger">
+                  <SelectTrigger data-testid="careers-role-trigger" className="rounded-none border-0 border-b-2 border-[#E0E0E0] focus:border-brand-green focus:ring-0 px-0 py-3 h-auto">
                     <SelectValue placeholder="Select a role" />
                   </SelectTrigger>
                   <SelectContent>
@@ -161,13 +167,13 @@ export default function Careers() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="resume">Resume (PDF / DOC)</Label>
+              <Label htmlFor="resume" className="text-[11px] tracking-[0.2em] uppercase font-semibold text-neutral-500">Resume (PDF / DOC)</Label>
               <label
                 htmlFor="resume"
-                className="flex items-center justify-center gap-3 px-4 py-6 rounded-xl border-2 border-dashed border-border bg-brand-grey hover:bg-brand-light-blue cursor-pointer transition-colors"
+                className="flex items-center justify-center gap-3 px-4 py-6 border-2 border-dashed border-[#E0E0E0] bg-[#F2F2F2] hover:bg-white hover:border-brand-green cursor-pointer transition-colors"
               >
-                <Upload className="w-5 h-5 text-brand-green" />
-                <span className="text-sm text-muted-foreground">
+                <Upload className="w-5 h-5 text-brand-green" strokeWidth={1.5} />
+                <span className="text-sm text-neutral-600">
                   {file ? file.name : "Click to upload (.pdf, .doc, .docx)"}
                 </span>
                 <input
@@ -181,7 +187,7 @@ export default function Careers() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="message">Message</Label>
+              <Label htmlFor="message" className="text-[11px] tracking-[0.2em] uppercase font-semibold text-neutral-500">Message</Label>
               <Textarea
                 id="message"
                 data-testid="careers-message"
@@ -189,6 +195,7 @@ export default function Careers() {
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
                 placeholder="Tell us about your experience and why you'd like to join CEECO..."
+                className="rounded-none border-0 border-b-2 border-[#E0E0E0] focus-visible:border-brand-green focus-visible:ring-0 px-0 py-3 resize-none"
               />
             </div>
 
@@ -196,7 +203,7 @@ export default function Careers() {
               type="submit"
               data-testid="careers-submit"
               disabled={submitting}
-              className="w-full bg-brand-green hover:bg-brand-green-deep text-white rounded-xl py-3.5 px-8 font-bold shadow-cta disabled:opacity-60 transition-colors"
+              className="w-full btn-sharp btn-red justify-center disabled:opacity-60"
             >
               {submitting ? "Submitting..." : "Submit Application"}
             </button>

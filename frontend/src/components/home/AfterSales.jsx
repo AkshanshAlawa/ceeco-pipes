@@ -21,7 +21,7 @@ const pillars = [
 
 export default function AfterSales() {
   return (
-    <section data-testid="after-sales" className="py-20 bg-white">
+    <section data-testid="after-sales" className="py-24 sm:py-32 bg-white">
       <div className="container-x">
         <div className="reveal">
           <SectionHeading
@@ -32,20 +32,20 @@ export default function AfterSales() {
           />
         </div>
 
-        <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-5">
           {pillars.map((p, i) => (
             <div
               key={p.title}
-              className="reveal text-center p-8 rounded-2xl bg-brand-grey border border-border hover:bg-brand-light-blue transition-colors"
-              style={{ transitionDelay: `${i * 80}ms` }}
+              className="reveal industrial-card text-center p-10 bg-[#F2F2F2] group"
+              style={{ transitionDelay: `${i * 100}ms` }}
             >
-              <div className="w-14 h-14 mx-auto rounded-2xl bg-white border border-border flex items-center justify-center shadow-card">
-                <p.icon className="w-6 h-6 text-brand-green" />
+              <div className="w-16 h-16 mx-auto border-2 border-black flex items-center justify-center group-hover:border-brand-green group-hover:bg-brand-green transition-all">
+                <p.icon className="w-6 h-6 text-black group-hover:text-white transition-colors" strokeWidth={1.5} />
               </div>
-              <h3 className="mt-5 font-display font-black uppercase tracking-tight text-xl text-brand-navy">
+              <h3 className="mt-6 font-display font-black tracking-tight text-2xl text-black">
                 {p.title}
               </h3>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+              <p className="mt-3 text-sm text-neutral-600 leading-[1.7]">
                 {p.desc}
               </p>
             </div>

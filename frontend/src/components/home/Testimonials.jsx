@@ -8,7 +8,6 @@ const testimonials = [
     name: "Ramesh Gowda",
     role: "Progressive Farmer, Mandya",
     initials: "RG",
-    color: "bg-brand-green",
   },
   {
     quote:
@@ -16,7 +15,6 @@ const testimonials = [
     name: "Venkatesh Iyer",
     role: "Civil Contractor, Bengaluru",
     initials: "VI",
-    color: "bg-brand-blue",
   },
   {
     quote:
@@ -24,13 +22,12 @@ const testimonials = [
     name: "Sundararajan & Sons",
     role: "Industrial Buyer, Hosur",
     initials: "SS",
-    color: "bg-brand-navy",
   },
 ];
 
 export default function Testimonials() {
   return (
-    <section data-testid="testimonials" className="py-20 sm:py-28 bg-brand-light-blue">
+    <section data-testid="testimonials" className="py-24 sm:py-32 bg-[#F2F2F2]">
       <div className="container-x">
         <div className="reveal">
           <SectionHeading
@@ -41,30 +38,28 @@ export default function Testimonials() {
           />
         </div>
 
-        <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-5">
           {testimonials.map((t, i) => (
             <div
               key={t.name}
-              className="reveal flex flex-col bg-white rounded-2xl p-7 border border-border shadow-card hover:shadow-card-hover transition-shadow"
-              style={{ transitionDelay: `${i * 80}ms` }}
+              className="reveal industrial-card flex flex-col bg-white p-8"
+              style={{ transitionDelay: `${i * 100}ms` }}
             >
-              <Quote className="w-8 h-8 text-brand-green" />
-              <p className="mt-4 text-base text-foreground leading-relaxed flex-1">
+              <Quote className="w-9 h-9 text-brand-green" strokeWidth={1.5} />
+              <p className="mt-5 text-base text-black leading-[1.7] flex-1">
                 &ldquo;{t.quote}&rdquo;
               </p>
-              <div className="mt-6 pt-5 border-t border-border flex items-center gap-4">
-                <div
-                  className={`w-12 h-12 rounded-full ${t.color} text-white flex items-center justify-center font-display font-bold`}
-                >
+              <div className="mt-7 pt-6 border-t border-[#E0E0E0] flex items-center gap-4">
+                <div className="w-12 h-12 bg-black text-white flex items-center justify-center font-display font-black text-sm">
                   {t.initials}
                 </div>
                 <div>
-                  <p className="font-bold text-brand-navy">{t.name}</p>
-                  <p className="text-xs text-muted-foreground">{t.role}</p>
+                  <p className="font-bold text-black uppercase tracking-wide text-sm">{t.name}</p>
+                  <p className="text-xs text-neutral-500 mt-0.5">{t.role}</p>
                 </div>
                 <div className="ml-auto flex gap-0.5">
                   {[...Array(5)].map((_, k) => (
-                    <Star key={k} className="w-3.5 h-3.5 fill-brand-green text-brand-green" />
+                    <Star key={k} className="w-3.5 h-3.5 fill-brand-green text-brand-green" strokeWidth={1.5} />
                   ))}
                 </div>
               </div>

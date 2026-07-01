@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Phone, ShieldCheck, Award, Factory } from "lucide-react";
-import { SITE, ASSETS } from "@/lib/site";
+import { ArrowRight, Phone, ShieldCheck } from "lucide-react";
+import { SITE, ASSETS, PN_RATINGS } from "@/lib/site";
 
 const HERO_IMG = ASSETS.factory;
 
@@ -8,143 +8,169 @@ export default function Hero() {
   return (
     <section
       data-testid="hero-section"
-      className="relative min-h-screen flex items-center bg-brand-navy text-white overflow-hidden"
+      className="relative min-h-[100vh] flex items-center bg-black text-white overflow-hidden"
     >
-      {/* Background image - more visible */}
+      {/* Background image (more visible - 65% opacity, Ken Burns slow zoom) */}
       <div className="absolute inset-0">
         <img
           src={HERO_IMG}
-          alt="HDPE Pipes manufacturing"
-          className="w-full h-full object-cover opacity-55"
+          alt="CEECO HDPE pipe manufacturing"
+          className="w-full h-full object-cover opacity-65 animate-ken-burns"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-brand-navy-deep/95 via-brand-navy/85 to-brand-navy/55" />
+        {/* Deep black gradient overlay for text legibility on left half */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
       </div>
-      <div className="absolute inset-0 blueprint-grid opacity-25" />
-      <div className="absolute -top-20 -right-20 w-[480px] h-[480px] rounded-full bg-brand-blue/15 blur-3xl" />
-      <div className="absolute -bottom-32 left-1/3 w-96 h-96 rounded-full bg-brand-green/15 blur-3xl" />
 
-      <div className="container-x relative pt-28 pb-28 sm:pt-32">
+      {/* Vertical red measurement bar (left edge) */}
+      <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-brand-green z-10" />
+
+      {/* Grid */}
+      <div className="absolute inset-0 grid-pattern opacity-25" />
+
+      <div className="container-x relative pt-28 pb-20 sm:pt-32 z-10">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           <div className="lg:col-span-7">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
-              <span className="w-2 h-2 rounded-full bg-brand-green animate-pulse" />
-              <span className="text-[11px] tracking-[0.32em] uppercase text-brand-green font-bold">
+            {/* Eyebrow with accent */}
+            <div className="fade-up-1 flex items-center gap-3">
+              <span className="accent-line-lg" />
+              <span className="text-[11px] tracking-[0.35em] uppercase text-brand-green font-bold">
                 {SITE.parent}
               </span>
             </div>
 
-            <h1 className="mt-6 font-display font-black uppercase text-6xl sm:text-7xl lg:text-8xl leading-[0.95] tracking-tight">
+            {/* Massive H1 - 72-96px */}
+            <h1 className="fade-up-2 mt-6 font-display font-black tracking-tight leading-[0.9] text-[64px] sm:text-[80px] lg:text-[96px]">
               CEECO
               <br />
-              <span className="text-white">HDPE</span>{" "}
+              <span className="text-white">HDPE </span>
               <span className="text-brand-green">PIPES</span>
             </h1>
 
-            <p className="mt-5 text-xl sm:text-2xl font-light text-brand-light-blue">
+            {/* Subtitle */}
+            <p className="fade-up-3 mt-6 text-xl sm:text-2xl font-light text-white/80">
               Built on Trust{" "}
               <span className="text-brand-green font-bold">Since 1984</span>
             </p>
 
-            <p className="mt-6 text-base sm:text-lg text-white/80 leading-relaxed max-w-2xl">
+            {/* Description */}
+            <p className="fade-up-3 mt-5 text-base sm:text-lg text-white/70 leading-[1.7] max-w-2xl">
               Reliable HDPE pipe solutions engineered for agriculture, water supply
               and industrial applications - manufactured by a company built on four
               decades of trust.
             </p>
 
-            {/* PN Ratings chips */}
-            <div className="mt-7 flex flex-wrap gap-2">
-              {["PN6", "PN8", "PN10", "PN12.5", "PN16", "PN20", "PN25"].map((p) => (
+            {/* PE Grade emphasis strip */}
+            <div className="fade-up-4 mt-7 inline-flex items-center gap-3 border border-white/15 bg-white/[0.04] px-4 py-2.5">
+              <ShieldCheck className="w-4 h-4 text-brand-green" strokeWidth={1.5} />
+              <span className="text-[11px] tracking-[0.28em] uppercase text-white/60 font-bold">
+                Available in
+              </span>
+              <span className="text-sm font-black text-white tracking-wide">PE 80</span>
+              <span className="text-white/30">·</span>
+              <span className="text-sm font-black text-white tracking-wide">PE 100</span>
+              <span className="text-white/30">·</span>
+              <span className="text-[11px] tracking-[0.15em] uppercase text-brand-green font-bold">
+                Premium Grades
+              </span>
+            </div>
+
+            {/* PN Ratings chips - all 7 */}
+            <div className="fade-up-4 mt-4 flex flex-wrap gap-2">
+              {PN_RATINGS.map((p) => (
                 <span
                   key={p}
-                  className="px-3 py-1.5 rounded-md bg-white/10 border border-white/20 text-white text-xs font-semibold backdrop-blur-sm"
+                  className="px-3 py-1.5 border border-white/20 bg-white/5 text-white text-xs font-bold tracking-wider"
                 >
                   {p}
                 </span>
               ))}
             </div>
 
-            <div className="mt-9 flex flex-col sm:flex-row gap-3">
+            {/* CTAs - sharp corners, industrial */}
+            <div className="fade-up-5 mt-10 flex flex-col sm:flex-row gap-3">
               <Link
                 to="/products"
                 data-testid="hero-explore-products"
-                className="inline-flex items-center justify-center gap-2 bg-brand-green hover:bg-brand-green-deep text-white px-7 py-3.5 rounded-full font-bold shadow-cta hover:scale-[1.02] transition-transform"
+                className="btn-sharp btn-red"
               >
                 Explore Products
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4" strokeWidth={2} />
               </Link>
               <Link
                 to="/contact"
                 data-testid="hero-contact-us"
-                className="inline-flex items-center justify-center gap-2 border-2 border-white/30 text-white hover:bg-white hover:text-brand-navy px-7 py-3.5 rounded-full font-bold transition-colors"
+                className="btn-sharp btn-outline-white"
               >
-                <Phone className="w-4 h-4" />
+                <Phone className="w-4 h-4" strokeWidth={2} />
                 Contact Us
               </Link>
             </div>
 
-            <p className="mt-10 text-[11px] tracking-[0.4em] text-white/55 uppercase font-semibold">
+            <p className="fade-up-5 mt-14 text-[10px] tracking-[0.5em] text-white/40 uppercase font-bold">
               {SITE.tagline}
             </p>
           </div>
 
-          {/* Right floating stat card - padding for floating elements */}
+          {/* Right: Trusted Manufacturer stat card */}
           <div className="lg:col-span-5">
-            <div className="relative pt-8 pb-12 pr-4">
-              {/* Glow halo */}
-              <div className="absolute top-2 -left-6 w-24 h-24 rounded-full bg-brand-green/30 blur-2xl" />
+            <div className="relative">
+              {/* Card - sharp corners, industrial */}
+              <div className="relative bg-white/[0.04] backdrop-blur-md border border-white/15 p-8">
+                {/* Corner accents */}
+                <span className="absolute top-0 left-0 w-8 h-[3px] bg-brand-green" />
+                <span className="absolute top-0 left-0 w-[3px] h-8 bg-brand-green" />
+                <span className="absolute bottom-0 right-0 w-8 h-[3px] bg-brand-green" />
+                <span className="absolute bottom-0 right-0 w-[3px] h-8 bg-brand-green" />
 
-              {/* Main card */}
-              <div className="relative z-10 bg-white/10 backdrop-blur-md border border-white/15 rounded-3xl p-7 shadow-navy">
                 <div className="flex items-center justify-between">
                   <div className="text-[11px] tracking-[0.32em] uppercase text-brand-green font-bold">
                     Trusted Manufacturer
                   </div>
-                  <Award className="w-5 h-5 text-brand-green" />
                 </div>
-                <div className="mt-8 grid grid-cols-3 divide-x divide-white/10">
+                <div className="mt-10 grid grid-cols-3 divide-x divide-white/10">
                   {[
                     { v: "40+", l: "Years" },
                     { v: "9+", l: "Sizes" },
                     { v: "7", l: "PN Ratings" },
                   ].map((s) => (
-                    <div key={s.l} className="text-center px-2">
-                      <div className="font-display text-3xl sm:text-4xl font-black text-white">
+                    <div key={s.l} className="text-center px-3">
+                      <div className="font-display text-4xl sm:text-5xl font-black text-white leading-none">
                         {s.v}
                       </div>
-                      <div className="text-[10px] tracking-[0.25em] uppercase text-white/70 mt-1 font-semibold">
+                      <div className="text-[10px] tracking-[0.28em] uppercase text-white/60 mt-2 font-bold">
                         {s.l}
                       </div>
                     </div>
                   ))}
                 </div>
-                <div className="mt-8 pt-6 border-t border-white/10 grid grid-cols-2 gap-4">
-                  <div className="flex items-start gap-3">
-                    <ShieldCheck className="w-5 h-5 text-brand-green shrink-0 mt-0.5" />
-                    <div>
-                      <p className="text-sm font-bold text-white">ISO 9001:2015</p>
-                      <p className="text-xs text-white/60">Quality assured</p>
+                <div className="mt-10 pt-6 border-t border-white/10">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 border border-brand-green flex items-center justify-center">
+                      <ShieldCheck className="w-4 h-4 text-brand-green" strokeWidth={1.5} />
                     </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Factory className="w-5 h-5 text-brand-green shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-sm font-bold text-white">In-House</p>
-                      <p className="text-xs text-white/60">Manufacturing</p>
+                      <p className="text-xs uppercase tracking-widest text-white/50 font-semibold">
+                        Certified Manufacturing
+                      </p>
+                      <p className="text-sm font-black text-white tracking-wide">
+                        ISO 9001:2015 · Udyam MSME
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Floating PE 80 badge - sits BELOW card edge, away from text */}
-              <div className="absolute z-20 -bottom-2 right-2 hidden sm:flex items-center gap-3 bg-brand-green text-white rounded-2xl px-5 py-3.5 shadow-cta animate-float-slow">
-                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                  <span className="font-display font-black text-sm">PE80</span>
+              {/* PE80/PE100 floating tag - LOWERED so it does not obscure content */}
+              <div className="hidden sm:flex absolute -bottom-10 right-6 items-center gap-3 bg-brand-green text-white px-5 py-3.5 shadow-cta animate-float-slow z-10">
+                <div className="w-9 h-9 bg-white/20 flex items-center justify-center">
+                  <span className="font-display font-black text-xs">PE</span>
                 </div>
                 <div className="leading-tight">
-                  <p className="text-[10px] tracking-widest uppercase opacity-90 font-semibold">
+                  <p className="text-[9px] tracking-[0.28em] uppercase opacity-90 font-bold">
                     Premium Grade
                   </p>
-                  <p className="font-bold text-sm">PE 80 / PE 100</p>
+                  <p className="font-black text-sm">PE 80 / PE 100</p>
                 </div>
               </div>
             </div>
@@ -153,9 +179,9 @@ export default function Hero() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/45">
-        <span className="text-[10px] tracking-[0.3em] uppercase font-semibold">Scroll</span>
-        <span className="w-px h-10 bg-gradient-to-b from-white/45 to-transparent" />
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40 z-10">
+        <span className="text-[10px] tracking-[0.35em] uppercase font-bold">Scroll</span>
+        <span className="w-px h-12 bg-gradient-to-b from-brand-green to-transparent" />
       </div>
     </section>
   );

@@ -1,8 +1,12 @@
 import { useEffect } from "react";
 
+/**
+ * Observes all `.reveal`, `.reveal-x`, and `.reveal-scale` elements
+ * and adds `.in-view` when they enter the viewport.
+ */
 export function useScrollReveal() {
   useEffect(() => {
-    const els = document.querySelectorAll(".reveal");
+    const els = document.querySelectorAll(".reveal, .reveal-x, .reveal-scale");
     const obs = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {

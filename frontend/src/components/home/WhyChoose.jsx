@@ -63,7 +63,7 @@ const items = [
 
 export default function WhyChoose() {
   return (
-    <section data-testid="why-choose" className="py-20 sm:py-28 bg-white">
+    <section data-testid="why-choose" className="py-24 sm:py-32 bg-white">
       <div className="container-x">
         <div className="reveal">
           <SectionHeading
@@ -73,37 +73,44 @@ export default function WhyChoose() {
           />
         </div>
 
-        <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {items.map((it, i) => (
             <div
               key={it.title}
-              className="reveal group relative flex flex-col p-6 rounded-2xl border border-border shadow-card hover:shadow-card-hover transition-all duration-300 overflow-hidden bg-white"
-              style={{ transitionDelay: `${(i % 4) * 50}ms` }}
+              className="reveal industrial-card group relative flex flex-col p-8 overflow-hidden"
+              style={{ transitionDelay: `${(i % 4) * 80}ms` }}
             >
-              {/* Background image (lightly transparent) */}
+              {/* Background image lightly transparent, contained within card */}
               <div
-                className="absolute inset-0 opacity-[0.07] group-hover:opacity-[0.14] transition-opacity duration-500 bg-cover bg-center"
+                className="absolute inset-0 opacity-[0.08] group-hover:opacity-[0.15] transition-opacity duration-700 bg-cover bg-center"
                 style={{ backgroundImage: `url(${it.img})` }}
               />
-              <div className="absolute inset-0 bg-gradient-to-br from-white/95 via-white/92 to-white/85" />
+              <div className="absolute inset-0 bg-white/85" />
 
               {/* Content */}
               <div className="relative">
-                <div className="w-12 h-12 rounded-xl bg-white border border-border flex items-center justify-center mb-5 shadow-card group-hover:bg-brand-green group-hover:border-brand-green transition-colors">
-                  <it.icon className="w-5 h-5 text-brand-navy group-hover:text-white transition-colors" />
+                {/* Number */}
+                <span className="text-[10px] tracking-[0.32em] text-brand-green font-mono font-bold">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+
+                {/* Icon - line style with red stroke */}
+                <div className="mt-4 w-14 h-14 border-2 border-black flex items-center justify-center group-hover:border-brand-green group-hover:bg-brand-green transition-all duration-300">
+                  <it.icon
+                    className="w-6 h-6 text-black group-hover:text-white transition-colors"
+                    strokeWidth={1.5}
+                  />
                 </div>
-                <h3 className="font-display font-black uppercase tracking-tight text-lg text-brand-navy leading-snug">
+
+                <h3 className="mt-6 font-display font-black tracking-tight text-xl text-black leading-tight">
                   {it.title}
                 </h3>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                <p className="mt-3 text-sm text-neutral-600 leading-[1.7]">
                   {it.desc}
                 </p>
-                <div className="mt-6 pt-5 flex items-center justify-between">
-                  <span className="text-[10px] tracking-[0.3em] text-brand-green font-mono font-bold">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="h-px flex-1 ml-3 bg-border group-hover:bg-brand-green transition-colors" />
-                </div>
+
+                {/* Red underline that expands on hover */}
+                <div className="mt-6 h-[2px] w-8 bg-brand-green group-hover:w-full transition-all duration-500" />
               </div>
             </div>
           ))}

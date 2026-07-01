@@ -47,17 +47,17 @@ export default function Products() {
       />
 
       {/* Grade & PN ratings strip */}
-      <section className="py-10 bg-brand-navy text-white">
-        <div className="container-x flex flex-col md:flex-row gap-6 md:items-center md:justify-between">
+      <section className="py-12 bg-black text-white border-t border-white/10">
+        <div className="container-x flex flex-col md:flex-row gap-8 md:items-center md:justify-between">
           <div>
             <p className="text-[11px] tracking-[0.32em] uppercase text-brand-green font-bold">
               Material Grades
             </p>
-            <div className="mt-2 flex flex-wrap gap-2">
+            <div className="mt-3 flex flex-wrap gap-2">
               {PE_GRADES.map((g) => (
                 <span
                   key={g}
-                  className="px-4 py-1.5 rounded-md bg-brand-green text-white font-bold text-sm tracking-wide"
+                  className="px-4 py-2 bg-brand-green text-white font-black text-sm tracking-wide uppercase"
                 >
                   {g}
                 </span>
@@ -68,11 +68,11 @@ export default function Products() {
             <p className="text-[11px] tracking-[0.32em] uppercase text-brand-green font-bold">
               Pressure Ratings (PN)
             </p>
-            <div className="mt-2 flex flex-wrap gap-2">
+            <div className="mt-3 flex flex-wrap gap-2">
               {PN_RATINGS.map((p) => (
                 <span
                   key={p}
-                  className="px-3 py-1.5 rounded-md bg-white/10 border border-white/20 text-white font-bold text-sm"
+                  className="px-3 py-2 bg-white/10 border border-white/25 text-white font-bold text-sm"
                 >
                   {p}
                 </span>
@@ -82,26 +82,29 @@ export default function Products() {
         </div>
       </section>
 
-      <section className="py-20 sm:py-24 bg-white">
-        <div className="container-x space-y-16 lg:space-y-24">
+      <section className="py-24 sm:py-32 bg-white">
+        <div className="container-x space-y-20 lg:space-y-28">
           {products.map((p, i) => (
             <div
               key={p.title}
-              className={`grid lg:grid-cols-12 gap-10 lg:gap-16 items-center ${
+              className={`grid lg:grid-cols-12 gap-12 lg:gap-16 items-center reveal ${
                 i % 2 === 1 ? "lg:[&>div:first-child]:order-2" : ""
               }`}
             >
               <div className="lg:col-span-6">
                 <div className="relative">
-                  <div className="absolute -inset-3 bg-gradient-to-br from-brand-blue/20 to-brand-green/15 rounded-3xl blur-2xl" />
-                  <div className="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-navy">
+                  {/* Red corner accents */}
+                  <span className="absolute -top-2 -left-2 w-10 h-10 border-t-[3px] border-l-[3px] border-brand-green z-10" />
+                  <span className="absolute -bottom-2 -right-2 w-10 h-10 border-b-[3px] border-r-[3px] border-brand-green z-10" />
+
+                  <div className="relative overflow-hidden aspect-[4/3] shadow-navy">
                     <img
                       src={p.img}
                       alt={p.title}
                       className="w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/40 to-transparent" />
-                    <span className="absolute top-4 left-4 px-3 py-1.5 text-[10px] tracking-[0.25em] uppercase font-bold bg-brand-green text-white rounded-full">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                    <span className="absolute top-4 left-4 px-3 py-1.5 text-[10px] tracking-[0.28em] uppercase font-bold bg-brand-green text-white">
                       {p.tag}
                     </span>
                   </div>
@@ -112,29 +115,29 @@ export default function Products() {
                 <p className="text-[11px] tracking-[0.32em] uppercase text-brand-green font-bold">
                   Product {String(i + 1).padStart(2, "0")}
                 </p>
-                <h2 className="mt-3 font-display font-black uppercase tracking-tight text-4xl sm:text-5xl text-brand-navy leading-tight">
+                <h2 className="mt-4 font-display font-black tracking-tight text-4xl sm:text-5xl lg:text-[52px] text-black leading-[1]">
                   {p.title}
                 </h2>
-                <p className="mt-5 text-base sm:text-lg text-muted-foreground leading-relaxed">
+                <p className="mt-6 text-lg text-neutral-600 leading-[1.7]">
                   {p.desc}
                 </p>
-                <ul className="mt-7 grid sm:grid-cols-2 gap-3">
+                <ul className="mt-8 grid sm:grid-cols-2 gap-3">
                   {p.features.map((f) => (
-                    <li key={f} className="flex items-center gap-3 text-sm text-foreground">
-                      <span className="w-6 h-6 rounded-full bg-brand-green/15 flex items-center justify-center shrink-0">
-                        <Check className="w-3.5 h-3.5 text-brand-green" />
+                    <li key={f} className="flex items-center gap-3 text-sm text-black font-medium">
+                      <span className="w-6 h-6 bg-brand-green flex items-center justify-center shrink-0">
+                        <Check className="w-3.5 h-3.5 text-white" strokeWidth={2.5} />
                       </span>
                       {f}
                     </li>
                   ))}
                 </ul>
-                <div className="mt-8">
+                <div className="mt-10">
                   <Link
                     to="/contact"
                     data-testid={`product-${i}-request-quote`}
-                    className="inline-flex items-center gap-2 bg-brand-navy hover:bg-brand-navy-deep text-white px-6 py-3 rounded-full font-bold transition-colors"
+                    className="btn-sharp bg-black text-white border-2 border-black hover:bg-brand-green hover:border-brand-green transition-all"
                   >
-                    Request Quote <ArrowRight className="w-4 h-4" />
+                    Request Quote <ArrowRight className="w-4 h-4" strokeWidth={2} />
                   </Link>
                 </div>
               </div>
@@ -144,7 +147,7 @@ export default function Products() {
       </section>
 
       {/* Specs Table */}
-      <section className="py-20 bg-brand-grey">
+      <section className="py-24 bg-[#F2F2F2]">
         <div className="container-x">
           <SectionHeading
             center
@@ -152,31 +155,31 @@ export default function Products() {
             title="Sizes, ratings and applications."
           />
 
-          <div className="mt-12 grid lg:grid-cols-2 gap-6">
-            <div className="bg-white rounded-2xl border border-border p-6">
+          <div className="mt-16 grid lg:grid-cols-2 gap-4">
+            <div className="bg-white border border-[#E0E0E0] p-8">
               <p className="text-[11px] tracking-[0.32em] uppercase text-brand-green font-bold">
                 Available Sizes (9+)
               </p>
-              <div className="mt-4 flex flex-wrap gap-2">
+              <div className="mt-5 flex flex-wrap gap-2">
                 {PIPE_SIZES.map((s) => (
                   <span
                     key={s}
-                    className="px-3.5 py-2 rounded-lg bg-brand-light-blue border border-brand-blue/20 text-sm font-bold text-brand-navy"
+                    className="px-3.5 py-2 bg-[#F2F2F2] border border-[#E0E0E0] text-sm font-bold text-black"
                   >
                     {s}
                   </span>
                 ))}
               </div>
             </div>
-            <div className="bg-white rounded-2xl border border-border p-6">
+            <div className="bg-white border border-[#E0E0E0] p-8">
               <p className="text-[11px] tracking-[0.32em] uppercase text-brand-green font-bold">
                 Pressure Ratings (7)
               </p>
-              <div className="mt-4 flex flex-wrap gap-2">
+              <div className="mt-5 flex flex-wrap gap-2">
                 {PN_RATINGS.map((p) => (
                   <span
                     key={p}
-                    className="px-3.5 py-2 rounded-lg bg-brand-navy text-white text-sm font-bold"
+                    className="px-3.5 py-2 bg-black text-white text-sm font-bold"
                   >
                     {p}
                   </span>
@@ -185,12 +188,12 @@ export default function Products() {
             </div>
           </div>
 
-          <div className="mt-6 bg-white rounded-2xl border border-border overflow-hidden">
+          <div className="mt-4 bg-white border border-[#E0E0E0] overflow-hidden">
             <Table>
               <TableHeader>
-                <TableRow className="bg-brand-navy hover:bg-brand-navy">
-                  <TableHead className="text-white font-bold w-1/3">Specification</TableHead>
-                  <TableHead className="text-white font-bold">Details</TableHead>
+                <TableRow className="bg-black hover:bg-black border-b-0">
+                  <TableHead className="text-white font-bold uppercase tracking-wider text-xs w-1/3">Specification</TableHead>
+                  <TableHead className="text-white font-bold uppercase tracking-wider text-xs">Details</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -206,8 +209,8 @@ export default function Products() {
                   { k: "Certifications", v: "ISO 9001:2015 Certified · Udyam MSME Registered" },
                 ].map((r) => (
                   <TableRow key={r.k}>
-                    <TableCell className="font-bold text-brand-navy">{r.k}</TableCell>
-                    <TableCell className="text-muted-foreground">{r.v}</TableCell>
+                    <TableCell className="font-bold text-black">{r.k}</TableCell>
+                    <TableCell className="text-neutral-600">{r.v}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>
@@ -217,7 +220,7 @@ export default function Products() {
       </section>
 
       {/* Certifications */}
-      <section data-testid="certifications" className="py-20 bg-white">
+      <section data-testid="certifications" className="py-24 bg-white">
         <div className="container-x">
           <SectionHeading
             center
@@ -226,8 +229,11 @@ export default function Products() {
             subtitle="Our manufacturing operations are certified to international quality standards and recognised by the Government of India."
           />
 
-          <div className="mt-14 grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            <div className="relative rounded-3xl border border-border bg-brand-grey overflow-hidden shadow-card hover:shadow-card-hover transition-shadow group">
+          <div className="mt-16 grid sm:grid-cols-2 gap-5 max-w-4xl mx-auto">
+            <div className="relative border border-[#E0E0E0] bg-[#F2F2F2] overflow-hidden hover:border-brand-green transition-colors group">
+              {/* Red corner accents */}
+              <span className="absolute top-0 left-0 w-8 h-[2px] bg-brand-green" />
+              <span className="absolute top-0 left-0 w-[2px] h-8 bg-brand-green" />
               <div className="aspect-[4/3] overflow-hidden bg-white flex items-center justify-center p-4">
                 <img
                   src={ASSETS.iso}
@@ -235,28 +241,30 @@ export default function Products() {
                   className="max-w-full max-h-full object-contain group-hover:scale-[1.03] transition-transform duration-500"
                 />
               </div>
-              <div className="p-6 bg-white border-t border-border">
+              <div className="p-6 bg-white border-t border-[#E0E0E0]">
                 <div className="flex items-center gap-3">
-                  <div className="w-11 h-11 rounded-xl bg-brand-green text-white flex items-center justify-center">
-                    <Award className="w-5 h-5" />
+                  <div className="w-11 h-11 bg-brand-green text-white flex items-center justify-center">
+                    <Award className="w-5 h-5" strokeWidth={1.5} />
                   </div>
                   <div>
-                    <p className="text-[10px] tracking-[0.3em] uppercase text-brand-green font-bold">
+                    <p className="text-[10px] tracking-[0.32em] uppercase text-brand-green font-bold">
                       Certification
                     </p>
-                    <p className="mt-0.5 font-display font-black uppercase tracking-tight text-xl text-brand-navy">
+                    <p className="mt-1 font-display font-black uppercase tracking-tight text-xl text-black">
                       ISO 9001:2015
                     </p>
                   </div>
                 </div>
-                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                <p className="mt-4 text-sm text-neutral-600 leading-[1.7]">
                   Manufacturing processes audited and certified against international
                   quality management standards.
                 </p>
               </div>
             </div>
 
-            <div className="relative rounded-3xl border border-border bg-brand-grey overflow-hidden shadow-card hover:shadow-card-hover transition-shadow group">
+            <div className="relative border border-[#E0E0E0] bg-[#F2F2F2] overflow-hidden hover:border-brand-green transition-colors group">
+              <span className="absolute top-0 left-0 w-8 h-[2px] bg-brand-green" />
+              <span className="absolute top-0 left-0 w-[2px] h-8 bg-brand-green" />
               <div className="aspect-[4/3] overflow-hidden bg-white flex items-center justify-center p-4">
                 <img
                   src={ASSETS.msme}
@@ -264,21 +272,21 @@ export default function Products() {
                   className="max-w-full max-h-full object-contain group-hover:scale-[1.03] transition-transform duration-500"
                 />
               </div>
-              <div className="p-6 bg-white border-t border-border">
+              <div className="p-6 bg-white border-t border-[#E0E0E0]">
                 <div className="flex items-center gap-3">
-                  <div className="w-11 h-11 rounded-xl bg-brand-blue text-white flex items-center justify-center">
-                    <Award className="w-5 h-5" />
+                  <div className="w-11 h-11 bg-black text-white flex items-center justify-center">
+                    <Award className="w-5 h-5" strokeWidth={1.5} />
                   </div>
                   <div>
-                    <p className="text-[10px] tracking-[0.3em] uppercase text-brand-blue font-bold">
+                    <p className="text-[10px] tracking-[0.32em] uppercase text-black font-bold">
                       Government Recognition
                     </p>
-                    <p className="mt-0.5 font-display font-black uppercase tracking-tight text-xl text-brand-navy">
+                    <p className="mt-1 font-display font-black uppercase tracking-tight text-xl text-black">
                       Udyam MSME Registered
                     </p>
                   </div>
                 </div>
-                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                <p className="mt-4 text-sm text-neutral-600 leading-[1.7]">
                   Officially recognised as a Micro, Small &amp; Medium Enterprise by
                   the Government of India under the Udyam registration.
                 </p>
