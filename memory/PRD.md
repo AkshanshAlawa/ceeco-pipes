@@ -2,16 +2,56 @@
 
 ## Original Problem Statement
 Static corporate brochure website for **CEECO HDPE PIPES** (by S D Ruparel Group).
-Requirements: mobile-responsive, ~1-week timeline, email-only forms (Formspree/Web3Forms),
-floating WhatsApp button, premium industrial look. Brand palette: Navy / Blue / Green / Light Blue / White / Black / Grey.
+Requirements: mobile-responsive, email-only forms, floating WhatsApp button, premium industrial look.
+
+**Iteration 3 (current)**: Full visual redesign to a **RED · BLACK · WHITE industrial B2B brand**
+positioned to compete with Astral Pipes and Supreme Industries. Zero functional changes; skin
+transplant only.
 
 ## Tech Stack
 - **Frontend**: React + React Router + Tailwind CSS + Shadcn UI + lucide-react
+- **Fonts**: Inter (body) + Sora (display) via Google Fonts
 - **Backend**: None (fully static SPA)
 
 ## Site Structure (6 pages)
 Home (`/`) · About Us (`/about`) · Products (`/products`) · Quality (`/quality`) · Careers (`/careers`) · Contact (`/contact`)
-> ❌ Removed pages: `/infrastructure`, `/gallery`
+
+## Design System (Iteration 3)
+
+### Palette
+| Token | Hex | Usage |
+|-------|-----|-------|
+| Brand Red | `#C8102E` (approx rgb(198,16,40) via HSL) | Primary CTAs, accent lines, hover states |
+| Deep Red | `#9B0A1E` | Button hover darkening |
+| True Black | `#0A0A0A` | Text, dark sections, footer, navbar-solid |
+| Soft Black | `#1A1A1A` | Card depth |
+| Pure White | `#FFFFFF` | Backgrounds, text on dark |
+| Industrial Gray | `#F2F2F2` | Alt sections, subtle fills |
+| Text Gray | `#4A4A4A` | Body text |
+| Border Gray | `#E0E0E0` | Dividers, card borders |
+| WhatsApp Green | `#25D366` | Retained ONLY for the WhatsApp button |
+
+Note: CSS custom property is still named `--brand-green` but now holds the red value — semantic rename can be a follow-up cleanup.
+
+### Typography
+- Family: **Sora** (display 700-900) · **Inter** (body 300-800)
+- Hero H1: 72-96px, weight 900
+- Section H2: 52-64px, weight 900 (Sora display)
+- Body: 16-18px, line-height 1.7
+- Nav / Buttons: uppercase, letter-spacing 0.05-0.1em
+
+### Radius / Corners
+- Global `--radius: 0.125rem` (2px minimum)
+- Buttons & industrial cards use sharp `rounded-none`
+
+### Animations
+- Navbar transparent → solid on scroll (50px threshold, 500ms ease)
+- Scroll reveal: `.reveal` (fadeY 40px), `.reveal-x` (fadeX -30px), `.reveal-scale` (fadeS 0.95→1)
+- Stat count-up: 2.5s easeOutExpo on viewport entry
+- Hero: Ken Burns 22s slow zoom + staggered fade-up (0.15s stagger)
+- Buttons: hover translateY(-2px) + shadow expansion
+- Cards: hover translateY(-8px) + red line grows from left
+- Nav links: red underline animates center-out
 
 ## Key Constants (`/app/frontend/src/lib/site.js`)
 - Phone: **+91 8043729397** (`tel:+918043729397`)
@@ -27,41 +67,58 @@ Home (`/`) · About Us (`/about`) · Products (`/products`) · Quality (`/qualit
 
 ## Implementation Log
 
-### Iteration 1 - 41-point UI overhaul (Feb 2026)
-- Deleted Infrastructure & Gallery pages from FS, routes, nav, footer.
-- Centralised SITE constants. Phone, hours, WhatsApp, footer copyright auto-driven.
-- All em dashes replaced with hyphens. Industrial B2B uppercase typography.
-- Homepage: Hero (9+ Sizes / 7 PN Ratings, brighter pipe bg, no overlap), AboutPreview (S D Ruparel parent, FACTORY.jpeg, no Trust overlay), Legacy moved up after About with stacked Founder/Director placeholders, Stats (500+, Karnataka once, no Dealer Network), WhyChoose & QualityManufacturing with bg images per card, FeaturedProducts (BLUEDUCT.jpg), WhyHDPE central oval + 7 PN ratings, ClientsMarquee filtered, South Indian B2B testimonials.
-- Inner pages: About leadership placeholders + 40+ years + BIS/ISI as GOAL 01; Products BLUEDUCT.jpg + ISO 9001:2015 + Udyam MSME; Quality removed Working Towards ISO/PE80, kept BIS + ISI.
-- ✅ 22/22 spec items verified (iteration_1.json).
+### Iteration 1 — 41-point UI overhaul (Feb 2026)
+Deleted Infrastructure/Gallery, centralised constants, restructured content per user list.
+✅ 22/22 spec items verified.
 
-### Iteration 2 - User Addendum (Feb 2026)
-- **Addresses**: Real office (Nagarathpete) + manufacturing unit (Peenya) replace placeholders sitewide.
-- **Map links**: Footer location rows and Contact page address cards link to the user's `maps.app.goo.gl` short URLs.
-- **Maps embed**: Contact page "Visit Us" section now has TWO Google Maps iframes (office + manufacturing unit) with labelled headers and "Open in Google Maps" CTA bars.
-- **Client logos**: All 5 real uploaded institution logos (BBMP, BDA, GOVTOFKARNATAKA, GBA, BWSSB) render in the home Clients section, matched by filename.
-- **Hero tweaks**: Removed PE 80 / PE 100 green chips from the chip strip beside PN ratings (kept PN6-PN25 only). Hero background swapped from generic duct-pipe stock photo to user's authentic FACTORY.jpeg HDPE coils.
-- **Why HDPE redesign**: Kept original 4-left + center + 4-right layout. Restyled the central oval into a realistic head-on HDPE pipe cross-section using concentric ring gradients (outer dark wall → signature blue stripe → inner wall → black hollow cavity with brand text + PN ratings inside). Added "· PIPE CROSS-SECTION ·" annotation.
-- **A11y**: VisuallyHidden DialogTitle added to mobile drawer Sheet.
-- ✅ 54/54 spec items verified (iteration_2.json).
+### Iteration 2 — Addendum (Feb 2026)
+Real Bengaluru addresses (office + manufacturing unit), Google Maps embeds, 5 real client logos.
+✅ 54/54 spec items verified.
+
+### Iteration 3 — Full visual redesign to Red/Black/White industrial (Feb 2026)
+- **Design tokens rewritten**: navy/blue/green palette fully replaced with red/black/white/gray. Sora display font.
+- **Typography scale doubled**: Hero H1 96px, Section H2 52-64px, Page H1 88px.
+- **Sharp industrial corners** (0-2px radius) on cards + buttons.
+- **Navbar redesign**: transparent-on-hero, solid-white-on-scroll (50px threshold). Red 3px top strip when solid. Red underline center-out for nav links.
+- **New Logo**: red C mark + text wordmark with "Since 1984" byline. (Original logo file still awaiting user upload.)
+- **Hero rebuilt**: FACTORY.jpeg 65% opacity with Ken Burns zoom, red "PIPES" accent, staggered fade-up entrance, sharp-cornered red primary CTA, PE 80/PE 100 grade strip, all 7 PN chips, corner-accented trusted-manufacturer card, PE 80/PE 100 badge lowered (-bottom-10 right-6) to not overlap card content.
+- **Stats reworked**: numeric values count up 2.5s easeOutExpo. Text values (Thousands, Karnataka) at smaller 44px to prevent horizontal overflow.
+- **Legacy section**: black bg, stacked founder/director placeholder cards with red corners.
+- **Why Choose / Quality Manufacturing**: 8 & 4 industrial cards each with lightly transparent background images and hover animations.
+- **Featured Products**: black section with sharp cards, red tag pills, hover lift.
+- **Why HDPE**: WHYHDPE.png used as the central visual (it already contains the pipe + 8 feature callouts); duplicate external feature columns removed for cleaner presentation.
+- **Clients**: 5 real logos, grayscale filter transitioning to full color on hover, corner accents.
+- **Testimonials, After Sales, Contact Preview**: red primary CTAs, sharp cards.
+- **ContactPreview background**: brand red (max CTA impact).
+- **Inner pages** (About / Products / Quality / Careers / Contact): PageHero with 88px H1 on black bg. Sharp cards with border-only style. Red underline focus for form inputs. Product certifications use ISO.jpeg + MSME.jpeg.
+- **Footer rebuilt**: pure black, red 4px top line, red accent lines under every column heading, addresses linked to Google Maps.
+- **WhatsApp button**: retained native green (#25D366) per user spec.
+- ✅ 20/20 spec categories verified (iteration_3.json). No em dashes. No console errors. All buttons and forms functional.
+
+## Open Backlog
+- **P1**: Wire Contact + Careers forms to Formspree / Web3Forms / Getform (free, email-only).
+- **P2**: Upload real founder/director photos to replace "Photo Coming Soon" placeholders (Home Legacy + About Journey).
+- **P2**: Upload the finalised CEECO wordmark logo file (currently a text-based industrial logo in `Logo.jsx`).
+- **P3**: (Optional) Semantic rename `--brand-green` → `--brand-red` and Tailwind classes accordingly — currently a cosmetic-only technical debt, no runtime impact.
+- **P3**: Friendly NotFound page for stale `/infrastructure` and `/gallery` bookmarks.
 
 ## File Architecture
 ```
 /app/frontend/src/
 ├── App.js                          (6 routes)
+├── App.css                         (minimal CRA reset)
+├── index.css                       (design tokens, animations, utility classes)
 ├── lib/site.js                     (SITE constants, ASSETS, CLIENT_LOGOS, PN/PE/SIZES)
+├── hooks/useScrollReveal.js        (IntersectionObserver for .reveal / .reveal-x / .reveal-scale)
 ├── components/
 │   ├── common/SectionHeading.jsx, PageHero.jsx
 │   ├── layout/Header.jsx, Footer.jsx, Layout.jsx, Logo.jsx, WhatsAppButton.jsx
-│   ├── home/ (12 sections)
+│   ├── home/ (12 sections: Hero, AboutPreview, Legacy, Stats, WhyChoose,
+│   │          FeaturedProducts, QualityManufacturing, WhyHDPE, ClientsMarquee,
+│   │          Testimonials, AfterSales, ContactPreview)
 │   └── ui/  (shadcn primitives)
 └── pages/Home.jsx, About.jsx, Products.jsx, Quality.jsx, Careers.jsx, Contact.jsx
 ```
-
-## Open Backlog
-- **P1**: Wire Contact + Careers forms to Formspree / Web3Forms / Getform (email-only, free).
-- **P2**: Upload real founder/director photos to replace "Photo Coming Soon" placeholders (Home Legacy + About Journey).
-- **P3**: Consider /infrastructure and /gallery URLs returning a friendly NotFound or redirect to `/` for stale bookmarks.
 
 ## Test Credentials
 None - fully public static site, no auth.
