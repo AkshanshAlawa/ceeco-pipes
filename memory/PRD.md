@@ -141,3 +141,15 @@ None - fully public static site, no auth.
 ## Remaining backlog
 - P1: Wire Contact / Careers / Custom Enquiry forms to Formspree or Web3Forms (currently MOCKED with toasts)
 - P3 (skipped, optional): premium micro-interactions inspired by padmavatijewellers.in
+
+## Update — June 2026 (Polish batch: Formspree wiring + typography + premium UX)
+- Formspree: lib/formspree.js submitLead() wired into Contact, Careers, CustomRequirements forms. REACT_APP_FORMSPREE_ID in frontend/.env is EMPTY (user doesn't own info@ceecopipes.com yet) → forms run in graceful MOCKED fallback (simulated success, no network). When user provides the ID, paste into .env and restart frontend — delivery goes live. One shared form with form_type field (contact / careers / custom-enquiry).
+- Typography audit: text-wrap: balance on h1-h6, text-wrap: pretty on p (fixes orphans/lone punctuation). AboutPreview spacing normalized.
+- Premium UX: BrandMarquee.jsx red scrolling ribbon (Hero→About), btn-sharp shine sweep hover, .reveal-img cinematic clip-path image reveals (AboutPreview, WhyHDPE, Products), product image hover zoom, custom scrollbar, prefers-reduced-motion support.
+- BUG FIXED (learning): Chromium IntersectionObserver includes the target's OWN clip-path in intersection calc → element clipped to 0 width never intersects. Solution: apply clip-path to `.reveal-img > *` children, observe unclipped container. (iteration_5.json caught it; fix verified via browser evaluate.)
+- Testing: iteration_5.json — all other areas pass (forms mocked-mode, marquee, mobile 375px, typography, CTAs, WhatsApp). reveal-img fix verified post-report.
+
+## Remaining backlog
+- P0 (user-blocked): user to create Formspree account + provide Form ID → paste into REACT_APP_FORMSPREE_ID
+- P2: per-page SEO meta titles/descriptions
+- P2: product brochure PDF downloads

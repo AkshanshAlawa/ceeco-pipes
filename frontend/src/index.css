@@ -206,13 +206,25 @@
         transform: scale(1);
     }
 
-    /* Cinematic image reveal — wipes in from the left */
-    .reveal-img {
+    /* Cinematic image reveal — wipes in from the left.
+       Clip is applied to children (not the observed container) because
+       Chromium excludes a target's own clip-path from IO intersection. */
+    .reveal-img > * {
         clip-path: inset(0 100% 0 0);
         transition: clip-path 1.2s var(--ease-out-expo);
     }
-    .reveal-img.in-view {
+    .reveal-img.in-view > * {
         clip-path: inset(0 0 0 0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .reveal, .reveal-x, .reveal-scale {
+            opacity: 1;
+            transform: none;
+        }
+        .reveal-img > * {
+            clip-path: none;
+        }
     }
 
     /* Nav-link underline animation (red center-out) */
