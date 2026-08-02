@@ -6,7 +6,7 @@ import { useEffect } from "react";
  */
 export function useScrollReveal() {
   useEffect(() => {
-    const els = document.querySelectorAll(".reveal, .reveal-x, .reveal-scale");
+    const els = document.querySelectorAll(".reveal, .reveal-x, .reveal-scale, .reveal-img");
     const obs = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {

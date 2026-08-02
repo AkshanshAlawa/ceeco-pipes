@@ -27,7 +27,7 @@ export default function WhyHDPE() {
             <span className="absolute -bottom-3 -left-3 w-12 h-12 border-b-[3px] border-l-[3px] border-brand-green z-10" />
             <span className="absolute -bottom-3 -right-3 w-12 h-12 border-b-[3px] border-r-[3px] border-brand-green z-10" />
 
-            <div className="relative bg-white p-6 sm:p-10 shadow-navy">
+            <div className="relative bg-white p-6 sm:p-10 shadow-navy reveal-img">
               <img
                 src={ASSETS.whyHdpe}
                 alt="Why HDPE - CEECO HDPE pipe properties and features"

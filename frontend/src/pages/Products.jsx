@@ -97,11 +97,11 @@ export default function Products() {
                   <span className="absolute -top-2 -left-2 w-10 h-10 border-t-[3px] border-l-[3px] border-brand-green z-10" />
                   <span className="absolute -bottom-2 -right-2 w-10 h-10 border-b-[3px] border-r-[3px] border-brand-green z-10" />
 
-                  <div className="relative overflow-hidden aspect-[4/3] shadow-navy">
+                  <div className="relative overflow-hidden aspect-[4/3] shadow-navy reveal-img group">
                     <img
                       src={p.img}
                       alt={p.title}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                     <span className="absolute top-4 left-4 px-3 py-1.5 text-[10px] tracking-[0.28em] uppercase font-bold bg-brand-green text-white">

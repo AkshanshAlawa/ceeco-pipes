@@ -1,4 +1,5 @@
 import Hero from "@/components/home/Hero";
+import BrandMarquee from "@/components/home/BrandMarquee";
 import AboutPreview from "@/components/home/AboutPreview";
 import Legacy from "@/components/home/Legacy";
 import Stats from "@/components/home/Stats";
@@ -16,6 +17,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <BrandMarquee />
       <AboutPreview />
       <Legacy />
       <Stats />

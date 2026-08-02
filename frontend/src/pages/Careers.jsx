@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
 import { SITE } from "@/lib/site";
+import { submitLead } from "@/lib/formspree";
 
 const openRoles = [
   { title: "Sales Executive", type: "Full-time", loc: "Karnataka" },
@@ -29,19 +30,23 @@ export default function Careers() {
   const [file, setFile] = useState(null);
   const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.phone || !form.role) {
       toast.error("Please fill in all required fields.");
       return;
     }
     setSubmitting(true);
-    setTimeout(() => {
-      setSubmitting(false);
+    try {
+      await submitLead("careers", { ...form, resume_filename: file?.name || "Not attached" });
       toast.success("Thank you! Your application has been received.");
       setForm({ name: "", phone: "", email: "", role: "", message: "" });
       setFile(null);
-    }, 900);
+    } catch (err) {
+      toast.error(err.message);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (

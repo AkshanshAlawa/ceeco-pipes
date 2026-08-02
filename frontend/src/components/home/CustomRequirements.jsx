@@ -5,6 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import SectionHeading from "@/components/common/SectionHeading";
+import { submitLead } from "@/lib/formspree";
 
 const inputClass =
   "bg-transparent border-0 border-b-2 border-white/20 rounded-none text-white placeholder:text-white/30 focus-visible:border-brand-green focus-visible:ring-0 px-0 py-3 text-base";
@@ -13,18 +14,22 @@ export default function CustomRequirements() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) {
       toast.error("Please fill in all required fields.");
       return;
     }
     setSubmitting(true);
-    setTimeout(() => {
-      setSubmitting(false);
+    try {
+      await submitLead("custom-enquiry", form);
       toast.success("Enquiry received! Our engineering team will get back to you shortly.");
       setForm({ name: "", email: "", phone: "", message: "" });
-    }, 900);
+    } catch (err) {
+      toast.error(err.message);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (

@@ -1,0 +1,29 @@
+{
+  "summary": "Frontend-only regression + polish batch verification. Forms (Contact, Careers, Enquiry) work correctly in MOCKED mode with no network calls to formspree.io, button labels change to Sending/Submitting, fields reset after submit. BrandMarquee (data-testid='brand-marquee') renders under hero with no horizontal overflow. Explore Products button navigates. Request Quote deep-links to /contact#enquiry-form and scrolls into view. WhatsApp href = https://wa.me/919449528205 correct. Mobile 375px: 0 horizontal overflow on all 6 routes, 0 console errors, mobile menu toggle works. Desktop typography: text-wrap: balance confirmed on <h1> across all 6 pages. CRITICAL HIGH-PRIORITY BUG: .reveal-img elements never receive the .in-view class after scrolling into view — Home AboutPreview 'Manufacturing Excellence' image, Home WhyHDPE white card, and all 4 Products page product images remain PERMANENTLY CLIPPED (clip-path: inset(0 100% 0 0)) and are invisible to users. Manually adding .in-view via devtools instantly reveals the image, proving CSS is fine — bug is in the IntersectionObserver hook.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "useScrollReveal + .reveal-img (AboutPreview.jsx, WhyHDPE.jsx, Products.jsx)", "issue": "Images with class 'reveal-img' NEVER get '.in-view' class added by the IntersectionObserver, so clip-path stays inset(0 100% 0 0) and the images are permanently invisible after scrolling to them. Verified on both Home (2 images) and Products (4 images). Even a freshly-attached IntersectionObserver on the element only fires a single initial intersecting=false entry and never fires again after scrollIntoView. CSS itself is correct — manually toggling .in-view reveals the image instantly (screenshot captured).", "selector": ".reveal-img", "priority": "HIGH"}
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": ["/app/test_reports/iteration_5.json"],
+  "action_items": [
+    "FIX HIGH: .reveal-img reveal is broken — all 6 target images are permanently hidden. Likely causes: (a) useScrollReveal useEffect has NO dependency array so the observer is re-created on every render and stale observers never fire the intersecting=true event; (b) images inside reveal-img divs are still loading when observer registers, so the div is measured at 0px position and IO may not re-evaluate. Suggested fixes: (1) Change `useEffect(() => {...})` to `useEffect(() => {...}, [pathname])` in useScrollReveal so it re-runs per route mount only; (2) Add an initial in-viewport check using getBoundingClientRect after image load events; (3) OR simplest: drop clip-path default and apply it only after 'in-view' is confirmed, so images stay visible by default and animation is progressive-enhancement.",
+    "OPTIONAL: pass a real REACT_APP_FORMSPREE_ID env var when ready — current mocked flow is confirmed working."
+  ],
+  "critical_code_review_comments": [
+    "hooks/useScrollReveal.js: useEffect has no dependency array. It runs on every render, disconnecting and recreating the IntersectionObserver each time. Add [] or [pathname] as deps.",
+    "hooks/useScrollReveal.js: No handling for elements that mount after the effect runs (e.g., async-loaded images shifting layout). Consider using a MutationObserver or re-observing on window load.",
+    "BrandMarquee.jsx: uses class 'bg-brand-green' which is aliased to red (#941425) — works but the naming (green vs red) is confusing for future maintainers.",
+    "index.css: .reveal-img default clip-path inset(0 100% 0 0) fully hides content — should have a fallback via @media (prefers-reduced-motion) or a class to opt out for accessibility."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (skipped)", "frontend": "88% (7/8 test areas pass; reveal-img reveal broken)"},
+  "seed_data_creation": "None",
+  "retest_needed": true,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "After main agent fixes useScrollReveal / .reveal-img: retest by loading / and scrolling to About section — the Manufacturing Excellence image must appear (clip-path animates from inset(0 100% 0 0) to inset(0)). Also scroll further to WhyHDPE white card. Then load /products and scroll through all 4 product cards — every reveal-img must reach .in-view (verifiable via evaluate: document.querySelectorAll('.reveal-img').forEach(e => console.log(e.classList.contains('in-view')))). Forms + marquee + typography + mobile regression are all currently passing and can be spot-checked only.",
+  "rca of the issue": "Reproduction: 1) Open https://ceeco-hdpe.preview.emergentagent.com/ at 1920x1080. 2) Scroll to the About preview section. 3) The right column that should show the 'Manufacturing Excellence' image is completely blank. 4) DevTools: document.querySelectorAll('.reveal-img')[0].classList  → does NOT include 'in-view'; clip-path stays inset(0 100% 0 0). 5) Manually run document.querySelectorAll('.reveal-img').forEach(e => e.classList.add('in-view')) → image reveals correctly (proving CSS is correct). Same on /products for all 4 product images. Root cause is in hooks/useScrollReveal.js: useEffect without dependency array + no re-evaluation once images finish loading. Mitigation: add [] dependency array, or run an initial pass that adds .in-view to any element whose top < window.innerHeight at mount time, and also re-observe on window 'load' event."
+}

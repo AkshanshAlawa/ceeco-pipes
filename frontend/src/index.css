@@ -88,6 +88,23 @@
     h1, h2, h3, h4, h5, h6 {
         font-family: 'Sora', 'Inter', sans-serif;
         letter-spacing: -0.02em;
+        text-wrap: balance;
+    }
+    p {
+        text-wrap: pretty;
+    }
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+        background: hsl(0 0% 95%);
+    }
+    ::-webkit-scrollbar-thumb {
+        background: hsl(0 0% 16%);
+        border: 2px solid hsl(0 0% 95%);
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: hsl(var(--brand-green));
     }
     ::selection {
         background-color: hsl(var(--accent));
@@ -189,6 +206,15 @@
         transform: scale(1);
     }
 
+    /* Cinematic image reveal — wipes in from the left */
+    .reveal-img {
+        clip-path: inset(0 100% 0 0);
+        transition: clip-path 1.2s var(--ease-out-expo);
+    }
+    .reveal-img.in-view {
+        clip-path: inset(0 0 0 0);
+    }
+
     /* Nav-link underline animation (red center-out) */
     .nav-underline {
         position: relative;
@@ -224,6 +250,23 @@
         border-radius: 0;
         transition: all 0.3s var(--ease-out-expo);
         cursor: pointer;
+        overflow: hidden;
+    }
+    /* Premium shine sweep on hover */
+    .btn-sharp::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -80%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(105deg, transparent, rgba(255,255,255,0.22), transparent);
+        transform: skewX(-20deg);
+        transition: left 0.65s var(--ease-out-expo);
+        pointer-events: none;
+    }
+    .btn-sharp:hover::after {
+        left: 130%;
     }
     .btn-red {
         background: hsl(var(--brand-green));

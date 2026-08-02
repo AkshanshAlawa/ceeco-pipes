@@ -28,7 +28,7 @@ export default function AboutPreview() {
           <h2 className="relative font-display font-black tracking-[-0.02em] uppercase text-[clamp(2.125rem,6.5vw,72px)] text-black leading-[0.92] break-words">
             Four decades of trust in HDPE piping.
           </h2>
-          <p className="mt-10 text-lg text-neutral-600 leading-[1.7]">
+          <p className="mt-8 text-lg text-neutral-600 leading-[1.7]">
             <span className="font-bold text-black">{SITE.parent}</span> - the
             parent company behind the CEECO brand - was established in{" "}
             <span className="font-bold text-black">1984</span>. For over four
@@ -76,7 +76,7 @@ export default function AboutPreview() {
             <span className="absolute -top-3 -left-3 w-12 h-12 border-t-[3px] border-l-[3px] border-brand-green z-10" />
             <span className="absolute -bottom-3 -right-3 w-12 h-12 border-b-[3px] border-r-[3px] border-brand-green z-10" />
 
-            <div className="relative overflow-hidden aspect-[4/5] group">
+            <div className="relative overflow-hidden aspect-[4/5] group reveal-img">
               <img
                 src={MFG_IMG}
                 alt="CEECO Manufacturing Facility - Peenya, Karnataka"
