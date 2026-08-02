@@ -1,0 +1,80 @@
+{
+  "theme_strategy": {
+    "theme": "Hybrid (Light for informational, Dark for legacy/products)",
+    "description": "A bold, authoritative, legacy industrial design that mirrors B2B giants like Astral Pipes. It combines 'The Performance Pro' and 'Swiss & High-Contrast' archetypes. The UI will feel manufactured, precise, and monumental. Sections alternate between stark white/gray utility layouts and deep obsidian cinematic stages."
+  },
+  "typography": {
+    "headings": {
+      "font": "Anton",
+      "import_url": "@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&display=swap');",
+      "style": "Monumental, heavy, condensed. Used for all major headlines (H1, H2).",
+      "rules": "Use uppercase for impact, extremely tight letter-spacing (tracking-tighter), and high line-height precision (leading-none). Add text-shadow for depth on dark themes."
+    },
+    "body": {
+      "font": "Inter",
+      "style": "Clean, geometric sans for max legibility on technical specs and body copy."
+    },
+    "accents": {
+      "style": "Ghost index numerals (e.g., 01, 02) rendered massive (text-8xl+) in the background with opacity-5, providing a structural anchor to grids."
+    }
+  },
+  "colors": {
+    "primary_brand": "Red (#941425) alias mapped to `brand-green` in CSS.",
+    "background_dark": "Deep Obsidian/True Black (#0A0A0A) alias `brand-navy`.",
+    "background_light": "Industrial Gray/White (#F2F2F2, #FFFFFF).",
+    "accents": "White, Red, and stark Black.",
+    "usage": "Use Pure Black (#0A0A0A) for the Legacy and Product grids to create cinematic gravity. Use White/Gray for standard content blocks like the Why Choose Us 8-card grid. Red is strictly for the Marquee ribbon, CTA blocks, and highlights."
+  },
+  "custom_typography_logo": {
+    "concept": "The Stenciled Monolith",
+    "description": "A purely custom SVG wordmark representing CEECO without relying on standard fonts. The letters are built from thick geometric blocks (rectangles and arcs) mimicking heavy steel beams, industrial pipes, and stenciled shipping crates.",
+    "svg_instructions": "Build an SVG component `<CeecoLogo />` inside `src/components/ui`. Use `<svg viewBox=\"0 0 400 100\">`. Construct the 'C's and 'O' using thick, squared-off `<path>` elements with 90-degree outer corners and chamfered inner corners. Construct the 'E's using a thick vertical `<rect>` spine with detached, uniform horizontal `<rect>` arms (creating a stencil gap). The entire wordmark should have no rounded corners (except optical inner curves), embodying the 'sharp corners' directive. Provide color props to swap between fill-white and fill-brand-green based on the header background."
+  },
+  "visual_enhancers": {
+    "borders": "Exposed grids. Use border-collapse patterns, where adjacent cards share a 1px solid border of border-brand-blue-soft or border-brand-navy.",
+    "shadows": "No soft SaaS shadows. Use sharp, aggressive offsets or zero shadows. If shadows are used, use stark drop-shadows or 1px inner glows to simulate stamped metal.",
+    "surfaces": "Use 'The Technical Grid' surface strategy. Solid backgrounds, no glassmorphism on content cards (glassmorphism is only permitted for sticky nav headers).",
+    "motion": "Use the existing scroll reveal system (.reveal, .reveal-x). Implement cinematic wipes (.reveal-img) for the 'About preview' and 'Our Legacy' sections."
+  },
+  "layouts": {
+    "hero": "Cinematic and monumental. A background image of the industrial facility with a heavy black/red overlay (bg-black/60 to bg-black/80). Massive Anton H1 text in white. A stat card overlaying the bottom right.",
+    "grids": "Bento Grid Protocol: High Density (Mode B). 'Why Choose CEECO' should be an asymmetrical bento box of 8 cards with sharp borders. 'Featured Products' should be a dark mode bento grid.",
+    "spacing": "Generous Spacing (p-8 to p-16) inside major structural containers, but dense and tight inside the technical specification cards."
+  },
+  "component_instructions": {
+    "buttons": "Update .btn-sharp in CSS if needed, but ensure it maintains 0px border-radius, pure solid colors, and a sweeping shine effect on hover. Add 'data-testid' to all buttons.",
+    "marquee": "The Red scrolling brand marquee ribbon should use `bg-brand-green` background with massive white outlined or solid uppercase text using Anton.",
+    "forms": "Use Shadcn/UI for the Contact and Careers forms, but override `rounded-md` to `rounded-none`. Dark form cards should use `bg-brand-navy`, 1px solid white/10 border, and sharp inputs.",
+    "whatsapp_button": "A floating square or sharp-edged rectangular button fixed at bottom-right. No bubbly circles."
+  },
+  "image_urls": {
+    "hero_background": {
+      "url": "https://images.unsplash.com/photo-1538474705339-e87de81450e8?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MjJ8MHwxfHNlYXJjaHw0fHxpbmR1c3RyaWFsJTIwcGlwZXMlMjBtYW51ZmFjdHVyaW5nfGVufDB8fHx8MTc4NTY3NTg5NXww&ixlib=rb-4.1.0&q=85",
+      "description": "Grayscale heavy metal pipes, perfect for a cinematic dark overlay in the hero.",
+      "category": "hero"
+    },
+    "legacy_leadership": {
+      "url": "https://images.unsplash.com/photo-1780733066188-6586795a6da7?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzl8MHwxfHNlYXJjaHwzfHxmYWN0b3J5JTIwbGVhZGVyc2hpcCUyMHRlYW0lMjBwb3J0cmFpdHxlbnwwfHx8fDE3ODU2NzU5MDR8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Business professionals standing outside, representing the 1984 legacy leadership.",
+      "category": "about"
+    },
+    "quality_manufacturing": {
+      "url": "https://images.unsplash.com/photo-1700727448575-6f1680cd7d75?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzF8MHwxfHNlYXJjaHwyfHxtYW51ZmFjdHVyaW5nJTIwcXVhbGl0eSUyMGluc3BlY3Rpb258ZW58MHx8fHwxNzg1Njc1ODk5fDA&ixlib=rb-4.1.0&q=85",
+      "description": "Man with a clipboard doing quality inspection.",
+      "category": "quality"
+    },
+    "featured_products": {
+      "url": "https://images.unsplash.com/photo-1513828742140-ccaa28f3eda0?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MjJ8MHwxfHNlYXJjaHwyfHxpbmR1c3RyaWFsJTIwcGlwZXMlMjBtYW51ZmFjdHVyaW5nfGVufDB8fHx8MTc4NTY3NTg5NXww&ixlib=rb-4.1.0&q=85",
+      "description": "Industrial equipment and pipes.",
+      "category": "products"
+    }
+  },
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "You MUST construct the CEECO logo entirely out of SVG geometry (rects, polygons, paths) in a blocky, stenciled, heavy industrial style, without using `<text>` nodes.",
+    "Do not use generic center alignment for layout containers; use asymmetrical or strictly left-aligned industrial layouts.",
+    "All cards, inputs, and buttons MUST have `rounded-none` or 0px border-radius to maintain the strict industrial feel.",
+    "Ensure dark sections use `bg-brand-navy` (#0A0A0A) and red sections use `bg-brand-green` (#941425). Note the naming quirk from the CSS file where brand-green is actually RED.",
+    "Add `data-testid` to all interactive components.",
+    "Create depth through stark borders and grid patterns, not soft blurs or drop-shadows on content."
+  ]
+}
