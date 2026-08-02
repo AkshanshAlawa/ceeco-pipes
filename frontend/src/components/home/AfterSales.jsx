@@ -29,6 +29,7 @@ export default function AfterSales() {
             eyebrow="After Sales Support"
             title="Beyond the sale - we stand by every pipe."
             subtitle="Our commitment doesn't end when the pipe leaves the factory. It begins there."
+            index="09"
           />
         </div>
 

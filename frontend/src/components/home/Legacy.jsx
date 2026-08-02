@@ -55,8 +55,9 @@ export default function Legacy() {
           <div className="lg:col-span-7 reveal">
             <SectionHeading
               eyebrow="Our Legacy"
-              title="Two generations. One commitment."
+              title="Three generations. One commitment."
               light
+              index="02"
             />
             <p className="mt-8 text-lg text-white/75 leading-[1.7]">
               Founded by{" "}

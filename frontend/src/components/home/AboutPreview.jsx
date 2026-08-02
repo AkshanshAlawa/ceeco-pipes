@@ -1,22 +1,34 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Calendar, Users, Award } from "lucide-react";
-import { ASSETS, SITE } from "@/lib/site";
+import { SITE } from "@/lib/site";
+
+// Premium HDPE pipe extrusion line image for the "Manufacturing Excellence" tile.
+const MFG_IMG =
+  "https://static.prod-images.emergentagent.com/jobs/c056584a-33b1-4ade-8467-aae152dd1a8d/images/3a18ef5e513eee22652e7c332f57a035fe6663c240585ea0c848447892cf777f.jpeg";
 
 export default function AboutPreview() {
   return (
-    <section data-testid="about-preview" className="py-24 sm:py-32 bg-white">
+    <section data-testid="about-preview" className="py-28 sm:py-36 bg-white relative">
       <div className="container-x grid lg:grid-cols-12 gap-16 items-center">
-        <div className="lg:col-span-6 reveal-x">
-          <div className="flex items-center gap-3 mb-6">
+        <div className="lg:col-span-6 reveal-x relative">
+          {/* Ghost index number */}
+          <span
+            aria-hidden="true"
+            className="absolute -top-10 -left-2 sm:-top-14 text-[110px] sm:text-[140px] font-display font-black leading-none text-black/[0.04] select-none pointer-events-none"
+          >
+            01
+          </span>
+
+          <div className="relative flex items-center gap-4 mb-7">
             <span className="accent-line-lg" />
-            <p className="text-[11px] tracking-[0.32em] font-bold text-brand-green uppercase">
+            <p className="text-sm sm:text-base tracking-[0.4em] font-black text-brand-green uppercase">
               About S D Ruparel Group
             </p>
           </div>
-          <h2 className="font-display font-black tracking-tight text-5xl sm:text-6xl lg:text-[64px] text-black leading-[0.98]">
+          <h2 className="relative font-display font-black tracking-[-0.02em] uppercase text-[clamp(2.125rem,6.5vw,72px)] text-black leading-[0.92] break-words">
             Four decades of trust in HDPE piping.
           </h2>
-          <p className="mt-8 text-lg text-neutral-600 leading-[1.7]">
+          <p className="mt-10 text-lg text-neutral-600 leading-[1.7]">
             <span className="font-bold text-black">{SITE.parent}</span> - the
             parent company behind the CEECO brand - was established in{" "}
             <span className="font-bold text-black">1984</span>. For over four
@@ -61,25 +73,27 @@ export default function AboutPreview() {
         <div className="lg:col-span-6 reveal-scale">
           <div className="relative">
             {/* Red frame corner accents */}
-            <span className="absolute -top-3 -left-3 w-10 h-10 border-t-[3px] border-l-[3px] border-brand-green z-10" />
-            <span className="absolute -bottom-3 -right-3 w-10 h-10 border-b-[3px] border-r-[3px] border-brand-green z-10" />
+            <span className="absolute -top-3 -left-3 w-12 h-12 border-t-[3px] border-l-[3px] border-brand-green z-10" />
+            <span className="absolute -bottom-3 -right-3 w-12 h-12 border-b-[3px] border-r-[3px] border-brand-green z-10" />
 
             <div className="relative overflow-hidden aspect-[4/5] group">
               <img
-                src={ASSETS.factory}
+                src={MFG_IMG}
                 alt="CEECO Manufacturing Facility - Peenya, Karnataka"
-                className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-1000"
+                className="w-full h-full object-cover object-center group-hover:scale-[1.03] transition-transform duration-1000"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6 text-white">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="w-6 h-[2px] bg-brand-green" />
-                  <p className="text-[10px] tracking-[0.32em] uppercase text-brand-green font-bold">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent" />
+              <div className="absolute bottom-8 left-6 right-6 sm:left-8 sm:right-8 text-white">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="w-10 h-[2px] bg-brand-green" />
+                  <p className="text-[11px] tracking-[0.4em] uppercase text-brand-green font-black">
                     Peenya, Karnataka, India
                   </p>
                 </div>
-                <p className="font-display text-3xl font-black tracking-tight">
-                  Manufacturing Excellence
+                <p className="font-display text-[clamp(1.5rem,7vw,48px)] font-black tracking-[-0.02em] uppercase leading-[0.95]">
+                  Manufacturing
+                  <br />
+                  Excellence
                 </p>
               </div>
             </div>

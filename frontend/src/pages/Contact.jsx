@@ -154,10 +154,10 @@ export default function Contact() {
             </div>
 
             <div className="mt-10 flex flex-wrap gap-3">
-              <a href="#contact-form" className="btn-sharp btn-outline-black">
+              <a href="#enquiry-form" className="btn-sharp btn-outline-black">
                 <MapPin className="w-4 h-4" strokeWidth={2} /> Find Store
               </a>
-              <a href="#contact-form" className="btn-sharp btn-outline-red">
+              <a href="#enquiry-form" className="btn-sharp btn-outline-red">
                 Become a Dealer <ArrowRight className="w-4 h-4" strokeWidth={2} />
               </a>
             </div>
@@ -166,9 +166,10 @@ export default function Contact() {
           {/* Right Form */}
           <div className="lg:col-span-7 reveal" id="contact-form">
             <form
+              id="enquiry-form"
               onSubmit={handleSubmit}
               data-testid="contact-form"
-              className="bg-black text-white p-8 sm:p-12 shadow-navy relative overflow-hidden"
+              className="bg-black text-white p-8 sm:p-12 shadow-navy relative overflow-hidden scroll-mt-24"
             >
               <span className="absolute top-0 left-0 w-16 h-[3px] bg-brand-green" />
               <span className="absolute bottom-0 right-0 w-16 h-[3px] bg-brand-green" />

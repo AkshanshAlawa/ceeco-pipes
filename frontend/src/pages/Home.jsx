@@ -7,6 +7,7 @@ import FeaturedProducts from "@/components/home/FeaturedProducts";
 import QualityManufacturing from "@/components/home/QualityManufacturing";
 import WhyHDPE from "@/components/home/WhyHDPE";
 import ClientsMarquee from "@/components/home/ClientsMarquee";
+import CustomRequirements from "@/components/home/CustomRequirements";
 import Testimonials from "@/components/home/Testimonials";
 import AfterSales from "@/components/home/AfterSales";
 import ContactPreview from "@/components/home/ContactPreview";
@@ -23,6 +24,7 @@ export default function Home() {
       <QualityManufacturing />
       <WhyHDPE />
       <ClientsMarquee />
+      <CustomRequirements />
       <Testimonials />
       <AfterSales />
       <ContactPreview />

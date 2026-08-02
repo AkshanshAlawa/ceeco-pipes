@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, Clock, MapPin, Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+import { Phone, Mail, Clock, MapPin } from "lucide-react";
 import Logo from "./Logo";
 import { SITE, COPYRIGHT_YEAR } from "@/lib/site";
 
@@ -33,18 +33,6 @@ export default function Footer() {
               {SITE.brand} by {SITE.parent} - reliable HDPE piping
               solutions trusted since {SITE.established}.
             </p>
-            <div className="flex gap-2 mt-7">
-              {[Facebook, Instagram, Linkedin, Twitter].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  aria-label="social"
-                  className="w-10 h-10 border border-white/20 flex items-center justify-center hover:bg-brand-green hover:border-brand-green transition-all"
-                >
-                  <Icon className="w-4 h-4" strokeWidth={1.5} />
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* Quick links */}

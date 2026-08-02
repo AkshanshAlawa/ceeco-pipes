@@ -70,6 +70,7 @@ export default function WhyChoose() {
             eyebrow="Why Choose CEECO"
             title="Engineered for trust, built for the long run."
             subtitle="Eight reasons why dealers, farmers, contractors and industries have relied on CEECO HDPE Pipes for four decades."
+            index="03"
           />
         </div>
 

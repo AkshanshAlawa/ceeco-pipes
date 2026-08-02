@@ -38,6 +38,7 @@ export default function QualityManufacturing() {
             eyebrow="Quality Manufacturing"
             title="Every pipe, built to perform."
             subtitle="At CEECO, every pipe is manufactured with attention to durability, strength and consistent performance. Our ISO 9001:2015 certified processes ensure that every product meets the standards our customers rely on."
+            index="05"
           />
           <Link
             to="/quality"

@@ -40,6 +40,7 @@ export default function ClientsMarquee() {
           eyebrow="Institutions That Rely On CEECO"
           title="Trusted by the institutions that shape Karnataka."
           subtitle="From state agencies to private contractors, our pipes carry critical infrastructure across Karnataka - powering municipal supply, state irrigation projects, and large public works for over four decades."
+          index="07"
         />
       </div>
 
@@ -80,6 +81,15 @@ export default function ClientsMarquee() {
             </div>
           ))}
         </div>
+
+        <p
+          data-testid="institutions-disclaimer"
+          className="mt-8 text-xs text-neutral-500 italic leading-relaxed text-center max-w-3xl mx-auto"
+        >
+          Note: The institutional projects showcased above have utilized CEECO
+          HDPE piping solutions - supplied both directly and through private
+          contractors engaged by the respective institutions.
+        </p>
 
         {/* State Irrigation pill */}
         <div className="mt-12 flex justify-center reveal">

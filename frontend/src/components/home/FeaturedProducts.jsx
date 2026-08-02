@@ -46,6 +46,7 @@ export default function FeaturedProducts() {
               title="HDPE pipes for every flow."
               subtitle="From farm irrigation to municipal water grids and underground cable ducts - one trusted manufacturer."
               light
+              index="04"
             />
           </div>
           <Link

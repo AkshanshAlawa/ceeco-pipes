@@ -14,6 +14,7 @@ export default function WhyHDPE() {
             eyebrow="Why HDPE"
             title="The smarter choice for modern infrastructure."
             subtitle="Eight properties that make HDPE the material of choice for engineers, farmers and contractors - available in PE 80 & PE 100 grades."
+            index="06"
           />
         </div>
 

@@ -92,7 +92,7 @@ export default function Header() {
             </SheetTrigger>
             <SheetContent
               side="right"
-              className="w-full sm:max-w-md bg-black border-0 p-0 text-white"
+              className="w-full sm:max-w-md bg-black border-0 p-0 text-white [&>button]:hidden"
             >
               <VisuallyHidden>
                 <SheetTitle>Navigation Menu</SheetTitle>

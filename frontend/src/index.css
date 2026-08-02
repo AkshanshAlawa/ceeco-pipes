@@ -15,9 +15,9 @@
         --brand-blue: 0 0% 29%;         /* Text Gray #4A4A4A */
         --brand-blue-soft: 0 0% 88%;    /* Border Gray #E0E0E0 */
 
-        /* Brand Red — the ONE accent */
-        --brand-green: 352 85% 42%;         /* #C8102E */
-        --brand-green-deep: 352 88% 32%;    /* #9B0A1E */
+        /* Brand Red — extracted from S D Ruparel parent logo */
+        --brand-green: 352 76% 33%;         /* #941425 */
+        --brand-green-deep: 352 84% 24%;    /* #710A17 */
 
         /* Industrial Gray fills */
         --brand-light-blue: 0 0% 95%;   /* #F2F2F2 */
@@ -39,25 +39,25 @@
         --secondary-foreground: 0 0% 4%;
         --muted: 0 0% 96%;
         --muted-foreground: 0 0% 29%;
-        --accent: 352 85% 42%;
+        --accent: 352 76% 33%;
         --accent-foreground: 0 0% 100%;
-        --destructive: 352 85% 42%;
+        --destructive: 352 76% 33%;
         --destructive-foreground: 0 0% 100%;
         --border: 0 0% 88%;
         --input: 0 0% 88%;
-        --ring: 352 85% 42%;
+        --ring: 352 76% 33%;
         --radius: 0.125rem;
 
         /* Backgrounds (no gradients allowed on section fills — flat only) */
         --gradient-hero: linear-gradient(180deg, hsl(0 0% 0%) 0%, hsl(0 0% 4%) 100%);
         --gradient-navy: hsl(0 0% 4%);
-        --gradient-green-cta: hsl(352 85% 42%);
+        --gradient-green-cta: hsl(352 76% 33%);
         --gradient-light: hsl(0 0% 100%);
 
         /* Shadows — quieter, more industrial */
         --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
         --shadow-card-hover: 0 20px 40px -12px rgba(0,0,0,0.20);
-        --shadow-cta: 0 10px 24px -8px hsl(352 85% 42% / 0.45);
+        --shadow-cta: 0 10px 24px -8px hsl(352 76% 33% / 0.45);
         --shadow-navy: 0 20px 60px -20px rgba(0,0,0,0.45);
         --shadow-nav-scrolled: 0 2px 20px rgba(0,0,0,0.08);
 
@@ -113,7 +113,7 @@
 
     .bg-gradient-hero { background-color: hsl(0 0% 4%); }
     .bg-gradient-navy { background-color: hsl(0 0% 4%); }
-    .bg-gradient-green-cta { background-color: hsl(352 85% 42%); }
+    .bg-gradient-green-cta { background-color: hsl(352 76% 33%); }
     .bg-gradient-light { background-color: hsl(0 0% 100%); }
 
     .shadow-card { box-shadow: var(--shadow-card); }
@@ -141,7 +141,7 @@
     .pipe-pattern {
         background-image:
             radial-gradient(circle at 20% 30%, hsl(0 0% 0% / 0.03) 0px, transparent 40%),
-            radial-gradient(circle at 80% 70%, hsl(352 85% 42% / 0.05) 0px, transparent 40%);
+            radial-gradient(circle at 80% 70%, hsl(352 76% 33% / 0.05) 0px, transparent 40%);
     }
 
     .grid-pattern {
@@ -233,7 +233,7 @@
         background: hsl(var(--brand-green-deep));
         border-color: hsl(var(--brand-green-deep));
         transform: translateY(-2px);
-        box-shadow: 0 12px 30px -8px hsl(352 88% 32% / 0.4);
+        box-shadow: 0 12px 30px -8px hsl(352 84% 24% / 0.4);
     }
     .btn-outline-white {
         background: transparent;

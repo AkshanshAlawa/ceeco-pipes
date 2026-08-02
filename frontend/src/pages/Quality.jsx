@@ -161,7 +161,7 @@ export default function Quality() {
                   Future Certifications
                 </p>
               </div>
-              <h2 className="font-display font-black tracking-tight text-5xl sm:text-6xl lg:text-[64px] leading-[0.98]">
+              <h2 className="font-display font-black tracking-tight text-[clamp(2rem,6vw,64px)] leading-[0.98] break-words">
                 Working towards BIS &amp; ISI certifications.
               </h2>
               <p className="mt-8 text-lg text-white/70 leading-[1.7] max-w-2xl">

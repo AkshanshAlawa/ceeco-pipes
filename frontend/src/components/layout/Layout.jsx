@@ -6,12 +6,18 @@ import WhatsAppButton from "./WhatsAppButton";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 export default function Layout({ children }) {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   useScrollReveal();
 
   useEffect(() => {
+    if (hash) {
+      const t = setTimeout(() => {
+        document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: "smooth" });
+      }, 150);
+      return () => clearTimeout(t);
+    }
     window.scrollTo({ top: 0, behavior: "instant" });
-  }, [pathname]);
+  }, [pathname, hash]);
 
   return (
     <div className="min-h-screen flex flex-col bg-background">

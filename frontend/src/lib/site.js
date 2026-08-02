@@ -12,7 +12,7 @@ export const SITE = {
   phoneRaw: "+918043729397",
   email: "info@ceecopipes.com",
   website: "www.ceecopipes.com",
-  whatsapp: "https://wa.me/918043729397",
+  whatsapp: "https://wa.me/919449528205",
 
   hours: {
     days: "Monday - Saturday",

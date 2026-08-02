@@ -133,7 +133,7 @@ export default function Products() {
                 </ul>
                 <div className="mt-10">
                   <Link
-                    to="/contact"
+                    to="/contact#enquiry-form"
                     data-testid={`product-${i}-request-quote`}
                     className="btn-sharp bg-black text-white border-2 border-black hover:bg-brand-green hover:border-brand-green transition-all"
                   >

@@ -35,6 +35,7 @@ export default function Testimonials() {
             eyebrow="Testimonials"
             title="What our clients say."
             subtitle="Honest words from farmers, contractors and industrial buyers - the people who keep coming back to CEECO HDPE Pipes."
+            index="08"
           />
         </div>
 

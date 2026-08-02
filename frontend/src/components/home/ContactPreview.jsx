@@ -15,18 +15,18 @@ export default function ContactPreview() {
       <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-black" />
 
       <div className="container-x relative">
-        <div className="text-center max-w-3xl mx-auto reveal">
-          <div className="inline-flex items-center gap-3 mb-4">
-            <span className="w-10 h-[2px] bg-white" />
-            <p className="text-[11px] tracking-[0.35em] uppercase font-bold text-white">
+        <div className="text-center max-w-4xl mx-auto reveal">
+          <div className="inline-flex items-center gap-4 mb-6">
+            <span className="w-12 h-[2px] bg-white" />
+            <p className="text-sm sm:text-base tracking-[0.4em] uppercase font-black text-white">
               Get In Touch
             </p>
-            <span className="w-10 h-[2px] bg-white" />
+            <span className="w-12 h-[2px] bg-white" />
           </div>
-          <h2 className="font-display font-black tracking-tight text-5xl sm:text-6xl lg:text-[64px] leading-[0.98]">
+          <h2 className="font-display font-black tracking-[-0.02em] uppercase text-[clamp(2.125rem,7vw,88px)] leading-[0.92] break-words">
             Let&apos;s talk about your project.
           </h2>
-          <p className="mt-6 text-white/90 text-lg">
+          <p className="mt-8 text-white/90 text-lg">
             From dealer enquiries to bulk orders - our team is ready to help.
           </p>
         </div>
@@ -64,7 +64,7 @@ export default function ContactPreview() {
             Find Store
           </Link>
           <Link
-            to="/contact"
+            to="/contact#enquiry-form"
             data-testid="contact-preview-become-dealer"
             className="btn-sharp btn-outline-white"
           >
