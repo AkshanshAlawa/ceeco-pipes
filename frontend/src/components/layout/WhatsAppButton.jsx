@@ -22,7 +22,7 @@ export default function WhatsAppButton() {
         Chat with us
       </span>
       <span
-        className="relative w-14 h-14 rounded-full flex items-center justify-center text-white shadow-cta animate-pulse-ring hover:scale-105 transition-transform"
+        className="relative w-14 h-14 flex items-center justify-center text-white shadow-cta animate-pulse-ring hover:scale-105 transition-transform"
         style={{ backgroundColor: "#25D366" }}
       >
         <WhatsAppIcon className="w-8 h-8" />

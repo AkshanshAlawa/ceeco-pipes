@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-/* Astral-style stat wall — 3 stats now (Karnataka stat removed). */
+/* Astral-style stat wall — aligned separators, optically balanced values. */
 const stats = [
   { num: 1984, suffix: "", label: "Established" },
   { num: 40, suffix: "+", label: "Years Experience" },
@@ -31,22 +31,26 @@ function StatItem({ s, start, idx }) {
   const isText = Boolean(s.text);
   return (
     <div
-      className="text-center px-6 relative"
-      style={{ transitionDelay: `${idx * 100}ms` }}
+      className={`relative flex flex-col items-center justify-end text-center px-6 py-10 sm:py-2 ${
+        idx > 0 ? "border-t sm:border-t-0 sm:border-l border-[#D8D8D8]" : ""
+      }`}
     >
-      <div
-        className={`font-display font-black tracking-[-0.02em] leading-none text-black ${
-          isText
-            ? "text-[clamp(2.25rem,10vw,72px)]"
-            : "text-[clamp(3rem,12vw,96px)]"
-        }`}
-      >
-        {s.text ? s.text : v}
-        {!s.text && s.suffix}
+      {/* Fixed-height value box so all three baselines align optically */}
+      <div className="flex items-end justify-center h-16 sm:h-24">
+        <span
+          className={`font-display tracking-[0.01em] leading-none text-black ${
+            isText
+              ? "text-[clamp(2.25rem,4vw,56px)]"
+              : "text-[clamp(3rem,5.5vw,80px)]"
+          }`}
+        >
+          {s.text ? s.text : v}
+          {!s.text && s.suffix}
+        </span>
       </div>
       <div className="mt-5 flex items-center justify-center gap-3">
-        <span className="w-10 h-[2px] bg-brand-green" />
-        <span className="text-xs sm:text-sm tracking-[0.32em] uppercase text-neutral-600 font-black">
+        <span className="w-8 h-[2px] bg-brand-green shrink-0" />
+        <span className="text-[11px] sm:text-xs tracking-[0.28em] uppercase text-neutral-600 font-black whitespace-nowrap">
           {s.label}
         </span>
       </div>
@@ -78,16 +82,18 @@ export default function Stats() {
     <section
       ref={ref}
       data-testid="stats-section"
-      className="py-20 sm:py-24 bg-[#F2F2F2] relative"
+      className="py-16 sm:py-24 bg-[#F2F2F2] relative"
     >
       {/* Top and bottom red thin lines for framing */}
       <div className="absolute top-0 left-0 h-[3px] w-32 bg-brand-green" />
       <div className="absolute bottom-0 right-0 h-[3px] w-32 bg-brand-green" />
 
-      <div className="container-x grid grid-cols-1 sm:grid-cols-3 gap-y-12 sm:gap-6 divide-y sm:divide-y-0 sm:divide-x divide-[#D0D0D0]">
-        {stats.map((s, i) => (
-          <StatItem key={s.label} s={s} start={start} idx={i} />
-        ))}
+      <div className="container-x">
+        <div className="grid grid-cols-1 sm:grid-cols-3">
+          {stats.map((s, i) => (
+            <StatItem key={s.label} s={s} start={start} idx={i} />
+          ))}
+        </div>
       </div>
     </section>
   );

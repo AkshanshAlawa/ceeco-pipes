@@ -68,7 +68,7 @@ export default function Quality() {
                 <p className="text-[10px] tracking-[0.32em] uppercase text-brand-green font-bold">
                   Certification
                 </p>
-                <p className="mt-1.5 font-display font-black uppercase tracking-tight text-xl text-black">
+                <p className="mt-1.5 font-display font-black uppercase tracking-[0.02em] text-xl text-black">
                   ISO 9001:2015
                 </p>
                 <p className="mt-2 text-xs text-neutral-500">
@@ -90,7 +90,7 @@ export default function Quality() {
                 <p className="text-[10px] tracking-[0.32em] uppercase text-black font-bold">
                   Government Recognition
                 </p>
-                <p className="mt-1.5 font-display font-black uppercase tracking-tight text-xl text-black">
+                <p className="mt-1.5 font-display font-black uppercase tracking-[0.02em] text-xl text-black">
                   Udyam MSME Registered
                 </p>
                 <p className="mt-2 text-xs text-neutral-500">
@@ -120,7 +120,7 @@ export default function Quality() {
                 <div className="w-14 h-14 border-2 border-black group-hover:border-brand-green flex items-center justify-center transition-colors">
                   <c.icon className="w-6 h-6 text-black group-hover:text-brand-green transition-colors" strokeWidth={1.5} />
                 </div>
-                <p className="mt-6 font-display font-black uppercase tracking-tight text-black group-hover:text-white transition-colors text-sm">
+                <p className="mt-6 font-display font-black uppercase tracking-[0.02em] text-black group-hover:text-white transition-colors text-sm">
                   {c.label}
                 </p>
                 <CheckCircle2 className="mt-4 w-5 h-5 text-brand-green" strokeWidth={1.5} />
@@ -161,7 +161,7 @@ export default function Quality() {
                   Future Certifications
                 </p>
               </div>
-              <h2 className="font-display font-black tracking-tight text-[clamp(2rem,6vw,64px)] leading-[0.98] break-words">
+              <h2 className="font-display font-black tracking-[0.02em] text-[clamp(2rem,6vw,64px)] leading-[0.98]">
                 Working towards BIS &amp; ISI certifications.
               </h2>
               <p className="mt-8 text-lg text-white/70 leading-[1.7] max-w-2xl">
@@ -183,11 +183,11 @@ export default function Quality() {
                     <div className="w-14 h-14 border-2 border-brand-green flex items-center justify-center group-hover:bg-brand-green transition-colors">
                       <Award className="w-6 h-6 text-brand-green group-hover:text-white transition-colors" strokeWidth={1.5} />
                     </div>
-                    <span className="font-display font-black text-4xl text-brand-green tracking-tight">
+                    <span className="font-display font-black text-4xl text-brand-green tracking-[0.02em]">
                       {w.code}
                     </span>
                   </div>
-                  <p className="mt-6 font-display font-black uppercase tracking-tight text-xl text-white">
+                  <p className="mt-6 font-display font-black uppercase tracking-[0.02em] text-xl text-white">
                     {w.title}
                   </p>
                   <p className="mt-3 text-sm text-white/70 leading-[1.7]">

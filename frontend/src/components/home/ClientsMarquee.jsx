@@ -67,7 +67,7 @@ export default function ClientsMarquee() {
                   loading="lazy"
                 />
               </div>
-              <p className="font-display font-black tracking-tight text-lg text-black leading-tight uppercase">
+              <p className="font-display font-black tracking-[0.02em] text-lg text-black leading-tight uppercase">
                 {c.name}
               </p>
               {c.note && (

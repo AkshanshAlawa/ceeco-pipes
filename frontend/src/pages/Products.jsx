@@ -8,6 +8,7 @@ import { ASSETS, PN_RATINGS, PIPE_SIZES, PE_GRADES } from "@/lib/site";
 const products = [
   {
     title: "HDPE Agricultural Pipes",
+    slug: "agricultural",
     tag: "Agriculture",
     desc: "Reliable and durable pipes suitable for irrigation and agricultural water flow systems.",
     features: ["Long service life", "Smooth water flow", "Easy to install", "UV resistant"],
@@ -15,6 +16,7 @@ const products = [
   },
   {
     title: "Water Supply HDPE Pipes",
+    slug: "water-supply",
     tag: "Municipal",
     desc: "High-quality piping solutions for residential, commercial and water distribution applications.",
     features: ["Leak resistant", "Potable water grade", "High pressure ratings", "Long lasting"],
@@ -22,6 +24,7 @@ const products = [
   },
   {
     title: "Industrial HDPE Pipes",
+    slug: "industrial",
     tag: "Industrial",
     desc: "Strong and durable HDPE pipes designed for industrial fluid transport and process requirements.",
     features: ["Chemical resistant", "High strength", "Custom lengths", "Multiple PN ratings"],
@@ -29,6 +32,7 @@ const products = [
   },
   {
     title: "Blue Duct Pipes",
+    slug: "blue-duct",
     tag: "Electrical",
     desc: "Protective duct pipes used for underground electrical and cable wire installations.",
     features: ["Underground rated", "Crush resistant", "Easy joints", "Bright identification"],
@@ -87,7 +91,9 @@ export default function Products() {
           {products.map((p, i) => (
             <div
               key={p.title}
-              className={`grid lg:grid-cols-12 gap-12 lg:gap-16 items-center reveal ${
+              id={`product-${p.slug}`}
+              data-testid={`product-section-${p.slug}`}
+              className={`scroll-mt-28 grid lg:grid-cols-12 gap-12 lg:gap-16 items-center reveal ${
                 i % 2 === 1 ? "lg:[&>div:first-child]:order-2" : ""
               }`}
             >
@@ -115,7 +121,7 @@ export default function Products() {
                 <p className="text-[11px] tracking-[0.32em] uppercase text-brand-green font-bold">
                   Product {String(i + 1).padStart(2, "0")}
                 </p>
-                <h2 className="mt-4 font-display font-black tracking-tight text-4xl sm:text-5xl lg:text-[52px] text-black leading-[1]">
+                <h2 className="mt-4 font-display font-black tracking-[0.02em] text-4xl sm:text-5xl lg:text-[52px] text-black leading-[1]">
                   {p.title}
                 </h2>
                 <p className="mt-6 text-lg text-neutral-600 leading-[1.7]">
@@ -134,6 +140,7 @@ export default function Products() {
                 <div className="mt-10">
                   <Link
                     to="/contact#enquiry-form"
+                    state={{ product: p.title }}
                     data-testid={`product-${i}-request-quote`}
                     className="btn-sharp bg-black text-white border-2 border-black hover:bg-brand-green hover:border-brand-green transition-all"
                   >
@@ -250,7 +257,7 @@ export default function Products() {
                     <p className="text-[10px] tracking-[0.32em] uppercase text-brand-green font-bold">
                       Certification
                     </p>
-                    <p className="mt-1 font-display font-black uppercase tracking-tight text-xl text-black">
+                    <p className="mt-1 font-display font-black uppercase tracking-[0.02em] text-xl text-black">
                       ISO 9001:2015
                     </p>
                   </div>
@@ -281,7 +288,7 @@ export default function Products() {
                     <p className="text-[10px] tracking-[0.32em] uppercase text-black font-bold">
                       Government Recognition
                     </p>
-                    <p className="mt-1 font-display font-black uppercase tracking-tight text-xl text-black">
+                    <p className="mt-1 font-display font-black uppercase tracking-[0.02em] text-xl text-black">
                       Udyam MSME Registered
                     </p>
                   </div>

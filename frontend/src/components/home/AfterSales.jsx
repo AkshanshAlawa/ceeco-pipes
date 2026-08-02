@@ -43,7 +43,7 @@ export default function AfterSales() {
               <div className="w-16 h-16 mx-auto border-2 border-black flex items-center justify-center group-hover:border-brand-green group-hover:bg-brand-green transition-all">
                 <p.icon className="w-6 h-6 text-black group-hover:text-white transition-colors" strokeWidth={1.5} />
               </div>
-              <h3 className="mt-6 font-display font-black tracking-tight text-2xl text-black">
+              <h3 className="mt-6 font-display font-black tracking-[0.02em] text-2xl text-black">
                 {p.title}
               </h3>
               <p className="mt-3 text-sm text-neutral-600 leading-[1.7]">

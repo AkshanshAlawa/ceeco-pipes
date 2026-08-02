@@ -37,7 +37,7 @@ export default function Header() {
       data-testid="site-header"
       className={`fixed top-0 inset-x-0 z-40 transition-all duration-500 ${
         isSolid
-          ? "bg-white shadow-nav-scrolled"
+          ? "bg-white/90 backdrop-blur-md shadow-nav-scrolled"
           : "bg-transparent"
       }`}
     >
@@ -126,7 +126,7 @@ export default function Header() {
                           onClick={() => setOpen(false)}
                           data-testid={`mobile-nav-link-${l.label.toLowerCase().replace(/\s+/g, "-")}`}
                           className={({ isActive }) =>
-                            `group flex items-center justify-between px-4 py-4 text-2xl font-display font-black tracking-tight uppercase transition-all border-b border-white/5 ${
+                            `group flex items-center justify-between px-4 py-4 text-2xl font-display font-black tracking-[0.02em] uppercase transition-all border-b border-white/5 ${
                               isActive
                                 ? "text-brand-green"
                                 : "text-white hover:text-brand-green hover:translate-x-1"

@@ -25,7 +25,7 @@ export default function AboutPreview() {
               About S D Ruparel Group
             </p>
           </div>
-          <h2 className="relative font-display font-black tracking-[-0.02em] uppercase text-[clamp(2.125rem,6.5vw,72px)] text-black leading-[0.92] break-words">
+          <h2 className="relative font-display font-black tracking-[0.02em] uppercase text-[clamp(2.125rem,6.5vw,72px)] text-black leading-[0.92]">
             Four decades of trust in HDPE piping.
           </h2>
           <p className="mt-8 text-lg text-neutral-600 leading-[1.7]">
@@ -90,7 +90,7 @@ export default function AboutPreview() {
                     Peenya, Karnataka, India
                   </p>
                 </div>
-                <p className="font-display text-[clamp(1.5rem,7vw,48px)] font-black tracking-[-0.02em] uppercase leading-[0.95]">
+                <p className="font-display text-[clamp(1.5rem,7vw,48px)] font-black tracking-[0.02em] uppercase leading-[0.95]">
                   Manufacturing
                   <br />
                   Excellence

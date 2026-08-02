@@ -82,7 +82,7 @@ export default function CustomRequirements() {
                   Enquiry Form
                 </p>
               </div>
-              <h3 className="font-display font-black tracking-tight text-3xl sm:text-4xl leading-[1.05]">
+              <h3 className="font-display font-black tracking-[0.02em] text-3xl sm:text-4xl leading-[1.05]">
                 Tell us what you need.
               </h3>
 

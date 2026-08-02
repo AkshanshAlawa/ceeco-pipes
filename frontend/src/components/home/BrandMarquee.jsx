@@ -21,10 +21,10 @@ export default function BrandMarquee() {
         {row.map((it, i) => (
           <span
             key={i}
-            className="flex items-center text-xs sm:text-sm font-black uppercase tracking-[0.3em] px-8"
+            className="flex items-center font-display text-base sm:text-xl uppercase tracking-[0.08em] px-10"
           >
             {it}
-            <span className="ml-16 w-1.5 h-1.5 bg-white/50 rotate-45 inline-block" />
+            <span className="ml-20 w-2 h-2 bg-white/50 rotate-45 inline-block" />
           </span>
         ))}
       </div>

@@ -45,7 +45,7 @@ export default function SectionHeading({
         </div>
       )}
       <h2
-        className={`relative font-display font-black tracking-[-0.02em] uppercase leading-[0.92] break-words ${sizeClasses[size]} ${
+        className={`relative font-display font-black tracking-[0.02em] uppercase leading-[0.92] ${sizeClasses[size]} ${
           light ? "text-white" : "text-black"
         }`}
       >

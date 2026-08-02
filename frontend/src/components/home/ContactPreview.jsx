@@ -23,7 +23,7 @@ export default function ContactPreview() {
             </p>
             <span className="w-12 h-[2px] bg-white" />
           </div>
-          <h2 className="font-display font-black tracking-[-0.02em] uppercase text-[clamp(2.125rem,7vw,88px)] leading-[0.92] break-words">
+          <h2 className="font-display font-black tracking-[0.02em] uppercase text-[clamp(2.125rem,7vw,88px)] leading-[0.92]">
             Let&apos;s talk about your project.
           </h2>
           <p className="mt-8 text-white/90 text-lg">
