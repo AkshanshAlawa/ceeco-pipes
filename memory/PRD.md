@@ -153,3 +153,16 @@ None - fully public static site, no auth.
 - P0 (user-blocked): user to create Formspree account + provide Form ID → paste into REACT_APP_FORMSPREE_ID
 - P2: per-page SEO meta titles/descriptions
 - P2: product brochure PDF downloads
+
+## Update — June 2026 (Custom logo + design makeover batch — iteration_6.json 100% PASS)
+1. Custom SVG "Stenciled Monolith" CEECO wordmark (Logo.jsx): pure geometry (paths/rects, no fonts) - chamfered C/O plates, stencil-gap E spines, red E mid-arms. Used in header + footer. New public/favicon.svg (chamfered C + red block) linked in index.html.
+2. Design makeover (per /app/design_guidelines.json from design_agent): Anton display font for all headings (font-display -> Anton, forced weight 400, tracking normalized from negative to 0.02em via sitewide sed), glass header (bg-white/90 + backdrop-blur on scroll), Anton red marquee (bigger), Featured Products exposed gap-px dark grid, square WhatsApp button.
+3. FIXED punctuation line-break bug: root cause was `break-words` (overflow-wrap:break-word) on headings breaking before trailing periods ('Generations / .One'). Removed break-words sitewide; Anton's condensed width keeps words fitting. Audited 6 routes x 3 viewports = clean.
+4. Stats section rebuilt: no-gap grid with border-l/border-t separators (perfectly aligned), fixed-height value boxes align baselines, 'Thousands' sized clamp(2.25rem,4vw,56px) vs numbers clamp(3rem,5.5vw,80px) for optical balance.
+5. Product deep links: Home featured cards -> /products#product-{slug} (agricultural, water-supply, industrial, blue-duct); Products rows have id + scroll-mt-28.
+6. Enquiry prefill: Request Quote passes state={{product}} -> Contact.jsx useEffect prefills message "I'd like to request a quote for {product}...".
+Testing: iteration_6.json — 100% pass, 0 console errors, 0 mobile overflow.
+
+## Remaining backlog
+- P0 (user-blocked): Formspree ID -> REACT_APP_FORMSPREE_ID (forms still MOCKED)
+- P2: per-page SEO meta, product brochure PDFs
