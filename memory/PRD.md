@@ -122,3 +122,22 @@ Real Bengaluru addresses (office + manufacturing unit), Google Maps embeds, 5 re
 
 ## Test Credentials
 None - fully public static site, no auth.
+
+## Update — June 2026 (Fork session, 13-point change batch — ALL DONE, tested via iteration_4.json 100% pass)
+1. Legacy heading: "Three generations. One commitment."
+2. Mobile nav: duplicate Sheet close X hidden via `[&>button]:hidden` on SheetContent (Header.jsx)
+3. Responsive typography: all monumental headings converted to clamp() (SectionHeading, PageHero, Hero, Stats, AboutPreview, ContactPreview, Quality). body overflow-x: clip for 320px decorative elements.
+4. Stats: "Thousands / of Satisfied Customers"
+5. Institutions disclaimer added below logos (data-testid=institutions-disclaimer)
+6. NEW Home section CustomRequirements.jsx (id=custom-enquiry) with enquiry form (id=enquiry-form) — form MOCKED (toast only)
+7. All quote CTAs → /contact#enquiry-form with cross-route smooth scroll (hash handling in Layout.jsx). Contact page form now id=enquiry-form.
+8. Brand red re-extracted from uploaded S D Ruparel logo: --brand-green: 352 76% 33% (#941425), deep: 352 84% 24% (#710A17)
+9. Logo.jsx: typography-only CEECO wordmark (red "C" block removed). index.html title/description branded.
+10. All social media icons removed (Footer)
+11. WhatsAppButton.jsx: official WhatsApp SVG glyph
+12. WhatsApp link → https://wa.me/919449528205 (site.js single source)
+13. Manufacturing Excellence image replaced with AI-generated premium HDPE extrusion photo (static.prod-images URL in AboutPreview.jsx)
+
+## Remaining backlog
+- P1: Wire Contact / Careers / Custom Enquiry forms to Formspree or Web3Forms (currently MOCKED with toasts)
+- P3 (skipped, optional): premium micro-interactions inspired by padmavatijewellers.in
