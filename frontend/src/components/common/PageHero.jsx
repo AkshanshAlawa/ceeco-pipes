@@ -30,7 +30,7 @@ export default function PageHero({ eyebrow, title, subtitle, crumb }) {
           )}
           <h1
             data-testid="page-hero-title"
-            className="font-display font-black tracking-[0.02em] uppercase text-[clamp(2.25rem,10vw,112px)] leading-[0.9]"
+            className="font-display font-bold tracking-[-0.02em] text-[clamp(2.25rem,7vw,88px)] leading-[1.03]"
           >
             {title}
           </h1>

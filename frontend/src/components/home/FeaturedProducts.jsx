@@ -83,7 +83,7 @@ export default function FeaturedProducts() {
                 </span>
               </div>
               <div className="flex flex-col flex-1 p-6 bg-black">
-                <h3 className="font-display font-black tracking-[0.02em] text-lg leading-tight text-white group-hover:text-brand-green transition-colors">
+                <h3 className="font-display font-bold tracking-[-0.01em] text-lg leading-tight text-white group-hover:text-brand-green transition-colors">
                   {p.title}
                 </h3>
                 <p className="mt-3 text-sm text-white/60 leading-[1.7]">{p.desc}</p>

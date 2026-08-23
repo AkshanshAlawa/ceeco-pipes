@@ -166,3 +166,10 @@ Testing: iteration_6.json — 100% pass, 0 console errors, 0 mobile overflow.
 ## Remaining backlog
 - P0 (user-blocked): Formspree ID -> REACT_APP_FORMSPREE_ID (forms still MOCKED)
 - P2: per-page SEO meta, product brochure PDFs
+
+## Update — June 2026 (Pre-launch batch: official logo + Playfair typography — iteration_7.json 12/12 PASS, LIVE-READY)
+1. Uploaded official CEECO PIPES serif logo (WhatsApp Image 2026-08-23). Background removed programmatically with PIL (luminance-based alpha, 651x339 crop). Two transparent PNGs in public/: ceeco-logo-dark.png (for white bg), ceeco-logo-light.png (black text recoloured to white, red preserved, for dark bg). New favicon.png. Logo.jsx swaps variant based on nav state (light over hero, dark elsewhere) and used in footer.
+2. Heading typography swapped from Anton (blocky/gaming) to Playfair Display (corporate-luxury serif matching the logo). Removed uppercase from major headings (sentence case), tightened tracking to -0.02em, scaled clamp() sizes DOWN (serif reads bigger). Hero H1 uses italic Playfair on the 'Pipes' word. Marquee italic Playfair.
+3. Testing: iteration_7.json — 12/12 priority PASS; 0 console errors; 0 broken images; forms working in mocked mode with 0 network calls; punctuation wrap clean at 1920/1440/375; deep links + prefill working; reveal-img working; single mobile close icon; wa.me/919449528205 square WhatsApp button. Non-blocking observations: 768px tablet had 28px metric-only overflow from Ken Burns hero image (fixed with isolate on hero); institutions disclaimer already exists (testing agent search phrase mismatch, verified data-testid present).
+
+Site is LIVE-READY. Only blocker to full lead-capture live: user needs to create Formspree form and paste ID into REACT_APP_FORMSPREE_ID in frontend/.env — currently gracefully falls back to mocked success.

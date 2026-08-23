@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700;800;900&family=Sora:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 @layer base {
     :root {
@@ -86,8 +86,8 @@
         font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
     }
     h1, h2, h3, h4, h5, h6 {
-        font-family: 'Anton', 'Sora', sans-serif;
-        letter-spacing: 0.01em;
+        font-family: 'Playfair Display', Georgia, serif;
+        letter-spacing: -0.015em;
         text-wrap: balance;
     }
     p {
@@ -114,8 +114,7 @@
 
 @layer utilities {
     .text-brand-navy { color: hsl(var(--brand-navy)); }
-    /* Anton is single-weight; prevent ugly synthesized bold */
-    .font-display { font-weight: 400 !important; }
+    /* Playfair Display supports full weight range; no forced override needed */
     .text-brand-blue { color: hsl(var(--brand-blue)); }
     .text-brand-green { color: hsl(var(--brand-green)); }
     .text-brand-light-blue { color: hsl(var(--brand-light-blue)); }

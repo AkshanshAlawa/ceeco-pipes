@@ -25,7 +25,7 @@ export default function AboutPreview() {
               About S D Ruparel Group
             </p>
           </div>
-          <h2 className="relative font-display font-black tracking-[0.02em] uppercase text-[clamp(2.125rem,6.5vw,72px)] text-black leading-[0.92]">
+          <h2 className="relative font-display font-bold tracking-[-0.02em] text-[clamp(1.875rem,4vw,60px)] text-black leading-[1.05]">
             Four decades of trust in HDPE piping.
           </h2>
           <p className="mt-8 text-lg text-neutral-600 leading-[1.7]">

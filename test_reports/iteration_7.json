@@ -1,0 +1,34 @@
+{
+  "summary": "Comprehensive pre-launch smoke test for CEECO HDPE static React site after Playfair Display typography swap and official PNG logo integration. ALL priority acceptance criteria PASS. (1) LOGO REPLACEMENT: header (variant switches: light on Home unscrolled, dark on Home scrolled and on all inner routes /about /products /quality /careers /contact) and footer (light) both render with data-testid='site-logo', href='/', img.naturalWidth=651 (both /ceeco-logo-dark.png and /ceeco-logo-light.png load fine). Favicon /favicon.png fetch returns 200 and is wired in <link rel='icon'>. (2) TYPOGRAPHY: computed font-family of ALL <h1>/<h2>/<h3> across all 6 routes contains 'Playfair Display' (0 headings using Anton/Sora/Inter). 0 headings render text-transform:uppercase (only tracking-[0.4em]/[0.32em] eyebrow <p> tags remain uppercase, which is intentional micro-eyebrow style). Hero H1 shows 'CEECO / HDPE Pipes' with italic 'Pipes'. Marquee spans render italic Playfair. (3) PUNCTUATION WRAP AUDIT: 0 headings across 6 routes x 3 viewports (1920/1440/375) have any period or punctuation character on a line by itself. Home 'Three generations. One commitment.' renders periods inline. (4) STATS: after full 2500ms count-up animation, values render '1984 / 40+ / Thousands' with labels 'ESTABLISHED / YEARS EXPERIENCE / OF SATISFIED CUSTOMERS'. (5) FEATURED PRODUCT DEEP LINK: featured-product-blue-duct -> /products#product-blue-duct, product-section-blue-duct target lands at y=71.8px (in-viewport, scrolled). (6) QUOTE PREFILL: /products product-2-request-quote -> /contact form, contact-message textarea prefilled with 'I''d like to request a quote for Industrial HDPE Pipes. Please share pricing and availability.' (7) FORMS MOCKED: Contact/Careers/Enquiry submit success toasts show with 0 network calls to formspree.io. Empty submit correctly shows 'Please fill in all required fields.' error toast. (8) MOBILE NAV @375: mobile-menu-button opens sheet, exactly ONE visible mobile-menu-close (native SheetContent close hidden via [&>button]:hidden). (9) WHATSAPP: href=https://wa.me/919449528205, border-radius=0px (square), inline SVG viewBox='0 0 24 24' with 1 official glyph path visible. (10) 0 console errors across all 6 routes. 0 broken images (all naturalWidth > 0). All required data-testid present. No social media in footer (no facebook/twitter/linkedin/instagram anywhere). #custom-enquiry and #enquiry-form present on home between institutions and testimonials. (11) REVEAL-IMG: Products page 4/4 .reveal-img elements gain .in-view class after scroll.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Home @ 768px tablet", "issues": ["documentElement.scrollWidth reports +28px overflow vs innerWidth=768 from hero <img> (ken-burns scale 1.08) + BrandMarquee spans which extend beyond viewport. body { overflow-x: clip } prevents actual user-visible horizontal scrolling, so this is a metric-only observation, not a UX bug. No horizontal scrollbar appears. Still worth noting for perfectionist launch."]},
+      {"screen": "Home institutions section", "issues": ["Test plan mentions 'institutions disclaimer present under logo grid' but no explicit legal disclaimer text (e.g. 'Logos shown for informational reference purposes only') was found around the institutions section. Only the section eyebrow 'INSTITUTIONS THAT RELY ON CEECO' + subtitle 'Trusted by the institutions that shape Karnataka.' is present. If a legal disclaimer is expected before going LIVE, main agent should add it. Not blocking."]}
+    ]
+  },
+  "test_report_links": ["/app/test_reports/iteration_7.json"],
+  "action_items": [
+    "OPTIONAL: If a legal 'logos used for informational/reference purposes only' disclaimer is required under the institutions logo grid before going LIVE, add it in Home.jsx / InstitutionsSection.",
+    "OPTIONAL (cosmetic): 768px tablet reports 28px scrollWidth overflow from ken-burns hero <img> scale + marquee spans, though body{overflow-x:clip} hides it. Adding overflow-x:hidden to the hero section wrapper and the marquee track would clean the metric.",
+    "NON-ISSUE: Anton override reference (index.css line 117 comment) safe to leave — it's just a comment."
+  ],
+  "critical_code_review_comments": [
+    "Logo.jsx: variant switching works correctly. On Home unscrolled, header shows light logo over dark hero (correct); on Home scrolled + all inner routes, switches to dark. Test plan wording 'header shows /ceeco-logo-dark.png' is slightly misleading — the intended behavior is context-aware and is working as designed.",
+    "index.css line 19: --brand-green token stores red #941425 (misleading name from previous rebrand). Non-functional bug, cosmetic naming debt only — flagged in iteration_5 & 6 too.",
+    "WhatsAppButton uses inline color #25D366 (WhatsApp green) — square, 56x56, correct.",
+    "PageHero h1 uses clamp(2.25rem,7vw,88px) with tracking-[-0.02em] and leading-[1.03] — sentence-case renders cleanly; italic Playfair variants render as expected.",
+    "index.html: Google Fonts <link> in head only preloads Inter@600; Playfair Display is imported via @import in index.css which is fine but blocks CSS parsing briefly. Optional micro-perf: move Playfair to <link rel='preconnect'> + <link rel='stylesheet'> in index.html for faster FCP.",
+    "Forms correctly branch on REACT_APP_FORMSPREE_ID absence — mocked success toast + 0 network is intentional per user brief. Do not treat as bug."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (skipped by request)", "frontend": "100% of priority test areas pass (12/12)"},
+  "test_credentials": "N/A - static site, no auth",
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Site is LIVE-READY. Playfair Display + PNG logos fully verified. Only two optional launch-polish items exist: (a) institutions legal disclaimer text, (b) tablet 768px metric-only overflow from ken-burns hero image + marquee. Neither blocks going live. Header logo variant is context-aware (light over hero, dark elsewhere) — this is by design in Header.jsx line 48. Forms remain MOCKED (REACT_APP_FORMSPREE_ID empty) — 0 formspree.io network requests + success toast is EXPECTED and NOT a bug. Stats count-up animation takes ~2500ms — always wait 3s+ before asserting final values (1984/40+/Thousands).",
+  "rca of the issue": "N/A - no bugs found this iteration."
+}

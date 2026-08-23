@@ -78,7 +78,7 @@ export default function Contact() {
                 {SITE.parent}
               </p>
             </div>
-            <h2 className="font-display font-black tracking-[0.02em] text-4xl sm:text-5xl lg:text-[52px] text-black leading-[1]">
+            <h2 className="font-display font-bold tracking-[-0.01em] text-4xl sm:text-5xl lg:text-[52px] text-black leading-[1]">
               CEECO HDPE Pipes
             </h2>
             <p className="mt-4 text-neutral-600 leading-[1.7]">
@@ -197,7 +197,7 @@ export default function Contact() {
                     Send a message
                   </p>
                 </div>
-                <h3 className="font-display font-black tracking-[0.02em] text-4xl sm:text-5xl leading-[1]">
+                <h3 className="font-display font-bold tracking-[-0.01em] text-4xl sm:text-5xl leading-[1]">
                   Let&apos;s start a conversation.
                 </h3>
 
@@ -289,7 +289,7 @@ export default function Contact() {
                     <p className="text-[10px] tracking-[0.32em] uppercase text-brand-green font-bold">
                       CEECO HDPE Pipes
                     </p>
-                    <p className="font-display font-black uppercase tracking-[0.02em] text-black text-lg">
+                    <p className="font-display font-bold normal-case tracking-[-0.01em] text-black text-lg">
                       {m.label}
                     </p>
                     <p className="mt-1.5 text-xs text-neutral-500 leading-relaxed">

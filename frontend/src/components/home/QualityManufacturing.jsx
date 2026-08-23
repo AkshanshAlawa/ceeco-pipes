@@ -67,7 +67,7 @@ export default function QualityManufacturing() {
                   <div className="w-12 h-12 border-2 border-black flex items-center justify-center group-hover:border-brand-green group-hover:bg-brand-green transition-all">
                     <c.icon className="w-5 h-5 text-black group-hover:text-white transition-colors" strokeWidth={1.5} />
                   </div>
-                  <h3 className="mt-6 font-display font-black tracking-[0.02em] text-xl text-black leading-tight">
+                  <h3 className="mt-6 font-display font-bold tracking-[-0.01em] text-xl text-black leading-tight">
                     {c.title}
                   </h3>
                   <p className="mt-2 text-sm text-neutral-600 leading-[1.7]">

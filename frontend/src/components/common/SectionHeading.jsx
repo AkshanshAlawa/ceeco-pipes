@@ -15,9 +15,9 @@ export default function SectionHeading({
   index,
 }) {
   const sizeClasses = {
-    md: "text-[clamp(2rem,4.5vw,56px)]",
-    lg: "text-[clamp(2.125rem,7vw,88px)]",
-    xl: "text-[clamp(2.375rem,8vw,104px)]",
+    md: "text-[clamp(1.875rem,3.6vw,48px)]",
+    lg: "text-[clamp(2rem,4.5vw,64px)]",
+    xl: "text-[clamp(2.25rem,5.5vw,76px)]",
   };
   return (
     <div className={`relative ${center ? "mx-auto max-w-5xl text-center" : "max-w-5xl"}`}>
@@ -45,7 +45,7 @@ export default function SectionHeading({
         </div>
       )}
       <h2
-        className={`relative font-display font-black tracking-[0.02em] uppercase leading-[0.92] ${sizeClasses[size]} ${
+        className={`relative font-display font-bold leading-[1.02] tracking-[-0.02em] ${sizeClasses[size]} ${
           light ? "text-white" : "text-black"
         }`}
       >

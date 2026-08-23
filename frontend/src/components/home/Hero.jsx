@@ -9,7 +9,7 @@ export default function Hero() {
   return (
     <section
       data-testid="hero-section"
-      className="relative min-h-[100vh] flex items-center bg-black text-white overflow-hidden"
+      className="relative min-h-[100vh] flex items-center bg-black text-white overflow-hidden isolate"
     >
       {/* Background image - dramatic industrial with Ken Burns slow zoom */}
       <div className="absolute inset-0">
@@ -43,11 +43,11 @@ export default function Hero() {
             </div>
 
             {/* MONUMENTAL H1 - 80-110px */}
-            <h1 className="fade-up-2 mt-8 font-display font-black tracking-[0.02em] leading-[0.88] text-[clamp(3rem,13vw,112px)]">
-              CEECO
+            <h1 className="fade-up-2 mt-8 font-display font-bold tracking-[-0.02em] leading-[1.02] text-[clamp(2.75rem,9vw,104px)]">
+              <span className="text-white">CEECO</span>
               <br />
               <span className="text-white">HDPE </span>
-              <span className="text-brand-green">PIPES</span>
+              <span className="text-brand-green italic">Pipes</span>
             </h1>
 
             {/* Subtitle */}
@@ -140,7 +140,7 @@ export default function Hero() {
                     { v: "9+", l: "Product Sizes" },
                   ].map((s) => (
                     <div key={s.l} className="text-center px-4">
-                      <div className="font-display text-6xl sm:text-7xl font-black text-white leading-none tracking-[0.02em]">
+                      <div className="font-display text-6xl sm:text-7xl font-semibold text-white leading-none tracking-[0.02em]">
                         {s.v}
                       </div>
                       <div className="text-[10px] tracking-[0.3em] uppercase text-white/60 mt-4 font-bold">

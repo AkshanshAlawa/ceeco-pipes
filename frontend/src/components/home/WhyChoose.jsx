@@ -103,7 +103,7 @@ export default function WhyChoose() {
                   />
                 </div>
 
-                <h3 className="mt-6 font-display font-black tracking-[0.02em] text-xl text-black leading-tight">
+                <h3 className="mt-6 font-display font-bold tracking-[-0.01em] text-xl text-black leading-tight">
                   {it.title}
                 </h3>
                 <p className="mt-3 text-sm text-neutral-600 leading-[1.7]">

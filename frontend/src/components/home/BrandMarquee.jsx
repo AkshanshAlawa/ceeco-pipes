@@ -19,13 +19,13 @@ export default function BrandMarquee() {
     >
       <div className="flex w-max animate-marquee whitespace-nowrap">
         {row.map((it, i) => (
-          <span
-            key={i}
-            className="flex items-center font-display text-base sm:text-xl uppercase tracking-[0.08em] px-10"
-          >
-            {it}
-            <span className="ml-20 w-2 h-2 bg-white/50 rotate-45 inline-block" />
-          </span>
+        <span
+          className={`flex items-center font-display text-lg sm:text-2xl italic font-medium tracking-[-0.01em] px-10`}
+          key={i}
+        >
+          {it}
+          <span className="ml-20 w-2 h-2 bg-white/50 rotate-45 inline-block" />
+        </span>
         ))}
       </div>
     </div>

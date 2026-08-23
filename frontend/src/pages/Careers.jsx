@@ -78,7 +78,7 @@ export default function Careers() {
                     {r.type}
                   </span>
                 </div>
-                <h3 className="mt-6 font-display font-black uppercase tracking-[0.02em] text-xl text-black">
+                <h3 className="mt-6 font-display font-bold normal-case tracking-[-0.01em] text-xl text-black">
                   {r.title}
                 </h3>
                 <p className="mt-2 text-sm text-neutral-500 flex items-center gap-1.5">

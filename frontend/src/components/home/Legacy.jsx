@@ -32,7 +32,7 @@ function LeadershipCard({ icon: Icon, role, name, caption }) {
           <p className="text-[10px] tracking-[0.32em] uppercase text-brand-green font-bold">
             {role}
           </p>
-          <p className="mt-2 font-display font-black tracking-[0.02em] text-xl sm:text-2xl text-white leading-tight">
+          <p className="mt-2 font-display font-bold tracking-[-0.01em] text-xl sm:text-2xl text-white leading-tight">
             {name}
           </p>
           <p className="mt-3 text-sm text-white/65 leading-[1.7]">{caption}</p>
@@ -87,7 +87,7 @@ export default function Legacy() {
               ))}
             </div>
 
-            <p className="mt-12 font-display italic font-black text-3xl sm:text-4xl text-brand-green">
+            <p className="mt-12 font-display italic font-medium text-3xl sm:text-4xl text-brand-green">
               Built on Trust Since 1984.
             </p>
           </div>

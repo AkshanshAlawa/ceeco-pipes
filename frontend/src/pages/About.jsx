@@ -57,7 +57,7 @@ function LeaderPlaceholder({ icon: Icon, role, name }) {
           <p className="text-[10px] tracking-[0.32em] uppercase text-brand-green font-bold">
             {role}
           </p>
-          <p className="mt-1.5 font-display font-black tracking-[0.02em] text-black text-lg leading-tight">
+          <p className="mt-1.5 font-display font-bold tracking-[-0.01em] text-black text-lg leading-tight">
             {name}
           </p>
         </div>
@@ -142,7 +142,7 @@ export default function About() {
               <p className="mt-6 text-[11px] tracking-[0.32em] uppercase text-brand-green font-bold">
                 Vision
               </p>
-              <h3 className="mt-3 font-display font-black tracking-[0.02em] text-3xl sm:text-4xl leading-tight">
+              <h3 className="mt-3 font-display font-bold tracking-[-0.01em] text-3xl sm:text-4xl leading-tight">
                 To be the most trusted HDPE pipe manufacturer in India.
               </h3>
               <p className="mt-6 text-white/70 leading-[1.7]">
@@ -158,7 +158,7 @@ export default function About() {
             <p className="mt-6 text-[11px] tracking-[0.32em] uppercase text-brand-green font-bold">
               Mission
             </p>
-            <h3 className="mt-3 font-display font-black tracking-[0.02em] text-3xl sm:text-4xl leading-tight text-black">
+            <h3 className="mt-3 font-display font-bold tracking-[-0.01em] text-3xl sm:text-4xl leading-tight text-black">
               Deliver dependable pipes, every single time.
             </h3>
             <ul className="mt-6 space-y-3 text-neutral-600">
@@ -191,7 +191,7 @@ export default function About() {
                 <div className="w-14 h-14 border-2 border-black flex items-center justify-center group-hover:border-brand-green group-hover:bg-brand-green transition-all">
                   <v.icon className="w-5 h-5 text-black group-hover:text-white transition-colors" strokeWidth={1.5} />
                 </div>
-                <p className="mt-5 font-display font-black uppercase tracking-wide text-black">
+                <p className="mt-5 font-display font-bold normal-case tracking-normal text-black">
                   {v.title}
                 </p>
                 <p className="mt-2 text-xs text-neutral-500">{v.desc}</p>
@@ -221,7 +221,7 @@ export default function About() {
                 <div className="w-11 h-11 bg-black text-white flex items-center justify-center font-mono font-bold text-sm shrink-0 group-hover:bg-brand-green transition-colors">
                   {String(i + 1).padStart(2, "0")}
                 </div>
-                <p className="font-display font-black uppercase tracking-[0.02em] text-black pt-2">{c}</p>
+                <p className="font-display font-bold normal-case tracking-[-0.01em] text-black pt-2">{c}</p>
               </div>
             ))}
           </div>
@@ -244,7 +244,7 @@ export default function About() {
                   GOAL {String(i + 1).padStart(2, "0")}
                 </span>
                 <g.icon className="relative mt-5 w-7 h-7 text-brand-green group-hover:text-white transition-colors" strokeWidth={1.5} />
-                <p className="relative mt-5 font-display font-black uppercase tracking-[0.02em] leading-tight text-lg">
+                <p className="relative mt-5 font-display font-bold normal-case tracking-[-0.01em] leading-tight text-lg">
                   {g.title}
                 </p>
               </div>

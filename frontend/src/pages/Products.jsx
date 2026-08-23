@@ -121,7 +121,7 @@ export default function Products() {
                 <p className="text-[11px] tracking-[0.32em] uppercase text-brand-green font-bold">
                   Product {String(i + 1).padStart(2, "0")}
                 </p>
-                <h2 className="mt-4 font-display font-black tracking-[0.02em] text-4xl sm:text-5xl lg:text-[52px] text-black leading-[1]">
+                <h2 className="mt-4 font-display font-bold tracking-[-0.01em] text-4xl sm:text-5xl lg:text-[52px] text-black leading-[1]">
                   {p.title}
                 </h2>
                 <p className="mt-6 text-lg text-neutral-600 leading-[1.7]">
@@ -257,7 +257,7 @@ export default function Products() {
                     <p className="text-[10px] tracking-[0.32em] uppercase text-brand-green font-bold">
                       Certification
                     </p>
-                    <p className="mt-1 font-display font-black uppercase tracking-[0.02em] text-xl text-black">
+                    <p className="mt-1 font-display font-bold normal-case tracking-[-0.01em] text-xl text-black">
                       ISO 9001:2015
                     </p>
                   </div>
@@ -288,7 +288,7 @@ export default function Products() {
                     <p className="text-[10px] tracking-[0.32em] uppercase text-black font-bold">
                       Government Recognition
                     </p>
-                    <p className="mt-1 font-display font-black uppercase tracking-[0.02em] text-xl text-black">
+                    <p className="mt-1 font-display font-bold normal-case tracking-[-0.01em] text-xl text-black">
                       Udyam MSME Registered
                     </p>
                   </div>
